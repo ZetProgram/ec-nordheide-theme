@@ -21,11 +21,11 @@ if($insta_an === true){
 	$obj            =   json_decode($obj, true, 512, JSON_BIGINT_AS_STRING);
 
 	//pf($obj['data']);
-	if(is_array($obj['data'])){
-		foreach($obj['data'] as $z => $data){
-			$a_insta_img_urls[] = $data['images']['standard_resolution']['url'];
-			$a_insta_link[] = $data['link'];
-			$a_insta_text[] =  $data['caption']['text'];
+	if (isset($obj['data']) && is_array($obj['data'])) {
+		foreach ($obj['data'] as $z => $data) {
+			$a_insta_img_urls[] = $data['images']['standard_resolution']['url'] ?? '';
+			$a_insta_link[]     = $data['link'] ?? '';
+			$a_insta_text[]     = $data['caption']['text'] ?? '';
 		}
 	}
 }
