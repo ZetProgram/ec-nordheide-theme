@@ -62,8 +62,12 @@ jobs:
       - name: ZIP bauen (Root → Ordner = THEME_SLUG → ZIP)
         run: |
           set -e
-          mkdir -p dist "${{ steps.slug.outputs.slug }}"
-          rsync -a ./ "${{ steps.slug.outputs.slug }}"/ \
+
+          # 1) Staging nur in dist/
+          mkdir -p "dist/${{ steps.slug.outputs.slug }}"
+
+          # 2) Dateien ins Staging kopieren (dist/ ausschließen reicht dann)
+          rsync -a ./ "dist/${{ steps.slug.outputs.slug }}"/ \
             --exclude ".git/" \
             --exclude ".github/" \
             --exclude "node_modules/" \
@@ -77,15 +81,16 @@ jobs:
             --exclude "README" \
             --exclude "README.*"
 
-          # sicherstellen, dass die Version im Build-Style.css identisch ist
-          if [ -f "${{ steps.slug.outputs.slug }}/style.css" ]; then
-            if grep -qi "^Version:" "${{ steps.slug.outputs.slug }}/style.css"; then
-              sed -i "s/^Version:.*$/Version: ${{ steps.v.outputs.version }}/I" "${{ steps.slug.outputs.slug }}/style.css"
+          # 3) Version in der kopierten style.css sicherstellen
+          if [ -f "dist/${{ steps.slug.outputs.slug }}/style.css" ]; then
+            if grep -qi "^Version:" "dist/${{ steps.slug.outputs.slug }}/style.css"; then
+              sed -i "s/^Version:.*$/Version: ${{ steps.v.outputs.version }}/I" "dist/${{ steps.slug.outputs.slug }}/style.css"
             fi
           fi
 
-          # ZIP enthält den Ordner $THEME_SLUG als Top-Level – Dateiname OHNE Versionsnummer (wie beim Plugin)
-          zip -r "dist/${{ steps.slug.outputs.slug }}.zip" "${{ steps.slug.outputs.slug }}"
+          # 4) ZIP erstellen – Top-Level im ZIP
+          cd dist
+          zip -r "${{ steps.slug.outputs.slug }}.zip" "${{ steps.slug.outputs.slug }}"
 
       - name: Release erstellen/aktualisieren
         uses: softprops/action-gh-release@v2
