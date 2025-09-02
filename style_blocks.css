@@ -1,0 +1,200 @@
+/*block-ec-ein-arbeitsbereich*/
+.ec-ein-arbeitsbereich-wrapper{
+	padding: 10px; margin: 0px 0%; min-height: 260px;
+}
+.ec-ein-arbeitsbereich-bild_wrapper{
+	text-align: center;height: 200px;overflow: hidden;
+}
+.ec-ein-arbeitsbereich-bild_teaser{
+	position: relative;
+    width: 100%;
+    top: -25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.button_runde_ecken a{
+	text-decoration: none;
+}
+
+.button_runde_ecken{
+	border: 1px solid #000;
+	text-align: center;
+	border-radius: 50px;
+	padding: 10px;
+	color: #000;
+	box-sizing: border-box;
+	min-width: 250px;
+	transition: all 0.5s;	
+	display:inline-block;
+}
+
+.button_runde_ecken:hover{
+	cursor: pointer;
+	background: #000;
+	color: #fff;
+}
+
+.button_runde_ecken:hover a{
+	color: #fff;
+}
+
+/*helle*/
+.button_runde_ecken_hell a{
+	text-decoration: none;
+	color: #fff;
+	
+}
+
+.button_runde_ecken_hell{
+	border: 1px solid #fff;
+	text-align: center;
+	border-radius: 50px;
+	padding: 10px;
+	color: #fff !important;
+	box-sizing: border-box;
+
+	min-width: 250px;
+	transition: all 0.5s;	
+	display:inline-block;
+}
+
+.button_runde_ecken_hell:hover{
+	cursor: pointer;
+	background: #fff;
+	color: #000;
+}
+
+.button_runde_ecken_hell:hover a{
+	color: #000 !important;
+}
+
+
+.ec_posts_wrapper{
+	margin-bottom: 50px;
+}
+
+.ec_posts_post_title{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.ec_posts_post_excerpt{
+	line-height:1.9em;
+}
+.ec_posts .ec_post div{
+		padding: 0;
+		
+}
+.ec_post{
+		position: relative;
+		xheight: 240px; 
+		overflow: hidden;
+}
+.ec_posts_img{
+	text-align: center;
+	height: 300px;
+	background-position: center center;
+	background-repeat: no-repeat; 
+	background-size: 100%;
+}
+
+.ec_posts_mobil_div{
+	display: none;
+}
+
+.wp_mitarbeiter_einzelansicht{
+	max-width: 575px !important;
+	min-height: 240px;
+	border: 1px dashed #ddd;
+}
+
+.lichtstrahlen_kurzvorstellung{
+	position: relative;
+	margin-top: 100px;
+	
+}
+
+.lichtstrahlen_auszug{
+	column-width: 500px;
+}
+
+.lichtstrahlen_bibelstelle a{
+	color: #fff;
+	
+}
+.wp_mitarbeiter_name{
+	text-align: left;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 1.5em;
+}
+.wp_mitarbeiter_funktion{
+	font-weight: bold;
+	margin-bottom: 10px;
+	line-height: 1.2em;
+}
+
+.wp_mitarbeiter_telefon{
+	margin-bottom: 6px;
+}
+
+.wp_mitarbeiter_telefon_icon{
+	margin-right: 10px;
+}
+.wp_mitarbeiter_email_icon{
+	margin-right: 10px;
+}
+
+.wp_mitarbeiter_beschreibung p{
+	line-height: 1em;
+}
+
+.wp_mitarbeiter_kategorie:hover{
+	cursor: pointer;
+}
+.wp_mitarbeiter_kategorie{
+	font-weight: bold;
+	
+}
+
+.wp_mitarbeiter_kategorie_mitarbeiter{
+	display: none;
+	padding-left: 10px;
+}
+
+.helle_zeile{
+	padding: 10px;
+}
+
+.dunkle_zeile{
+	background-color: #ddd;
+	padding: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+	.ec_posts_mobil_div{
+		display: block;
+	}
+	.ec_posts_div{
+		display: none;
+	}
+	
+	.wp_mitarbeiter_telefon{
+		float: left;
+	}
+	.wp_mitarbeiter_telefon_nummer{
+		display: none;
+	}
+	.wp_mitarbeiter_email_email{
+		display: none;
+	}
+	.fa-phone-square{
+		font-size: 70px !important;
+	}
+	.fa-envelope-square{
+		font-size: 70px !important;
+	}
+}

@@ -1,0 +1,123 @@
+@media only screen and (max-width: 480px) {
+	.main_menu_offen{
+		/*height: auto !important;*/
+		padding: 20px 50px 20px 50px;
+		min-height: 450px;
+	}
+	
+	
+	#main{
+		top: 92px;
+	}
+	#header{
+		background-color: #fff;
+	}
+	
+	.terminliste_titel_datum{
+		height: auto !important;
+	}
+	.terminliste_beschreibung_bild {
+		height: auto !important;
+	}
+	.terminliste_beschreibung_bild_container{
+		position: relative !important;
+		height: 0 !important;
+	}
+	
+	#terminliste_hover:hover .terminliste_beschreibung_bild_container_1{
+		height: 309px !important;
+		margin-top: 0 !important;;
+	}
+
+	#terminliste_hover:hover .terminliste_beschreibung_bild_container_2{
+		height: 309px !important;
+		margin-top: 0 !important;;
+	
+	}
+	#terminliste_hover:hover .terminliste_beschreibung_bild_container_3{
+		height: 309px !important;
+		margin-top: 0 !important;;
+	
+	}
+	#terminliste_hover:hover .terminliste_beschreibung_bild_container_4{
+		height: 309px !important;
+		margin-top: 0 !important;;
+	
+	}
+
+/*
+#menu_header_unten_mobil .menu-main-menue-container > ul, #menu_header_unten_mobil .menu-main-menue-container > ul > li {
+  float: none;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container > ul > li > ul, #menu_header_unten_mobil .menu-main-menue-container > ul > li:hover > ul {
+  position: relative;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container > ul > li > ul > li:hover > ul {
+  position: relative;
+  left: 0;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container > ul > li > ul > li > ul > li > a {
+  font-style: italic;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container > ul > li {
+  display: none;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container > ul:hover li {
+  display: block;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container > ul::before {
+  display: block;
+  content: "";
+  padding: 10px;
+}
+
+#menu_header_unten_mobil .menu-main-menue-container li > a:after {
+  content: " +";
+}
+
+#menu_header_unten_mobil .menu-main-menue-container li > a:only-child:after {
+  content: "";
+}
+
+
+#menu_header_unten_mobil{
+	border: 0px solid orange;
+	text-align: right;
+	padding: 0px;
+	position: relative; 
+	z-index: 1000;
+
+	}
+#menu_header_unten_mobil_items{
+	border: 0px solid orange;
+	text-align: center;
+	padding: 20px;
+	position: relative;
+	top: -10px;
+	z-index: 1000;
+	
+	-webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+	}
+
+
+#menu_header_unten_mobil{
+		display: none;
+	}
+@media only screen and (max-width: 1080px) {
+	/*
+	#menu_header_unten{
+		display: none;
+	}
+	#menu_header_unten_mobil{
+		display: block;
+	}
+	
+}*/
