@@ -1,6 +1,8 @@
 {
   "name": "zetprogram/ec-nordheide-theme",
   "type": "project",
+  "description": "EC Nordheide Theme",
+  "license": "proprietary",
   "require": {},
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -11,7 +13,12 @@
     "symfony/polyfill-php80": "^1.30"
   },
   "scripts": {
-    "lint": "phpcs -p",
-    "fix": "phpcbf -p || true"
+    "lint": "vendor/bin/phpcs -p",
+    "fix": "vendor/bin/phpcbf -p || true"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }
