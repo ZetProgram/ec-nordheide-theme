@@ -1,0 +1,1967 @@
+@import url("style_tabs.css");
+@import url("style_effekte.css");
+@import url("style_grid_system.css");
+@import url("style_desktop_menu.css");
+@import url("style_footer_menu.css");
+@import url("style_mobil.css");
+@import url("style_blocks.css");
+
+/*
+figure{border: 1px solid red;}
+.col{border: 1px solid red;}
+*/
+
+/*
+farben: 
+#9ec850 helles grün
+#388134 dunkles grün
+
+@font-face { font-family: 'Montserrat';
+                              src: url('/wp-content/themes/ecjugend20192/fonts/Montserrat-Regular.ttf') format('truetype');
+                       }
+
+
+@font-face { font-family: 'SmoothStoneScript';
+             src: url('/wp-content/themes/ecjugend20192/fonts/SmoothStone-Regular.ttf') format('truetype'); 
+				  }
+*/
+
+@font-face { font-family: 'Goldney';
+             src: url('/wp-content/themes/ecjugend20192/fonts/Goldney-Regular.otf') format('opentype'); 
+			 font-size: 0.5em;
+				  }
+				  
+html{width: 100%;overflow-x: hidden;}
+
+body        {
+	margin: 0; 
+	padding: 0;
+	color: #333; 
+	font-family: 'Montserrat', sans-serif;
+	font-size: 100%;
+	}
+
+.beta_container{
+	position: fixed;
+	top: -5px;left:0;
+	z-index: 3;
+	text-align: center;
+	width: 100%;
+	
+}
+
+.beta_wort{
+	text-align: center;
+	width: 100px;
+		margin-left: auto;
+	margin-right: auto;
+	background-color: #ddd;
+	padding: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 2px 2px 2px #666;
+}
+
+.beta_beschreibung{
+	position: absolute;
+	top: 25px;
+	padding: 5px;
+	width: 200px;
+	opacity: 0;
+	transition: all 1.5s ease-in-out;
+	margin-left: calc(50% - 100px);
+	margin-right: calc(50% - 100px);
+	background-color: #ddd;
+	border-radius: 5px;
+	
+	box-shadow: 2px 2px 2px #666;
+}
+
+.beta_container:hover .beta_beschreibung{
+	opacity: 1;
+}
+
+#body_wrapper    {width: 100%; 
+border: 0px solid red; 
+margin: auto; 
+text-align: left; 
+/*background: #fff;*/
+}
+
+.fuellender_hintergrund_layer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1100;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+}
+
+.cn-position-bottom{
+	bottom: 50% !important;
+}
+
+#header_wrapper{
+	position: absolute;
+	width: 100%;
+	
+	/*
+	-webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
+	*/
+	
+	
+	position:fixed !important;
+	
+	 
+	z-index: 20;
+}
+
+#header        {
+	position: relative;
+	width: 100%;
+	/*z-index: 20;*/
+	transition: 0.3s background,0.3s border-bottom,0.3s transform,0.3s -webkit-transform,0.3s -o-transform;
+	
+	
+	background-color: #fff;
+
+	height: 155px;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+}
+
+#menubutton_div{
+		border-right: 2px solid black;
+		width: 70px;
+}
+
+.col_header_logo {
+	width: 49.2%;
+}
+
+
+
+.menu_col_header{
+	padding-top:30px;
+	width: 49.2%;
+}
+
+#mobile_top_menu{
+	text-align:center;
+}
+#suchebutton_div{
+		border-left: 2px solid black;
+		width: 70px;
+}
+ #spendenbutton_div{
+	 width: 140px;
+ }
+.menu_button_wrapper{
+	width: 350px;
+}
+@media (max-width:690px) {
+	#suchebutton_div, #spendenbutton_div{
+		display: none;
+	}
+	#menubutton_div{
+		width: 100%;
+		border:0;
+	}
+	.sf_im_menu{
+		display: block;
+	}
+	#mobile_top_menu{
+	text-align:right;
+	}
+	
+	.menu_button_wrapper{
+		width: auto;
+	}
+}
+
+@media (max-width:480px) {
+
+	#menubutton_div{
+		
+		border:0;
+	}
+	#header{
+		height: 105px;
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+	}
+	
+	.menu_col_header{
+		padding-top:20px;
+		width: 29%;
+	}
+	
+	.col_header_logo {
+		width: 70%;
+	}
+}
+
+* xxxhtml #header {
+  top:expression(auto);
+}
+
+.xxxfixed-headerx {
+  top:0 /*!important*/;
+  position:fixed !important;
+  background-color: #fff;
+  /*border-bottom: 1px dashed silver;*/
+}
+* xxxhtml .fixed-header{
+  top:expression(documentElement.scrollTop);
+}
+
+
+.headerbild{
+	z-index: 2;
+	display: table;
+	height: 780px;
+	width: 100%;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	margin-bottom: 50px;
+	
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+}
+
+.headerbild_beitrag{
+	z-index: 2;
+	display: table;
+	width: 100%;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	margin-bottom: 50px;
+	height: 310px;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+}
+.headerbild_schmal{
+	z-index: 2;
+	display: table;
+	width: 100%;
+	overflow: hidden;
+	height: 310px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	margin-bottom: 0;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+}
+.rechter_kasten_krumm_leichtes_gruen_rahmen{
+	padding: 3px 0px 3px 3px;
+	width: 100%;
+	background-color: #388134;
+	-webkit-clip-path: polygon(5% 5%, 100% 0, 100% 100%, 0 90%);
+	clip-path: polygon(5% 5%, 100% 0, 100% 100%, 0 90%);
+}
+
+.rechter_kasten_krumm_leichtes_gruen{
+	padding: 80px;
+	background-color: #9ec850;
+	margin: auto;
+	-webkit-clip-path: polygon(5% 5%, 100% 0, 100% 100%, 0 90%);
+	clip-path: polygon(5% 5%, 100% 0, 100% 100%, 0 90%);
+}
+
+.weltverband_bild{
+	position: relative;
+	top: -50px;
+	-webkit-clip-path: polygon(5% 5%, 100% 0, 100% 100%, 0 90%);
+	clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%);
+}
+
+.slogan{
+	position: relative;
+	z-index: 4;
+	opacity: 0;
+	top:30px;
+	font-weight: bold;
+	text-align: center; 
+	display: table-cell;
+	vertical-align: middle;
+	font-family: 'Goldney';
+    color: #ffffff;
+    font-size: 130px;
+    text-shadow: 5px -5px 10px RGBA(0,0,0,1);
+    line-height: 1.5;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    letter-spacing: 1px;
+    word-spacing: normal;
+    text-transform: none;
+    
+}
+
+
+.headerbild_overlay_hexagone{
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	
+	height: 50vw;
+	width: 100%;
+	overflow: hidden;
+	background-image: url(/wp-content/themes/ecjugend20192/img/bg_hexagone_1920x1582.png);
+	background-position: center center;
+	background-size: 100% auto;
+	opacity:1;
+}
+
+.headerbild_overlay_hexagone_slider{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	
+	height: 50vw;
+	width: 100%;
+	overflow: hidden;
+	background-image: url(/wp-content/themes/ecjugend20192/img/bg_hexagone_1920x1582.png);
+	background-position: center center;
+	background-size: 100% auto;
+	opacity:1;
+}
+
+.wp-has-aspect-ratio iframe{ /*im moment für den Youbube Einbinden block*/
+	width: 100%;
+	
+}
+
+@media (max-width:480px) {
+	.headerbild{
+		
+		height: 200px;
+		width: 100%;
+	}
+	.headerbild_beitrag{
+		height: 200px;
+	}
+
+	.headerbild_schmal{
+		height: 200px;
+	}
+	.headerbild_overlay_hexagone{
+		display: none;
+	}
+	.headerbild_overlay_hexagone_slider{
+		display: none;
+	}
+	
+	.slogan{
+		font-size: 50px;
+		top: 10px;
+	}
+}
+
+#header_logo_menu_wrapper        {
+	max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+	}
+	
+
+
+.logo_img{
+	opacity: 1 !important;
+	width: 100%;/*begrenzt durch .logo_slide_hover*/
+	/*max-width: 400px;454 orig breite*/
+	margin-top: 15px;
+}
+
+.logo_slide{
+	position: relative;
+	z-index: 6;
+	padding: 10px;
+	text-align:center;
+}
+
+#logo_slide_hover{
+	position: relative;
+	/*width: 250px;
+	height: 170px;*/
+	/*transform: translateY(-20%);*/
+	background-color: rgba(255,255,255,0.0);
+	transition: all 1.5s ease-in-out;
+}
+
+#logo_slide_hover:hover{
+	/*transform: translateY(-10%);*/
+}
+
+
+.menu_triangle_inhalte{
+	position: relative;
+	padding: 20px;
+	padding-top: 150px;
+	height: 400px;
+	color: #000;
+	line-height: 1.5em;
+	background-color: #fff;
+	transition: all 1.5s ease-in-out;
+}
+
+.menu_triangle_spitze{
+	
+	background-image: url('/wp-content/themes/ecjugend20192/img/dreieck_spitze_unten_schatten.png');
+	background-size: 100% 100%;
+	background-position: 100% 100%;
+	background-repeat: no-repeat;
+	
+	width: 100%;
+	height: 80px;
+}
+/*für die Suche auf der Webseite*/
+.sf_webseite{
+	
+	position: fixed;
+	top:120px;
+	right: -350px;
+	z-index: 10;
+	width: 300px;
+	height: 50px;
+	background-color: #fff;
+	border: 2px solid #000;
+	transition: right 0.5s ease-in-out;
+	-webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
+}
+
+
+.sf_webseite_sichtbar{
+	right: -2px;
+}
+
+.sf_im_menu{
+	display: none;
+	position: relative;
+	z-index: 10;
+	width: 300px;
+	height: 50px;
+	background-color: #fff;
+	border: 2px solid #000;
+	transition: right 0.5s ease-in-out;
+	-webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width:690px) {
+	.sf_im_menu{
+		display: block;
+	}
+}
+
+
+/*bei mobil display: block*/
+.sf_webseite{
+	
+	position: fixed;
+	top:120px;
+	right: -350px;
+	z-index: 25;
+	width: 300px;
+	height: 50px;
+	background-color: #fff;
+	border: 2px solid #000;
+	transition: right 0.5s ease-in-out;
+	-webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
+}
+
+
+.sf_webseite_sichtbar{
+	right: -2px;
+}
+
+.suche_input{
+	position: relative;
+	top: 0px;
+	width: 250px;
+	/*height: 100%;*/
+	transition: all 0.5s ease-in-out;
+	border: 0;
+}
+
+
+
+
+.thumb{
+	width: 70%;
+}
+@media (max-width:480px) {
+	.ec_post{
+		height: auto; 
+	}
+	
+	#logo_slide_hover{
+		width: auto;
+	}
+}
+.wp-block-image figcaption{
+	font-size:1em !important;
+}
+
+img{
+	/*
+	max-width: 300px;
+	width:100%;
+	opacity: 1;
+	*/
+	}
+	
+	
+.block_logo_img{
+	max-width: 30%;
+	width: 100%;
+}
+.block_logo_subtitle{
+	
+}
+.block_logo_description{
+	margin-top: 20px;
+	font-size: 0.3em;
+	font-family: 'Roboto', sans-serif;
+	text-shadow: rgb(0, 0, 0) 2px -2px 4px;
+}
+
+.block_logo_description div{
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inhalts_container_mittig_max_width, .inhalt_begrenzte_breite_zentriert{
+	width: 100%; 
+	max-width: 1150px;
+	margin-left: auto !important; 
+	margin-right: auto !important;
+	line-height: 2em;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.inhalt_auf_hintergrund_mit_hexagonen{
+	width: 65% !important;
+	margin: auto;
+}
+
+
+
+.container_mit_inline_image_alignLeft img, .absatz_mit_bild_links img{
+	float: left;
+	margin-right: 20px;
+	
+}
+.wp-block-columns,.wp-block-media-text,.wp-block-table {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-block-cover{
+	height: auto !important;
+}
+
+.terminliste{
+	width: 780px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 600px;
+}
+#terminliste_hover:hover .terminliste_beschreibung_bild_container_1{
+	min-height: 650px;
+	margin-top: 20px;
+}
+
+#terminliste_hover:hover .terminliste_beschreibung_bild_container_2{
+	min-height: 650px;
+	margin-top: calc(109px*-1);
+}
+#terminliste_hover:hover .terminliste_beschreibung_bild_container_3{
+	min-height: 650px;
+	margin-top: calc(109px*-2);
+}
+#terminliste_hover:hover .terminliste_beschreibung_bild_container_4{
+	min-height: 650px;
+	margin-top: calc(109px*-3);
+}
+
+.terminliste_titel_datum{
+	background-color: transparent;
+	border-top: 1px dashed silver;
+	line-height: 2em;
+	padding: 10px;
+	transition: all 1s linear;
+	height: 109px;
+}
+
+.terminliste_titel_datum:hover {
+	background-color: #b1ca34;
+	/*
+	
+	*/
+}
+
+.terminliste_beschreibung_bild_container{
+	position: absolute;
+	height: 0px;
+	min-height: 0;
+	overflow: hidden;
+	margin-top: 0px;
+	transition: all 1s linear;
+}
+
+.terminliste_beschreibung_bild{
+	height: 0px;
+	overflow: hidden;
+	transition: all 1s linear;
+}
+
+
+
+.terminliste_beschreibung_bild_eingeblendet{
+	display: block;
+	}
+.class_terminbeschreibung_inhalt{
+	/*
+	opacity: 0;
+	transition: all 1s linear;
+	*/
+}
+.class_terminbeschreibung_inhalt_visible{
+	opacity: 0.5;
+}
+
+
+		.terminliste_titel{
+			font-size: 25px;
+			font-weight: bold;
+			}
+
+.padding_oben_unten_10{
+	padding: 10px 0 10px 0;
+}
+
+.padding_10_20{
+	padding: 10px 20px;
+}
+
+.inhalts_container_100{
+	width: 100%;
+}
+
+.bild_mitgliedschaft{
+	position: relative;
+	left: 0;
+	transition: all 1s linear;
+	width: 100%;
+	height: calc(100%);
+}
+
+.bild_mitgliedschaft_visible{
+	left: 0px;	 
+}
+.wp-block-quote{
+	max-width: 1150px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.wp-block-quote p {
+	position: relative;
+	color: #82929B;
+    font-family: 'Montserrat';
+	font-weight: 900;
+    font-size: 2em !important; /*wie h2*/
+	font-style: normal !important;
+	line-height: 1.2em;
+	z-index: 5;
+	
+}
+
+.wp-block-quote p strong{
+	position: relative;
+	display: block; /*damit bricht es automatisch um*/
+	color: #000;
+    font-family: 'Goldney';
+	font-size: 2em !important; /*wie h2*/
+	line-height:0.9em;
+	z-index: 10;
+
+}
+
+.wp-block-quote cite{
+	position: relative;
+	font-size: 1em !important; /*wie normaler Text absatz*/
+	top:-10px;	
+	
+}
+
+.wp-block-quote::before{
+
+}
+.wp-block-quote::after{
+	
+}
+
+.bg_grau{
+	/*background-color: silver;*/
+	background-color: rgba(72, 72, 72, 0.6);
+}
+
+
+.abstand_50{
+	height: 50px;
+}
+.abstand_150{
+	height: 150px;
+}
+
+.instagram_button_footer{
+	margin-top: 90px;
+}
+@media only screen and (max-width: 480px) {
+	.instagramm{
+		display: none;
+	}
+	.instagram_button_footer{
+		margin: 20px auto 20px auto;
+	}
+}
+
+
+#n2-ss-2-placeholder{display: none;}	
+#main       {
+	position: relative;
+	width: 100%; 
+	padding: 0;
+	z-index: 0;
+	top: 75px;
+	}
+#sidebar    {width: 270px; padding: 10px; padding-top: 20px; float: left;}
+
+#footer        {
+	position: relative;
+	z-index: 2 !important;
+	width: 100%;
+	padding-top: 40px; 
+	opacity: 1;
+	background-image: url(/wp-content/uploads/2019/09/bg_verlauf_1920x1582.png);
+    background-size: cover;
+	background-color: #8fb217;
+	margin-top: 200px;
+	background-position: center;
+	/*height: 250px;*/
+}
+
+#footer a{
+	 color: #fff;
+}
+
+.socialmediabuttons_div{
+	display: block;
+	padding-left: 20px;
+}
+
+.footer_eclogo{
+	position: relative;
+	top:-25px;
+}
+/*Arbeitsbereiche SA Slider*/
+.owl-carousel{
+	/*opacity: 0.9;hier, wenn auch die borders teiltransparent sein sollen
+	border-top: 20px solid rgba(177, 202, 52, 1);
+	border-bottom: 20px solid rgba(177, 202, 52, 1);
+*/
+	border-top: solid 20px transparent;
+	transform: skewY(-1deg);
+	transition: all 0.2s ease-in-out;	
+}
+
+.owl-carousel::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -20px; /* !importanté */
+    border-radius: inherit; /* !importanté */
+    background: linear-gradient(to right, #9ec850, #388134);
+  }
+
+/*Terminvorschau*/
+#slider_4341.owl-carousel{
+	transform: skewY(0deg);
+	    
+}
+
+#slider_4341.owl-carousel::before{
+	background: transparent;
+}
+
+#slider_4341 .owl-item{
+	padding: 20px;
+}
+#slider_4341 .owl-prev {
+    top: 35%;
+}
+#slider_4341 .owl-next {
+    top: 35%;
+}
+.terminvorschau_bild{
+	height: 200px;
+	overflow: hidden;
+}
+.terminvorschau_teaser{
+	position: relative;
+	/*width: 60%;
+	padding: 10px;*/
+	top: -25px;
+	margin-left: auto;
+	margin-right: auto;
+	/*background: linear-gradient(to right, #9ec850, #388134);*/
+	text-align: center;
+	color: #fff;
+}
+
+
+#slider_153:hover{
+	
+}
+
+.tags_caroussel_css{
+	font-size: 8em;
+	font-style:italic;
+	text-align: center;
+	text-transform: lowercase;
+	color: #fff;
+	text-shadow: rgb(0, 0, 0) 0px 0px 20px;
+}
+
+.mitgliedschaft{
+	/*transform: skewY(0.2deg);*/
+}
+
+.owl-stage-outer{
+	/*opacity: 0.7;hier, wenn die borders NICHT teiltransparent oder einen anderen Grad der Transparent aufweisen sollen*/
+}
+.arbeitsbereiche_ein_slide{
+	height: 300px;
+	text-align: center;
+}
+
+.weisses_png_mit_schatten{
+	-webkit-filter: drop-shadow(2px 2px 2px #000);
+    filter: drop-shadow(2px 2px 2px #000);
+}
+
+.weisses_png_mit_schatten_a_img a img{
+	-webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
+	transition: all 1.5s ease-in-out;
+}
+
+.arbeitsbereiche_logo_unterschrift_weiss_mit_schatten{
+	text-shadow: black 0.1em 0.1em 0.2em;
+	color: #fff;
+    font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+    font-size: 1.5em;
+	margin-top: 2em;
+}
+/*ENDE Arbeitsbereiche SA Slider*/
+
+.beziehungskompass{
+	position: relative;
+	margin: 0 auto 50px auto;
+	width: 226px;
+}
+
+
+/*
+allgemeines
+*/
+.center{text-align: center;}
+.right{text-align: right;}
+.align-right{text-align: right;}
+
+.bild_im_text_links{float: left; margin: 0 20px 20px 0;}
+
+	a{
+		text-decoration: none;
+		color:#000;
+	}
+	
+h1{
+	text-align:center;
+	color:#000;
+	font-family: 'Goldney';
+	font-size: 3em;
+	font-weight: bold;
+	}
+	
+h2, .h2_div{
+	text-align:center;
+	color:#000;
+	font-family: 'Montserrat';
+	font-size: 2em;
+	font-weight: 900;
+	}
+h3{
+	text-align:center;
+	color:#000;
+	font-size: 2em;
+	font-family: 'Montserrat';
+	
+	}
+
+h4{
+	text-align:center;
+	color:#000;
+	font-size: 1.5em;
+	font-family: 'Montserrat';
+	}
+
+input {padding: 5px; border: none;}
+
+
+.xbutton_div {
+	position: relative;
+	cursor: pointer;
+	padding:10px;
+	width: 150px;
+	
+	background-image: url('/wp-content/themes/ecjugend20192/img/halbes_hexagon_rechts_grau.png');
+	background-size: 11.3%;
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	background-color: #cedd87;
+	border-radius: 5px;
+	transition: all 0.2s ease-in-out;	
+	color: #7b7b7b;
+	opacity: 1;
+	}
+	
+.xbutton_div:hover {
+	background-color: #a7c02a;
+	color: #fff;
+	background-image: url('/wp-content/themes/ecjugend20192/img/halbes_hexagon_rechts_weiss.png');
+	background-size: 11.3%;
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	/*transform: rotate(45deg);
+	margin-top: 150px;
+	*/
+	}
+
+.button_div {
+    color: #ffffff !important;
+    font-size: 18px;
+    border-radius: 3px;
+    padding: 10px 30px;
+    border: 0px solid #ffffff;
+    font-weight: 700;
+    display: inline-block;
+    margin: 10px 10px;
+    transition: 0.4s;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+    background-color: transparent !important;
+	background-image: url('/wp-content/themes/ecjugend20192/img/halbes_hexagon_rechts_weiss.png');
+	background-size: 11.3%;
+	background-position: 98% 50%;
+	background-repeat: no-repeat;
+	background-color: #cedd87;
+}
+
+.button_div:hover {
+	background-color: #aecb37 !important;
+    color: #202020 !important;
+    text-decoration: none;
+    border: 0px solid #aecb37;
+    transition: 0.4s;
+    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4); 
+	cursor: pointer;
+}
+
+
+
+
+	p{
+		line-height: 2em;
+	}
+/*farben*/
+.tuerkis{color: #016275;}
+
+.abstand_seitentitel_oben{
+	height: 65px;
+}
+
+select, input, button{
+	color: #999;
+	font-size:14px;
+	width: 100%;
+	border: 0;
+	height: 40px;
+	text-indent: 5px;
+	outline: 0;
+	background-color: #fff;
+}
+
+#spendenformular select, input, button{
+	color: #999;
+	font-size:14px;
+	width: 100%;
+	border: 1px solid;
+	height: 40px;
+	text-indent: 5px;
+	outline: 0;
+	background-color: #fff;
+}
+#paypal_spende{
+	text-align:center;
+}
+#paypal_spende input{
+	color: #999;
+	font-size:14px;
+	width: auto;
+	border: 1px solid;
+	height: auto;
+	text-indent: 5px;
+	outline: 0;
+	background-color: #fff;
+}
+
+button:hover{
+	cursor: pointer;
+}
+
+
+
+.pointer{
+	cursor: pointer;
+}
+.button_zeichen{
+	background-color: #4d5258;
+	background-image: url(/wp-content/themes/ecjugend20192/img/afz_btn.png);
+	background-position: center;
+	background-size: cover;
+	width: 50px;
+}
+.button_rechts{
+	width: 250px;
+	margin-left: auto;
+	margin-right: 0;
+}
+.button_mitte{
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.button_links{
+	width: 250px;
+	margin-left: 0;
+	margin-right: auto;
+}
+.table-row-button a{
+	text-decoration: none;
+}
+/*
+input.date-picker {
+    background-image: url(../images/icon-calendar.png);
+    background-repeat: no-repeat;
+	background-position: center right 10px;
+}
+*/
+
+.btn_tuerkis{
+	background-color:#016275; 
+	color: #fff;
+	font-weight:bold;
+	transition: background-color .2s linear;	
+	}
+
+.btn_tuerkis:hover{
+	background-color:#000; 
+}
+
+.box_mit_schatten{
+	
+	padding: 20px;
+	color:#7b7b7b;
+	border: 1px solid #ddd;
+	height: 470px;
+	overflow: hidden;
+	transition: all 0.2s ease-in-out;
+	/*
+-webkit-box-shadow: 10px 10px 5px 0px rgba(140,140,140,1);
+-moz-box-shadow: 10px 10px 5px 0px rgba(140,140,140,1);
+box-shadow: 10px 10px 5px 0px rgba(140,140,140,1);
+*/
+}
+
+.box_mit_schatten:hover{
+	cursor: pointer;	
+	background-color: #ddd;
+	opacity: 1;
+}
+
+.lichtstrahlen_ueberschrift, .ueberschrift_im_gruenen_bereich, .hintergrund_hexagone_gruenverlauf_trapez h3{
+	transform: skewY(-5deg);
+	text-align: left;
+	font-size: 70px;
+	color: #fff;
+	font-family: "Goldney";
+	font-weight: normal;
+}
+
+.hintergrund_hexagone_gruenverlauf_trapez strong em{
+	/*
+	position: relative;
+	display: block;
+	top: -50px;
+	transform: skewY(-5deg);
+	text-align: left;
+	font-size: 5em;
+	color: #fff !important;
+	font-family: "Goldney";
+	font-style: normal;
+	font-weight: normal;
+	*/
+}
+
+h6 strong em, h4 strong em, h5 strong em {
+	text-align: center !important;
+	position: relative;
+	display: block;
+	
+	transform: skewY(-5deg);
+	text-align: left;
+	font-size: 50px;
+	color: #fff !important;
+	font-family: "Goldney";
+	font-style: normal;
+	font-weight: normal;
+}
+
+/*
+.hintergrund_hexagone_gruenverlauf_trapez a{
+	color: #eee;
+}
+*/
+
+
+.grau{
+	color: #7b7b7b	;
+}
+
+.fett{
+	font-weight: bold;
+}
+.rot{
+	color: #cd0000;
+}
+.gruen{
+	color: green;
+}
+
+.dunkelgruen{
+	color: #18471e;
+}
+
+.mittelgruen{
+	color: #b1ca34;
+}
+
+.mittelgruen_2{
+	color: #8fb217;
+}
+
+.hellgruen{
+	color: #cedd87;
+}
+
+.weiss{
+	color: #fff;
+}
+.bg_dunkelgruen{
+	background-color: #18471e;
+}
+
+.bg_mittelgruen{
+	background-color: #b1ca34;
+}
+
+.bg_mittelgruen_opa_09{
+	background-color: #b1ca34;
+	opacity: 0.9;
+}
+
+/*
+.bg_mittelgruen{
+	background-color: rgba(177, 202, 52, 0.9);
+}
+*/
+
+.bg_mittelgruen_2{
+	background-color: #8fb217;
+}
+
+.bg_hellgruen{
+	background-color: #cedd87;
+}
+
+.startseite_bild_mitgliedschaft{
+	position: absolute;
+	width: 600px;
+	margin-top: -35px;
+	margin-left: -50px;
+}
+
+@media (max-width: 1120px) {
+	.startseite_bild_mitgliedschaft{
+		position: relative;
+		width: 100%;
+		margin-top: 0;
+		margin-left: 0;
+	}
+}
+
+
+@media (max-width:480px) {
+	.lichtstrahlen_ueberschrift, .ueberschrift_im_gruenen_bereich, .hintergrund_hexagone_gruenverlauf_trapez h3{
+		transform: skewY(-5deg);
+		text-align: left;
+		font-size: 50px;
+		color: #fff;
+		font-family: "Goldney";
+		
+	}
+	
+	h6 strong em {
+		font-size: 30px;
+	}
+}
+
+
+.lds-hourglass {
+	z-index: 10020;
+	display: inline-block;
+	position:fixed;
+	width: 264px;
+	height: 264px;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%,-50%);
+	
+
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+.runde-ecken{
+	border-radius: 10px;
+}
+
+/*div{border: 1px solid red;}*/
+
+/*hexagone*/
+.img_hexagon_q_r_50deg_wrapper{
+	/*für quadratische Bilder*/
+	-webkit-clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	transform: rotate(50deg);
+}
+
+.materialpool_thumbnail_wrapper{
+	position: relative; 
+	background-color: #9ec850;
+	padding: 2px;
+	-webkit-clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	transform: rotate(50deg);
+}
+
+.materialpool_thumbnail_wrapper_Bestellung{
+	 
+	background-color: #0b4a2a;
+	
+}
+
+.materialpool_thumbnail{
+	position: relative; 
+	-webkit-clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	
+}
+
+
+.img_hexagon_q_r_50deg{
+	/*für quadratische Bilder*/
+	-webkit-clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	transform: rotate(50deg);
+	
+}
+
+.img_hexagon_q_r_50deg_img{
+	transform: rotate(-50deg);
+}
+
+.img_hexagon_q{
+
+	/*für quadratische Bilder*/
+	-webkit-clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+}
+
+.img_hexagon_q_insta{
+
+	/*für quadratische Bilder*/
+	-webkit-clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+	clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%, 25% 5%);
+}
+
+.img_hexagon_q_insta::before{
+	content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background: url(/wp-content/themes/ecjugend20192/img/insta_overlay_50Pro.png);
+  background-size: cover;
+  
+}
+
+.img_hexagon_q_insta_1::before{
+	transform: rotate(-20deg);
+}
+
+.img_hexagon_q_insta_2::before{
+	transform: rotate(10deg);
+}
+
+.insta_img_1{
+	transform: rotate(-20deg);
+	opacity:1;
+	transition: opacity 0.5s ease-in-out;
+}
+.insta_img_1:hover{
+	opacity:0.5;
+}
+
+.insta_img_2{
+	transform: rotate(10deg);
+	opacity:1;
+	transition: opacity 0.5s ease-in-out;
+}
+.insta_img_2:hover{
+	opacity:0.5;
+}
+
+.img_hexagon img{
+	-webkit-clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+	clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+}
+
+#footer{
+	position: relative;
+	background-color: #ddd;
+}
+
+/*div{border: 1px solid red;}*/
+
+.hintergrund_hexagone_gruenverlauf_trapez{
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	padding-top: 120px; 
+	padding-bottom: 100px; 
+	opacity: 1;
+	/*background-image: url(/wp-content/themes/ecjugend20192/img/bg_hexagone_farbverlauf_1920x1582.jpg);
+    background-size: 100%;
+	background-position: center;
+	*/
+	background-color: #92c355;
+	
+	padding-right: 10px;padding-left:10px;
+	margin-bottom: 100px;
+	color: #fff;
+
+	-webkit-clip-path: polygon(
+	0 0, 
+	100% 5%, 
+	100% 95%, 
+	0 100%);
+	clip-path: polygon(
+	0 0, 
+	100% 5%, 
+	100% 95%, 
+	0 100%);
+}
+
+@media (max-width:480px) {
+	
+	.hintergrund_hexagone_gruenverlauf_trapez{
+	/*background-image: url(/wp-content/uploads/2019/09/bg_verlauf_1920x1582.jpeg);
+    background-size: 100%;
+	background-position: center;
+	*/
+	background-color: #92c355;
+	
+		-webkit-clip-path: polygon(
+	0 0, 
+	100% 1%, 
+	100% 99%, 
+	0 100%);
+	clip-path: polygon(
+	0 0, 
+	100% 1%, 
+	100% 99%, 
+	0 100%);
+	}
+	
+	.inhalt_auf_hintergrund_mit_hexagonen {
+		width: 95% !important;
+		margin: auto;
+	}
+}
+
+
+
+.hintergrund_gruen_main_menu_bottom{
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	padding-top: 10px; 
+	padding-bottom: 10px; 
+	opacity: 1;
+	/*background-image: url(/wp-content/uploads/2019/09/bg_verlauf_1920x1582.jpeg);
+    background-size: 100%;*/
+	background-color: #92c355;
+	/*background-position: center;
+	padding-right: 10px;padding-left:10px;
+	margin-bottom: 100px;	*/
+}
+
+
+
+.hintergrund_hexagone_gruenverlauf{
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	padding-top: 120px; 
+	padding-bottom: 50px; 
+	opacity: 1;
+	background-image: url(/wp-content/themes/ecjugend20192/img/footer_bg_hexagone_verlauf_35Pro.png);
+    background-size: 100%;
+	background-color: #8fb217;
+}
+
+#footer .fab{
+	color: #fff;
+}
+
+.insta_bild_wrapper{
+	
+}
+
+.insta_bild{
+	position: relative;
+	float: left;
+}
+
+.insta_bild img{
+	width: 100%;
+}
+
+.insta_bild_1{
+	position: relative;
+	max-width: 150px;
+	transform: rotate(20deg);
+	left: 40px;
+	top: -20px;
+}
+
+.insta_bild_2{
+	max-width: 200px;
+	transform: rotate(-10deg);
+}
+
+.maske_footer{
+	
+	/*polygon(loX loY,roX roY,ruX ruY, luX luY)*/
+	-webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+	/*z-index: -1 !important;*/
+}
+
+.maske_footer_insta{
+	
+	/*polygon(loX loY,roX roY,ruX ruY, luX luY)*/
+	-webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+	
+}
+
+@media (max-width:480px) {
+	.maske_footer{
+	
+		/*polygon(loX loY,roX roY,ruX ruY, luX luY)*/
+		-webkit-clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+		clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+	}
+	#footer {
+		padding-top: 50px;
+	}
+	
+	.footer_eclogo{
+	position: relative;
+	top: 10px;
+	}
+	
+	.socialmediabuttons_div{
+		padding-left: 0;
+		margin-top: 10px;
+	}
+	
+	.footer_menu_span{
+		margin-left: 500px;
+	}
+}
+
+/*slider schräg*/
+.n2-section-smartslider{
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 97%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 97%);
+}
+
+/*Indienhilfe Projekte Slider*/
+.indienhilfe_projekte_ein_slide_titel{
+	text-shadow: rgb(0, 0, 0) 2px -2px 4px;
+    color: #fff;
+    font-family: 'Goldney';
+    font-size: 2.5em;
+   
+}
+.indienhilfe_projekte_ein_slide_untertitel{
+	font-family: 'Roboto',sans-serif;
+	font-size: 0.5em;
+	text-shadow: rgb(0, 0, 0) 2px -2px 4px;
+}
+
+#beziehungskompass_notizen_wrapper{
+	position: relative;
+	height: 420px;
+	background-color: #ddd;
+	-webkit-clip-path: polygon(5% 0,100% 5%,100% 100%,0 95%);
+	clip-path: polygon(5% 0,100% 5%,100% 100%,0 95%);
+}
+
+.bzkp_bild_spalte{
+	width: 100%;
+	transition: width 3s ease-in-out;
+}
+
+.bzkp_bild_spalte_offen{
+	width: 49.2%;
+}	
+	
+.bzkp_notiz_spalte{
+	width: 0;
+	height: 0;
+	width: 49%;
+	transition: all 3s ease-in-out;
+	display: none;
+}
+	
+.bzkp_notiz_spalte_offen{
+	width: 49%;
+	height: 420px;
+}
+
+.bzkp_bilder{
+	position: absolute;
+	top: 0;
+	left: 0; 
+
+	width: 420px; 
+	height: 420px;
+	
+	-webkit-mix-blend-mode: multiply;
+	mix-blend-mode: multiply; 
+}
+.bzkp_notiz{
+	transform: skew(-4deg);
+	position: absolute;
+	top: 0;
+	left: 0; 
+	width: 480px; 
+	height: 420px;
+	background-color: #ddd;
+	padding: 10%; 
+}
+
+.border{
+	border: 1px solid red;
+}
+
+@media (max-width: 480px) {
+	.bzkp_bild_spalte_offen,.bzkp_notiz_spalte_offen{
+		width: 100%;
+	}	
+
+}
+
+/*Medienpool simple download monitor*/
+.sdm_fancy2_item{
+	border: none !important;
+	width: 275px !important; 
+}
+
+.sdm_fancy2_download_item_top:hover{
+	cursor: pointer;
+}
+
+
+
+.medienpool_suchfeld{
+	background-color: #ddd;
+}
+
+.medienpool_formular{
+	width: 300px; 
+	margin-left: auto; 
+	margin-right: auto;
+	margin-bottom: 50px;
+}
+
+
+.tags_liste{
+	position: relative;
+	background-color: #fff;
+	text-align: center;
+	width: 100%;
+	text-align: center;
+}
+
+.tags_wrapper{
+	text-align: left;
+	display: inline-block;
+}
+
+.medienpool_tag{
+	color: #999;
+	height: 50px;
+	float: left;
+	margin: 1px;
+	padding: 5px;
+	background-color: #ddd;
+	font-family: 'Montserrat', sans-serif !important;
+	font-size: 1em;
+	
+}
+
+
+.medienpool_ext{
+    font-size: 15px;
+    
+	height: 40px;
+	width: 50px;
+	
+	color: #fff;
+	border-radius: 5px;
+	padding: 3px;
+	text-align: center;
+    background-color: #9ec850 !important;
+	
+}
+
+.medienpool_ext_Bestellung{
+	width: 150px;
+	color: #fff;
+	border-radius: 5px;
+	padding: 3px;
+	text-align: center;
+    background-color: #0b4a2a !important;
+	border: 1px solid #0b4a2a;
+	/*box-shadow: 4px 4px 4px #666;*/
+}
+
+.sdm_fancy2_download_title{
+	font-family: 'Montserrat', sans-serif !important;
+	font-size: 1.4em;
+	/*height: 70px;*/
+}
+
+.tag_button_verlauf{
+	    color: #999;
+    font-size: 14px;
+    width: auto !important;
+    text-indent: 0 !important;
+     height: auto !important;
+	 color: #fff;
+	 border-radius: 5px;
+    /* text-indent: 5px; */
+    /* outline: 0; */
+    background-color: #9ec850 !important;
+}
+
+/*  GRID OF SIX  */
+.span_6_of_6 {
+	width: 100%;
+}
+
+.span_5_of_6 {
+  	width: 83.06%;
+}
+
+.span_4_of_6 {
+  	width: 66.13%;
+}
+
+.span_3_of_6 {
+  	width: 49.2%;
+}
+
+.span_2_of_6 {
+  	width: 32.26%;
+}
+
+.span_1_of_6 {
+  	width: 15.33%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+	.col {  margin: 1% 0 1% 0%; }
+	.span_1_of_6, .span_2_of_6, .span_3_of_6, .span_4_of_6, .span_5_of_6, .span_6_of_6 { width: 100%; }
+}
+
+a{text-decoration: underline;}
+
+.wp-block-image{
+	max-width: 1140px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative;
+}
+
+.wp-block-image figure img{
+	/*width: 100%;*/
+}
+
+.wp-block-weforms-form{
+	max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.nf-form-cont{
+	max-width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.nf-form-content {
+    max-width: 1150px !important;
+}
+
+.wp-block-media-text{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.grundsaetze_slogan{
+	font-weight: bold;
+	margin: 0px 0 10px 0;
+}
+
+#vrpay_spendenformular_wrapper{
+	margin-top: 50px;
+	padding: 50px;	
+	max-width:600px;
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+}
+
+.mandat_herunterladen{
+	text-align: center;
+	padding: 20px;
+	background-color: #9ec850;
+	margin: 20px;
+}
+
+.spende_erfolgreich{
+	text-align: center;
+	padding: 20px;
+	background-color: #9ec850;
+	margin: 20px;
+}
+
+.spende_fehler{
+	text-align: center;
+	padding: 20px;
+	background-color: #ba6b5d;
+	margin: 20px;
+	color: #fff;
+}
+
+/*EC in der Region Liste mit Jugendkreisen*/
+.zeile_hell{
+	background-color: #9ec850;
+}
+
+.h2_span {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.rahmen {
+    border: 1px solid #dddddd;
+    margin-bottom: 20px;
+}
+.div_steckbrief {
+    padding: 20px 20px 20px 20px;
+    padding-left: 20px;
+    box-shadow: 8px 8px 8px #666;
+}
+
+.tabelle_kopf_klein {
+    font-weight: bold;
+    background-color: #dddddd;
+}
+
+.bzkp_img_im_slider{
+	width: 100% !important;
+	max-width: 300px !important;
+}
+.bzkp_schrift_im_slider{
+	font-size: 5em !important;
+}
+
+.mobil_und_weg{
+	
+}
+
+@media (max-width: 480px) {
+	.bzkp_img_im_slider{
+		width: 100% !important;
+		max-width: 200px !important;
+	}
+	.bzkp_schrift_im_slider{
+		font-size: 4em !important;
+	}
+	
+	.mobil_und_weg{
+		display: none !important;
+	}
+}
+
+#backtotopbutton{
+	position: fixed;
+	bottom: 300px;
+	right: 10px;
+	z-index: 3;
+	background-color: #fff;
+	color: #000;
+	padding: 10px;
+	border-radius: 5px;
+	opacity: 0.75;
+	box-shadow: 2px 2px 2px #666;
+}
+
+.hintergrund_gruenverlauf, .hintergrund_gruen{
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	padding-top: 50px; 
+	padding-bottom: 50px; 
+	opacity: 1;
+	background-color: #92c355;
+	margin-bottom: 100px;	
+	webkit-clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+    clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+}
+
+.hintergrund_gruenverlauf_intern, .hintergrund_gruen_intern{
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	opacity: 1;
+	background-color: #92c355;	
+	webkit-clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+    clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+}
+
+.hintergrund_grau, .hintergrund_off_white{
+	background-color: #EEEAE5;
+	webkit-clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+    clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.hintergrund_grau_intern, .hintergrund_off_white_intern{
+	background-color: #EEEAE5;
+	webkit-clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+    clip-path: polygon( 0 5%, 100% 0, 100% 100%, 0 95%);
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+@media (max-width: 900px) {
+	.hintergrund_grau, .hintergrund_off_white{
+		webkit-clip-path: polygon( 0 1%, 100% 0, 100% 100%, 0 99%);
+		clip-path: polygon( 0 1%, 100% 0, 100% 100%, 0 99%);
+	}
+}

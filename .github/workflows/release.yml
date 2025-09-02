@@ -1,0 +1,68 @@
+name: Build & Release WordPress Theme
+
+on:
+  push:
+    branches: [ "production" ]   # läuft nur bei Push auf den production-Branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set vars (slug & version)
+        id: vars
+        run: |
+          SLUG="${GITHUB_REPOSITORY##*/}"       # Repo-Name = Theme-Ordnername
+          VERSION="build-${GITHUB_SHA::7}"      # kurze Commit-ID als Version
+          echo "slug=$SLUG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Prepare build folder
+        run: |
+          mkdir -p dist/"${{ steps.vars.outputs.slug }}"
+          rsync -a ./ dist/"${{ steps.vars.outputs.slug }}"/ \
+            --exclude ".git" --exclude ".github" --exclude ".gitignore" \
+            --exclude "node_modules" --exclude "vendor/bin" \
+            --exclude "*.map" --exclude "*.md" --exclude "README" \
+            --exclude ".DS_Store"
+
+      - name: Inject version into style.css
+        run: |
+          if [ -f "dist/${{ steps.vars.outputs.slug }}/style.css" ]; then
+            if grep -qi "^Version:" dist/${{ steps.vars.outputs.slug }}/style.css; then
+              sed -i "s/^Version:.*$/Version: ${{ steps.vars.outputs.version }}/I" dist/${{ steps.vars.outputs.slug }}/style.css
+            else
+              awk -v ver="${{ steps.vars.outputs.version }}" '
+                BEGIN{done=0}
+                {
+                  print $0
+                  if (!done && tolower($0) ~ /^theme name:/) {
+                    print "Version: " ver
+                    done=1
+                  }
+                }
+              ' dist/${{ steps.vars.outputs.slug }}/style.css > /tmp/style.css && mv /tmp/style.css dist/${{ steps.vars.outputs.slug }}/style.css
+            fi
+          fi
+
+      - name: Create ZIP (folder inside ZIP == theme slug)
+        run: |
+          cd dist
+          zip -r "${{ steps.vars.outputs.slug }}-${{ steps.vars.outputs.version }}.zip" "${{ steps.vars.outputs.slug }}"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.version }}
+          name: ${{ steps.vars.outputs.version }}
+          draft: false
+          prerelease: false
+          files: |
+            dist/${{ steps.vars.outputs.slug }}-${{ steps.vars.outputs.version }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

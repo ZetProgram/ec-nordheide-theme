@@ -1,0 +1,9 @@
+.edit-post-visual-editor .editor-block-list__block {
+margin: 0 auto;
+max-width: 1200px;
+}
+.editor-inner-blocks,
+.wp-block-paragraph{
+	border: 1px solid silver;
+	}
+.edit-post-visual-editor div{}
