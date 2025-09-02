@@ -213,10 +213,6 @@ text-align: left;
   background-color: #fff;
   /*border-bottom: 1px dashed silver;*/
 }
-* xxxhtml .fixed-header{
-  top:expression(documentElement.scrollTop);
-}
-
 
 .headerbild{
 	z-index: 2;

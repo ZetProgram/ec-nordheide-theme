@@ -540,7 +540,7 @@ $s_options = '';
 
 $a_options[0] = esc_html__( 'Bitte auswählen', 'theme-slug' );
 
-	for/*TODO:refactor each()*/ each($a_alle_seiten as $z => $a_seite){
+	foreach($a_alle_seiten as $z => $a_seite){
 		$sel = '';
 		if($a_seite['ID'] == $aktuelle_seite){
 			$sel = 'selected';
