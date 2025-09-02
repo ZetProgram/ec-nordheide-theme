@@ -309,7 +309,7 @@ for($i = 1;$i<=$anzahl_hexagone;$i++){
 			echo "Bitte im Customizer unter Mainmenu Spalten die entsprechenden Parameter definieren.";
 		}
 		
-		for/*TODO:refactor each()*/ each($a_parent_id as $z => $a_parent){
+		foreach($a_parent_id as $z => $a_parent){
 			echo '
 			<div class="col span_1_of_'.$anz.' center">
 				<div class="menu_ueberschriften">'.$a_bezeichnung[$z].'</div>
