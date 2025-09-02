@@ -7,38 +7,7 @@
 		
 	<div class="hintergrund_hexagone_gruenverlauf_trapez" id="ec_lichtstrahlen_div" style="margin-bottom: 100px;">
 	<div id="dev_out"></div>
-<!--	
-	<img src="/wp-content/themes/ecjugend20192/img/hex_1.png" id="hex1_ec_lichtsttrahlen" data-speed="1.4" data-y-offset="500" 
-		style="position: absolute; 
-		left: -10px;
-		opacity: 1;
-		z-index: 0;
-		top: 0;
-		width: 12vw;
-		height: 12vw;
-		transform: rotate(-5deg);">
-	
-	<img src="/wp-content/themes/ecjugend20192/img/hex_2.png" id="hex2_ec_lichtsttrahlen" data-speed="1.8" data-y-offset="480" 
-		style="position: absolute; 
-		left: 3%;
-		opacity: 1;
-		z-index: 0;
-		top: 0;
-		width: 10vw;
-		height: 10vw;
 
-		transform: rotate(6deg);" />
-				<img src="/wp-content/themes/ecjugend20192/img/hex_3.png" id="hex3_ec_lichtsttrahlen" data-speed="2" data-y-offset="450" 
-		style="position: absolute; 
-		left: 5%;
-		opacity: 1;
-		z-index: 0;
-		top: 0;
-		width: 8vw;
-		height: 8vw;
-
-		transform: rotate(10deg);" />
-	-->
 		<div class="inhalts_container_mittig_max_width inhalt_auf_hintergrund_mit_hexagonen">
 		<div class="section group" style="padding: 0;">
 							
@@ -51,16 +20,6 @@
 		 
 			<div class="section group" style="padding: 0;">
 					<div class="col span_2_of_2" style="text-align: right;">
-						<!--
-						<div class="table-button button_rechts">
-								<div class="table-row-button">
-								<div class="table-cell-button button_zeichen"></div>
-									<a href="<?php echo $a_ls['link']; ?>" target="_blank" style="text-decoration: none;">
-										<div class="table-cell-button button_verlauf "><?php echo $a_ls['bibelstelle']; ?></div>
-									</a>
-								</div>
-						</div>
-						-->
 						<div class="button_rechts">
 							<div class="button_runde_ecken_hell">
 								<a href="<?php echo $a_ls['link']; ?>" target="_blank" title="">
