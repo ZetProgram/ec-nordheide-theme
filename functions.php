@@ -3,14 +3,7 @@
 include('functions_lichtstrahlen.php');
 include('functions_blocklabs.php');
 include('functions_customizer.php');
-/*
-function tec_session_start() {
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-}
-add_action( 'init', 'tec_session_start', 1 );
-*/
+
 add_action('init', function () {
     if (defined('REST_REQUEST') && REST_REQUEST) return;
     if (wp_doing_ajax() || wp_doing_cron()) return;
@@ -127,13 +120,40 @@ function object_to_array($data) {
     return $data;
 }
 
+function session_get_safe($key, $default = null) {
+    $opened_here = false;
+
+    // In REST/AJAX/CRON niemals Session anfassen
+    if ((defined('REST_REQUEST') && REST_REQUEST) || wp_doing_ajax() || wp_doing_cron()) {
+        return $default;
+    }
+
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        @session_start();
+        $opened_here = true;
+    }
+
+    $val = isset($_SESSION[$key]) ? $_SESSION[$key] : $default;
+
+    if ($opened_here) {
+        @session_write_close();
+    }
+    return $val;
+}
+
+// 2) Debug-Ausgabe nur, wenn Flag per GET ODER Session gesetzt ist
 function pf($a){
-	if ((isset($_SESSION['superadmin']) && $_SESSION['superadmin'] === "superadmin") || 
-        (isset($_GET['superadmin']) && $_GET['superadmin'] == "1")) {
-		echo '<pre>';
-		print_r($a);
-		echo '</pre>';  
-	}
+    // GET hat Priorität (schnell & ohne Session)
+    $is_super_get = (isset($_GET['superadmin']) && (int)$_GET['superadmin'] === 1);
+
+    // Falls nicht via GET, Session-Wert sicher lesen
+    $is_super_sess = (!$is_super_get) && (session_get_safe('superadmin') === 'superadmin');
+
+    if ($is_super_get || $is_super_sess) {
+        echo '<pre>';
+        print_r($a);
+        echo '</pre>';
+    }
 }
 
 /* MENÜ header.php */
