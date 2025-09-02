@@ -2,10 +2,10 @@ name: Build & Release WordPress Theme
 
 on:
   push:
-    branches: [ "production" ]   # läuft nur bei Push auf den production-Branch
+    branches: [ "production" ]   # nur Production-Branch
 
 permissions:
-  contents: write
+  contents: write                # notwendig um Tags/Releases zu erstellen
 
 jobs:
   build:
@@ -17,55 +17,76 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set vars (slug & version)
-        id: vars
+      - name: Detect theme slug (repo name)
+        id: slug
+        run: echo "slug=${GITHUB_REPOSITORY##*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Read Version from style.css
+        id: ver
+        shell: bash
         run: |
-          SLUG="${GITHUB_REPOSITORY##*/}"       # Repo-Name = Theme-Ordnername
-          VERSION="build-${GITHUB_SHA::7}"      # kurze Commit-ID als Version
-          echo "slug=$SLUG" >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          FILE="style.css"
+          # Falls dein Theme im Unterordner liegt, passe den Pfad hier an:
+          if [ ! -f "$FILE" ]; then
+            FILE="$(find . -maxdepth 2 -iname style.css | head -n1)"
+          fi
+          if [ -z "$FILE" ]; then
+            echo "Kein style.css gefunden" >&2
+            exit 1
+          fi
+          VERSION=$(grep -iE '^[[:space:]]*Version:[[:space:]]*' "$FILE" | head -1 | sed -E 's/^[[:space:]]*[Vv]ersion:[[:space:]]*//; s/[[:space:]]+$//')
+          if [ -z "$VERSION" ]; then
+            echo "Keine Version in style.css gefunden" >&2
+            exit 1
+          fi
+          # optional: semver prüfen
+          if [[ ! "$VERSION" =~ ^[0-9]+(\.[0-9]+){0,2}(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Warnung: Version '$VERSION' ist kein Semver. Wird trotzdem verwendet."
+          fi
+          TAG="v$VERSION"   # „v“-Prefix für Tag/Release
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "style=$FILE" >> "$GITHUB_OUTPUT"
 
       - name: Prepare build folder
         run: |
-          mkdir -p dist/"${{ steps.vars.outputs.slug }}"
-          rsync -a ./ dist/"${{ steps.vars.outputs.slug }}"/ \
+          mkdir -p dist/"${{ steps.slug.outputs.slug }}"
+          rsync -a ./ dist/"${{ steps.slug.outputs.slug }}"/ \
             --exclude ".git" --exclude ".github" --exclude ".gitignore" \
             --exclude "node_modules" --exclude "vendor/bin" \
             --exclude "*.map" --exclude "*.md" --exclude "README" \
             --exclude ".DS_Store"
 
-      - name: Inject version into style.css
-        run: |
-          if [ -f "dist/${{ steps.vars.outputs.slug }}/style.css" ]; then
-            if grep -qi "^Version:" dist/${{ steps.vars.outputs.slug }}/style.css; then
-              sed -i "s/^Version:.*$/Version: ${{ steps.vars.outputs.version }}/I" dist/${{ steps.vars.outputs.slug }}/style.css
-            else
-              awk -v ver="${{ steps.vars.outputs.version }}" '
-                BEGIN{done=0}
-                {
-                  print $0
-                  if (!done && tolower($0) ~ /^theme name:/) {
-                    print "Version: " ver
-                    done=1
-                  }
-                }
-              ' dist/${{ steps.vars.outputs.slug }}/style.css > /tmp/style.css && mv /tmp/style.css dist/${{ steps.vars.outputs.slug }}/style.css
+          # Stelle sicher, dass im Build ebenfalls exakt diese Version steht
+          if [ -f "dist/${{ steps.slug.outputs.slug }}/style.css" ]; then
+            if grep -qi "^Version:" dist/${{ steps.slug.outputs.slug }}/style.css; then
+              sed -i "s/^Version:.*$/Version: ${{ steps.ver.outputs.version }}/I" dist/${{ steps.slug.outputs.slug }}/style.css
             fi
           fi
 
       - name: Create ZIP (folder inside ZIP == theme slug)
         run: |
           cd dist
-          zip -r "${{ steps.vars.outputs.slug }}-${{ steps.vars.outputs.version }}.zip" "${{ steps.vars.outputs.slug }}"
+          zip -r "${{ steps.slug.outputs.slug }}-${{ steps.ver.outputs.version }}.zip" "${{ steps.slug.outputs.slug }}"
 
-      - name: Publish GitHub Release
+      - name: Create or update Git tag
+        run: |
+          # Tag lokal (falls neu) oder neu zuweisen (falls bereits vorhanden)
+          if git rev-parse "${{ steps.ver.outputs.tag }}" >/dev/null 2>&1; then
+            echo "Tag ${{ steps.ver.outputs.tag }} existiert bereits – wird auf aktuellen Commit verschoben."
+            git tag -d "${{ steps.ver.outputs.tag }}" || true
+          fi
+          git tag -a "${{ steps.ver.outputs.tag }}" -m "Release ${{ steps.ver.outputs.tag }}"
+          git push --force origin "${{ steps.ver.outputs.tag }}"
+
+      - name: Publish GitHub Release (named after version)
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.vars.outputs.version }}
-          name: ${{ steps.vars.outputs.version }}
-          draft: false
-          prerelease: false
+          tag_name: ${{ steps.ver.outputs.tag }}           # z.B. v1.3.0
+          name: ${{ steps.ver.outputs.tag }}               # Release-Name = v1.3.0
+          generate_release_notes: true
+          make_latest: true
           files: |
-            dist/${{ steps.vars.outputs.slug }}-${{ steps.vars.outputs.version }}.zip
+            dist/${{ steps.slug.outputs.slug }}-${{ steps.ver.outputs.version }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
