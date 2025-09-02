@@ -4,6 +4,9 @@ on:
   push:
     branches: [ "production" ]   # läuft nur bei Push auf den production-Branch
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
