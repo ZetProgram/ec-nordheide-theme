@@ -1,5 +1,33 @@
 <?php require_once __DIR__ . '/compat.php'; ?>
 <?php
+
+const YOUR_THEME_MIN_PHP = '7.4';
+
+add_action('after_switch_theme', function () {
+    if (version_compare(PHP_VERSION, YOUR_THEME_MIN_PHP, '<')) {
+        switch_theme(WP_DEFAULT_THEME); // auf Standardtheme zurück
+        // Übersetzbar halten:
+        $message = sprintf(
+            /* translators: 1: current PHP version, 2: required PHP version */
+            __('Dieses Theme erfordert mindestens PHP %2$s. Deine Umgebung läuft mit PHP %1$s. Das Standard-Theme wurde wiederhergestellt.', 'your-theme'),
+            PHP_VERSION,
+            YOUR_THEME_MIN_PHP
+        );
+        wp_die(esc_html($message), esc_html__('Inkompatible PHP-Version', 'your-theme'), ['back_link' => true]);
+    }
+});
+
+// Optional: Hinweis im Backend, falls knapp unter Zielbereich (z. B. 7.4 OK, aber 7.4.x alt)
+add_action('admin_notices', function () {
+    if (!current_user_can('manage_options')) return;
+
+    if (version_compare(PHP_VERSION, '8.0', '<')) {
+        echo '<div class="notice notice-warning"><p>'
+            . esc_html__('Hinweis: Für beste Performance/Support bitte bald auf PHP 8.x aktualisieren.', 'your-theme')
+            . '</p></div>';
+    }
+});
+
 include('functions_lichtstrahlen.php');
 include('functions_blocklabs.php');
 include('functions_customizer.php');

@@ -107,7 +107,7 @@ body {
 	width: 100%;
 	transition: 0.3s background, 0.3s border-bottom, 0.3s transform, 0.3s -webkit-transform, 0.3s -o-transform;
 	background-color: #F7F5EC;
-	height: 155px;
+	height: 170px;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
