@@ -14,34 +14,19 @@ add_action( 'init', 'tec_session_start', 1 );
 add_action('init', function () {
     if (defined('REST_REQUEST') && REST_REQUEST) return;
     if (wp_doing_ajax() || wp_doing_cron()) return;
-    // nur öffnen, wenn später gebraucht (durch andere Logik); hier bewusst kein write_close
-    if (PHP_SESSION_ACTIVE !== session_status()) {
-        session_start();
-        // Wir schließen hier nicht sofort, weil ggf. unten superadmin gesetzt wird.
-        // Falls du sonst nirgends $_SESSION beschreibst, kannst du hier auch direkt session_write_close() setzen.
-    }
-}, 1);
-add_action('init', function () {
-    if (defined('REST_REQUEST') && REST_REQUEST) return;
-    if (wp_doing_ajax() || wp_doing_cron()) return;
 
     $superadmin = filter_input(INPUT_GET, 'superadmin', FILTER_VALIDATE_INT, ['options' => ['default' => null]]);
-    if ($superadmin === null) {
-        // nichts zu tun – aber offene Session (falls vorhanden) nicht zwangsläufig schließen
-        return;
-    }
+    if ($superadmin === null) return;
 
-    if (PHP_SESSION_ACTIVE !== session_status()) {
-        session_start();
-    }
+    if (session_status() !== PHP_SESSION_ACTIVE) @session_start();
     if ($superadmin === 1) {
         $_SESSION['superadmin'] = 'superadmin';
     } elseif ($superadmin === 0) {
         unset($_SESSION['superadmin']);
     }
-    // Wichtig: sofort freigeben, um Locks/Timeouts zu vermeiden
-    session_write_close();
-}, 2);
+    @session_write_close();
+}, 1);
+
 add_theme_support( 'custom-logo', array(
 	'height'      => 150,
 	'width'       => 150,
