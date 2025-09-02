@@ -10,8 +10,8 @@ if($insta_am_aus == 'an' && $insta_access_token != ""){
 	$insta_an = true;
 }
 if($insta_an === true){
-	//http://erz.ec-jugend.de/#access_token=3132420392.1038ae9.bbf3c0aa6acf4761baa59fe87f358233
-	$access_token   =   $insta_access_token;//3132420392.1038ae9.bbf3c0aa6acf4761baa59fe87f358233
+
+	$access_token   =   $insta_access_token;
 	$photo_count    =   2;
                   
 	$json_link      =   'https://api.instagram.com/v1/users/self/media/recent/?';
@@ -22,7 +22,7 @@ if($insta_an === true){
 
 	//pf($obj['data']);
 	if(is_array($obj['data'])){
-		for/*TODO:refactor each()*/ each($obj['data'] as $z => $data){
+		foreach($obj['data'] as $z => $data){
 			$a_insta_img_urls[] = $data['images']['standard_resolution']['url'];
 			$a_insta_link[] = $data['link'];
 			$a_insta_text[] =  $data['caption']['text'];
