@@ -78,7 +78,7 @@
 
 .flexcol{
 	display: -webkit-flex;
-	display: -ms-flexbox;                       // Internet Explorer 10
+	display: -ms-flexbox;                       
 	display: flex;
 	-webkit-flex-direction: row;
 	-ms-flex-direction: row;
