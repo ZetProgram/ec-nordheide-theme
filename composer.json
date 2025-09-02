@@ -1,0 +1,17 @@
+{
+  "name": "zetprogram/ec-nordheide-theme",
+  "type": "project",
+  "require": {},
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "squizlabs/php_codesniffer": "^3.10",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "wp-coding-standards/wpcs": "^3.0",
+    "symfony/polyfill-php80": "^1.30"
+  },
+  "scripts": {
+    "lint": "phpcs -p",
+    "fix": "phpcbf -p || true"
+  }
+}
