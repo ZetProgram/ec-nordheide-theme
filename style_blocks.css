@@ -7,12 +7,12 @@
 }
 .ec-ein-arbeitsbereich-bild_teaser{
 	position: relative;
-    width: 100%;
-    top: -25px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    color: #fff;
+	width: 100%;
+	top: -25px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	color: #fff;
 }
 
 .button_runde_ecken a{
@@ -27,7 +27,7 @@
 	color: #000;
 	box-sizing: border-box;
 	min-width: 250px;
-	transition: all 0.5s;	
+	transition: all 0.5s;
 	display:inline-block;
 }
 
@@ -45,7 +45,7 @@
 .button_runde_ecken_hell a{
 	text-decoration: none;
 	color: #fff;
-	
+
 }
 
 .button_runde_ecken_hell{
@@ -57,7 +57,7 @@
 	box-sizing: border-box;
 
 	min-width: 250px;
-	transition: all 0.5s;	
+	transition: all 0.5s;
 	display:inline-block;
 }
 
@@ -86,18 +86,18 @@
 }
 .ec_posts .ec_post div{
 		padding: 0;
-		
+
 }
 .ec_post{
 		position: relative;
-		xheight: 240px; 
+		xheight: 240px;
 		overflow: hidden;
 }
 .ec_posts_img{
 	text-align: center;
 	height: 300px;
 	background-position: center center;
-	background-repeat: no-repeat; 
+	background-repeat: no-repeat;
 	background-size: 100%;
 }
 
@@ -114,7 +114,7 @@
 .lichtstrahlen_kurzvorstellung{
 	position: relative;
 	margin-top: 100px;
-	
+
 }
 
 .lichtstrahlen_auszug{
@@ -123,7 +123,7 @@
 
 .lichtstrahlen_bibelstelle a{
 	color: #fff;
-	
+
 }
 .wp_mitarbeiter_name{
 	text-align: left;
@@ -157,7 +157,7 @@
 }
 .wp_mitarbeiter_kategorie{
 	font-weight: bold;
-	
+
 }
 
 .wp_mitarbeiter_kategorie_mitarbeiter{
@@ -181,7 +181,7 @@
 	.ec_posts_div{
 		display: none;
 	}
-	
+
 	.wp_mitarbeiter_telefon{
 		float: left;
 	}

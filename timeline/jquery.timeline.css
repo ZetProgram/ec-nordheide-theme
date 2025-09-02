@@ -1,12 +1,10 @@
-
-
-	#timeline {
+#timeline {
 		width: 1140px;
-		
+
 		overflow: hidden;
 		margin: 50px auto;
 		position: relative;
-		
+
 		background: url('dot_green.png') left 45px repeat-x;
 	}
 		#dates {
@@ -19,9 +17,9 @@
 				float: left;
 				width: 100px;
 				height: 50px;
-				
+
 				text-align: center;
-				
+
 				background: url('biggerdot_green.png') center bottom no-repeat;
 			}
 				#dates a {
@@ -30,28 +28,28 @@
 					color: #fff;
 				}
 				#dates .selected {
-			        font-size: 38px;
+					font-size: 38px;
 				}
-		
+
 		#issues {
 			width: 1140px;
-			
+
 			overflow: hidden;
-		}	
+		}
 			#issues li {
 				width: 1140px;
-				
+
 				list-style: none;
 				float: left;
 			}
 				#issues li.selected img {
 					-webkit-transform: scale(1.1,1.1);
 					-moz-transform: scale(1.1,1.1);
-				    -o-transform: scale(1.1,1.1);
-				    -ms-transform: scale(1.1,1.1);
-				    transform: scale(1.1,1.1);
+					-o-transform: scale(1.1,1.1);
+					-ms-transform: scale(1.1,1.1);
+					transform: scale(1.1,1.1);
 				}
-				
+
 				.img_div_container{
 					width: 100%;
 					position: relative;
@@ -66,31 +64,31 @@
 				}
 				#issues li img {
 					position: relative;
-					
+
 					margin-left: auto;
 					margin-right: auto;
 					background: transparent;
-					-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE 8 */   
-					filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE 6 & 7 */      
+					-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE 8 */
+					filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE 6 & 7 */
 					zoom: 1;
 					-webkit-transition: all 2s ease-in-out;
 					-moz-transition: all 2s ease-in-out;
 					-o-transition: all 2s ease-in-out;
-					-ms-transition: all 2s ease-in-out; 
+					-ms-transition: all 2s ease-in-out;
 					transition: all 2s ease-in-out;
 					-webkit-transform: scale(0.7,0.7);
 					-moz-transform: scale(0.7,0.7);
-				    -o-transform: scale(0.7,0.7);
-				    -ms-transform: scale(0.7,0.7);
-				    transform: scale(0.7,0.7);
+					-o-transform: scale(0.7,0.7);
+					-ms-transform: scale(0.7,0.7);
+					transform: scale(0.7,0.7);
 				}
-				
+
 				.timeline_img_div{
-					 height: auto;
-					 min-height: 300px;
-					 width: 350px;
-					 float: left;
-					 overflow: hidden;
+					height: auto;
+					min-height: 300px;
+					width: 350px;
+					float: left;
+					overflow: hidden;
 				}
 				#issues li h1 {
 					color: #fff;
@@ -105,26 +103,26 @@
 					line-height: 22px;
 					text-align: center;
 				}
-		
+
 		#grad_left,
 		#grad_right {
 			width: 100px;
-			
+
 			position: absolute;
 			top: 0;
 		}
 			#grad_left {
-		        left: 0;
-		        /*background: url('grad_left.png') repeat-y;
+				left: 0;
+				/*background: url('grad_left.png') repeat-y;
 				background-image: linear-gradient(to right, #9ec850, #388134);
 				opacity: 0.3;*/
 			}
 			#grad_right {
-		        right: 0;
-		        /*background: url('grad_right.png') repeat-y;
+				right: 0;
+				/*background: url('grad_right.png') repeat-y;
 				background-image: linear-gradient(to right, #9ec850, #388134);*/
 			}
-		
+
 		#next,
 		#prev {
 			position: absolute;

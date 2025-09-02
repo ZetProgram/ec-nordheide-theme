@@ -1,7 +1,7 @@
-	<?php 					
-		$a_ls = hole_lichstrahlen(1000,"ec"); 
-	
-	?>
+<?php
+		$a_ls = hole_lichstrahlen( 1000, 'ec' );
+
+?>
 		
 
 		
@@ -16,7 +16,7 @@
 		top: 0;
 		width: 12vw;
 		height: 12vw;
-		 transform: rotate(-5deg);">
+		transform: rotate(-5deg);">
 	
 	<img src="/wp-content/themes/ecjugend20192/img/hex_2.png" id="hex2_ec_lichtsttrahlen" data-speed="1.8" data-y-offset="480" 
 		style="position: absolute; 
@@ -27,9 +27,8 @@
 		width: 10vw;
 		height: 10vw;
 
-		 transform: rotate(6deg);" />
-		 
-	<img src="/wp-content/themes/ecjugend20192/img/hex_3.png" id="hex3_ec_lichtsttrahlen" data-speed="2" data-y-offset="450" 
+		transform: rotate(6deg);" />
+				<img src="/wp-content/themes/ecjugend20192/img/hex_3.png" id="hex3_ec_lichtsttrahlen" data-speed="2" data-y-offset="450" 
 		style="position: absolute; 
 		left: 5%;
 		opacity: 1;
@@ -38,27 +37,26 @@
 		width: 8vw;
 		height: 8vw;
 
-		 transform: rotate(10deg);" />
-	
--->
+		transform: rotate(10deg);" />
+	-->
 		<div class="inhalts_container_mittig_max_width inhalt_auf_hintergrund_mit_hexagonen">
 		<div class="section group" style="padding: 0;">
 							
 					<div class="col span_2_of_2 lichtstrahlen_ueberschrift">
 						Lichtstrahlen von heute!
-					</div>	
-					
+					</div>  
+				   
 
 			</div>
-			
+		 
 			<div class="section group" style="padding: 0;">
 					<div class="col span_2_of_2" style="text-align: right;">
 						<!--
 						<div class="table-button button_rechts">
 								<div class="table-row-button">
-									<div class="table-cell-button button_zeichen"></div>
+								<div class="table-cell-button button_zeichen"></div>
 									<a href="<?php echo $a_ls['link']; ?>" target="_blank" style="text-decoration: none;">
-										<div class="table-cell-button button_verlauf "><?php echo $a_ls['bibelstelle'];	?></div>
+										<div class="table-cell-button button_verlauf "><?php echo $a_ls['bibelstelle']; ?></div>
 									</a>
 								</div>
 						</div>
@@ -66,7 +64,7 @@
 						<div class="button_rechts">
 							<div class="button_runde_ecken_hell">
 								<a href="<?php echo $a_ls['link']; ?>" target="_blank" title="">
-								<div class="  "><?php echo $a_ls['bibelstelle'];	?></div>
+								<div class="  "><?php echo $a_ls['bibelstelle']; ?></div>
 							</a>
 							</div>
 						</div>
@@ -78,14 +76,15 @@
 					<div class="col span_2_of_2 lichtstrahlen_auszug" style="">
 						<p>
 						<div style="display: block;font-weight: bold;">
-						<?php 
-							echo  $a_ls['ueberschrift'];
+						<?php
+							echo $a_ls['ueberschrift'];
 						?>
 						</div>
-						<?php 
-						echo  $a_ls['text'];
-						 
-						?></p>
+						<?php
+						echo $a_ls['text'];
+
+						?>
+						</p>
 					</div>		
 			</div>
 			<div style="font-style: italic;text-align: center;">

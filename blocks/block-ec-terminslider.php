@@ -75,7 +75,7 @@ $a_events = $wpdb->get_results("SELECT * FROM " . WP_CALENDAR_TABLE . " WHERE ev
 $s .= '';
 
 //pf($a_events);
-for/*TODO:refactor each()*/ each($a_events as $z => $a_event){
+for/*TODO:refactor each()*/ each($a_events as $z => $a_event)[
 	$postid = url_to_postid($a_event->event_link);
 	$thumb = get_the_post_thumbnail_url($postid);
 
@@ -132,7 +132,7 @@ for/*TODO:refactor each()*/ each($a_events as $z => $a_event){
 		<em>'.$a_event->event_desc.'</em>
 	</div>
 	';
-}
+]
 ?>
 <div class="inhalts_container_mittig_max_width">
 <div class="gallery-slider ">

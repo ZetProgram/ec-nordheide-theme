@@ -1,28 +1,28 @@
-<script src="<?php echo bloginfo('template_url'); ?>/javaScript_footer_V002.js"></script>
+<script src="<?php echo bloginfo( 'template_url' ); ?>/javaScript_footer_V002.js"></script>
 
-<?php 
+<?php
 
 get_theme_mod( 'instagram_button_beschriftung' );
-$insta_am_aus = get_theme_mod( 'instagram_an_aus', 'an' );
+$insta_am_aus       = get_theme_mod( 'instagram_an_aus', 'an' );
 $insta_access_token = get_theme_mod( 'instagram_access_token', '' );
-$insta_an = false;
-if($insta_am_aus == 'an' && $insta_access_token != ""){
+$insta_an           = false;
+if ( $insta_am_aus == 'an' && $insta_access_token != '' ) {
 	$insta_an = true;
 }
-if($insta_an === true){
+if ( $insta_an === true ) {
 
-	$access_token   =   $insta_access_token;
-	$photo_count    =   2;
-                  
-	$json_link      =   'https://api.instagram.com/v1/users/self/media/recent/?';
-	$json_link      .=  'access_token=' . $access_token . '&count=' . $photo_count . '';
+	$access_token = $insta_access_token;
+	$photo_count  = 2;
 
-	$obj            =   @file_get_contents($json_link);
-	$obj            =   json_decode($obj, true, 512, JSON_BIGINT_AS_STRING);
+	$json_link  = 'https://api.instagram.com/v1/users/self/media/recent/?';
+	$json_link .= 'access_token=' . $access_token . '&count=' . $photo_count . '';
 
-	//pf($obj['data']);
-	if (isset($obj['data']) && is_array($obj['data'])) {
-		foreach ($obj['data'] as $z => $data) {
+	$obj = @file_get_contents( $json_link );
+	$obj = json_decode( $obj, true, 512, JSON_BIGINT_AS_STRING );
+
+	// pf($obj['data']);
+	if ( isset( $obj['data'] ) && is_array( $obj['data'] ) ) {
+		foreach ( $obj['data'] as $z => $data ) {
 			$a_insta_img_urls[] = $data['images']['standard_resolution']['url'] ?? '';
 			$a_insta_link[]     = $data['link'] ?? '';
 			$a_insta_text[]     = $data['caption']['text'] ?? '';
@@ -62,12 +62,12 @@ if($insta_an === true){
 	<div class="inhalts_container_mittig_max_width" style="color: white;">
 		<div class="section group">
 			<div class="col span_1_of_3" style="width: 18%;">
-     
+	  
 			</div>
 			<div class="col span_1_of_3" style="width: 46.52%;">
-			<?php 
-	
-			$footeradresse = get_theme_mod( 'footeradresse',  'Footer Adresse');
+			<?php
+
+			$footeradresse = get_theme_mod( 'footeradresse', 'Footer Adresse' );
 			echo $footeradresse;
 			?>
 				
@@ -76,18 +76,18 @@ if($insta_an === true){
 			<div class="col span_1_of_3">
 			
 			
-			<?php 
-			if($insta_an === true){
-			?>
+			<?php
+			if ( $insta_an === true ) {
+				?>
 						
 							<div class="button_runde_ecken_hell instagram_button_footer">
-								<a href="<?php echo get_theme_mod( 'instagram_link',  ''); ?>" class="" target="_blank" title="">
+								<a href="<?php echo get_theme_mod( 'instagram_link', '' ); ?>" class="" target="_blank" title="">
 								<div class=""><?php echo get_theme_mod( 'instagram_button_beschriftung' ); ?></div>
 							</a>
 							</div>
 							
 						</div>
-			<?php 
+				<?php
 			}
 			?>
 			
@@ -95,12 +95,12 @@ if($insta_an === true){
 		<div class="section group">
 			<div class="col span_3_of_3 center">
 			<div id="im_main_menu">
-						<?php 
+						<?php
 						wp_nav_menu(
-		  array(
-		   'theme_location' => 'footer-menu'
-		  )
-		);
+							array(
+								'theme_location' => 'footer-menu',
+							)
+						);
 						?>
 			</div>
 			</div>
@@ -109,7 +109,7 @@ if($insta_an === true){
 	</div><!-- inhalts_container_mittig_max_width -->
 	
 </div><!-- footer -->
-    
+	
 </div><!-- wrapper -->
 
 <?php wp_footer(); ?>

@@ -10,7 +10,7 @@ for($i = 1;$i <= 10;$i++){
 	}
 }
 
-for/*TODO:refactor each()*/ each($a_termine_index as $i_termin_index){
+for/*TODO:refactor each()*/ each($a_termine_index as $i_termin_index)[
 	$terminliste_beschreibung_bild_id = "terminliste_beschreibung_bild_".$i_termin_index;
 	?>
 	
@@ -45,7 +45,7 @@ for/*TODO:refactor each()*/ each($a_termine_index as $i_termin_index){
 	</div>
 
 	<?php
-}
+]
 ?>	
 </div>
 

@@ -56,9 +56,9 @@ if ( is_dir ( $verzeichnis ))
 }
 natsort($a_files);
 //pf($a_files);
-for/*TODO:refactor each()*/ each($a_files as $karten){
+for/*TODO:refactor each()*/ each($a_files as $karten)[
 	$s_kartenbilder .= '<img id="'.$karten.'" class="kartenbild" style="display: none;width: 100%;max-width: 400px;margin-left: auto;margin-right: auto;" src="/wp-content/themes/ecjugend20192/blocks/block-ec-landverband-kartengrafik/'.$karten.'" />';
-}
+]
 
 ?>
 

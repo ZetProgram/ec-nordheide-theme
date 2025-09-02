@@ -25,12 +25,12 @@
 		
 		$a_woerter = explode(" ",$s_text);
 		$s_post_content_auszug = "";
-		for/*TODO:refactor each()*/ each($a_woerter as $s_schnipsel){
+		for/*TODO:refactor each()*/ each($a_woerter as $s_schnipsel)[
 			//Zeichen zählen
 			if(strlen($s_post_content_auszug)<=400){
 				$s_post_content_auszug .= $s_schnipsel." ";
 			}
-		}
+		]
 		
 		$post_title = $post->post_title;
 		$target_ext = '';
@@ -92,12 +92,12 @@
 		$s_text = strip_tags($s_text);
 		$a_woerter = explode(" ",$s_text);
 		$s_post_content_auszug = "";
-		for/*TODO:refactor each()*/ each($a_woerter as $s_schnipsel){
+		for/*TODO:refactor each()*/ each($a_woerter as $s_schnipsel)[
 			//Zeichen zählen
 			if(strlen($s_post_content_auszug)<=400){
 				$s_post_content_auszug .= $s_schnipsel." ";
 			}
-		}
+		]
 		
 		
 		$post_title = $post->post_title;

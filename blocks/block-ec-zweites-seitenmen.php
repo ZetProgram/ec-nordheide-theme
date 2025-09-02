@@ -1,9 +1,9 @@
-<?php 
-if(block_lab_backend()){
+<?php
+if ( block_lab_backend() ) {
 	?>
 	<div style="padding: 10px;"><strong>EC zweites Seitenmenü</strong><br />
 	Bitte diesen Block am Seitenende einfügen<div>
-	<?php 
+	<?php
 }
 ?>
 
@@ -12,7 +12,7 @@ if(block_lab_backend()){
 	h2_ankern();
 
 	function h2_ankern(){
-		var liste_elemente = document.getElementsByTagName('<?php block_field('tag'); ?>');
+		var liste_elemente = document.getElementsByTagName('<?php block_field( 'tag' ); ?>');
 		//var liste_elemente = document.getElementsByClassName('h2_anker');
 		var s_menu = '';
 		var s_id = '';
