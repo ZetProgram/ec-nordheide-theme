@@ -1,14 +1,31 @@
 /*FOOTER MENÜ*/
-/*#menu_header_unten{border: 0px solid orange;text-align: right;padding: 0px;}*/
 
-.menu-footer-menue-container ul { margin: 0; padding: 0; 	list-style-type: none; list-style-image: none;line-height: 1.5em; }
-.menu-footer-menue-container li {  }
-.menu-footer-menue-container ul li a {text-decoration:none;  color: #fff;margin-left: 20px;padding: 5px; }
-.menu-footer-menue-container ul li a:hover {color: #000;background: #cedd87; }
+.menu-footer-menue-container ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	list-style-image: none;
+	line-height: 1.5em;
+}
 
-#footer .menu-footer-menue-container ul li a{
+.menu-footer-menue-container ul li a {
+	text-decoration: none;
+	color: #fff;
+	margin-left: 20px;
+	padding: 5px;
+}
+
+.menu-footer-menue-container ul li a:hover {
+	color: #000;
+	background: #cedd87;
+}
+
+#footer .menu-footer-menue-container ul li a {
 	color: #fff;
 }
 
-#im_main_menu .menu-footer-menue-container li { display: inline; }
+#im_main_menu .menu-footer-menue-container li {
+	display: inline;
+}
+
 /*ENDE FOOTER MENÜ*/
