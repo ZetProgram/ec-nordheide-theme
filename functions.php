@@ -52,10 +52,7 @@ add_action('wp_enqueue_scripts', function () {
 	// 1) Tailwind (Build)
 	wp_enqueue_style('theme-tailwind', $base . '/dist/tailwind.css', [], $ver);
 
-	// 2) bestehende Styles (nur das Nötigste beibehalten)
 	wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
-	// Beispiel, wenn es weitere alte Dateien gibt:
-	// wp_enqueue_style('theme-v3', $base . '/style_V003.css', ['theme-tailwind'], null);
 });
 
 /**
@@ -419,57 +416,6 @@ function konvertieren_YYYY_MM_DD_nach_DEdatum( $YYYY_MM_DDdatum ) {
 	}
 	return '';
 }
-
-/**
- * Customizer: Spenden-Button konfigurieren
- * - Text
- * - URL
- * - Target (_self/_blank)
- */
-add_action('customize_register', function($wp_customize){
-
-	$wp_customize->add_section('cta_button_section', array(
-		'title'       => __('Header: Spenden-Button', 'your-theme'),
-		'priority'    => 30,
-	));
-
-	// Button-Text
-	$wp_customize->add_setting('highlightbtn_titel', array(
-		'default'           => __('UNTERSTÜTZE UNS', 'your-theme'),
-		'sanitize_callback' => 'sanitize_text_field',
-		'transport'         => 'refresh',
-	));
-	$wp_customize->add_control('highlightbtn_titel', array(
-		'label'   => __('Button-Text', 'your-theme'),
-		'section' => 'cta_button_section',
-		'type'    => 'text',
-	));
-
-	// Button-URL
-	$wp_customize->add_setting('highlightbtn_url', array(
-		'default'           => home_url('/spenden/'),
-		'sanitize_callback' => 'esc_url_raw',
-		'transport'         => 'refresh',
-	));
-	$wp_customize->add_control('highlightbtn_url', array(
-		'label'   => __('Ziel-URL', 'your-theme'),
-		'section' => 'cta_button_section',
-		'type'    => 'url',
-	));
-
-	// target
-	$wp_customize->add_setting('highlightbtn_target', array(
-		'default'           => '_self',
-		'sanitize_callback' => function($v){ return in_array($v, array('_self','_blank'), true) ? $v : '_self'; },
-		'transport'         => 'refresh',
-	));
-	$wp_customize->add_control('highlightbtn_target', array(
-		'label'   => __('Link-Ziel', 'your-theme'),
-		'section' => 'cta_button_section',
-		'type'    => 'select',
-		'choices' => array('_self' => '_self', '_blank' => '_blank'),
-	));
-});
 
 /**
  * Plugin Update Checker (GitHub)

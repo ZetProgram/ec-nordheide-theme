@@ -18,9 +18,6 @@ define( 'THEME_PFAD', get_stylesheet_directory_uri() );
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" crossorigin="anonymous">
 
-<!-- Tailwind CDN (für sofortige Nutzung) -->
-<script src="https://cdn.tailwindcss.com"></script>
-
 <?php wp_head(); ?>
 
 <!-- jQuery nur falls deine Plugins es brauchen -->
@@ -30,7 +27,6 @@ define( 'THEME_PFAD', get_stylesheet_directory_uri() );
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <style>
-/* Minimales Zusatz-CSS für Spezialfälle (Tailwind deckt den Rest ab) */
 [x-cloak]{ display:none; }
 </style>
 </head>
@@ -56,23 +52,21 @@ if ( isset($locs['header-links']) && $locs['header-links'] ) {
 }
 
 // Spendenbutton aus Customizer
-$cta_text   = get_theme_mod('highlightbtn_titel', __('UNTERSTÜTZE UNS','yourtheme'));
-$cta_url    = get_theme_mod('highlightbtn_url', home_url('/spenden/'));
+$cta_text   = get_theme_mod('highlightbtn_titel', __('UNTERSTÜTZE UNS','your-theme'));
+$cta_url    = get_theme_mod('highlightbtn_page', 0);
 $cta_target = get_theme_mod('highlightbtn_target', '_self');
 ?>
 
 <body <?php body_class(); ?> x-data="{open:false}">
-  <!-- TOP-BAR -->
   <header class="fixed top-0 left-0 w-full z-40">
-    <div class="mx-auto max-w-[1140px] px-3">
-      <!-- Bar-Hintergrund + Rahmen wie im Screenshot -->
-      <div class="mt-2 rounded-2xl bg-[#F7F5EC] border border-black/50 shadow-[0_2px_0_0_rgba(0,0,0,0.6)]">
-        <div class="h-[64px] md:h-[74px] flex items-center justify-center gap-6 md:gap-10 px-3">
+    <div class="mx-auto w-full px-3">
+      <div class="bg-[#F7F5EC] clip-custom-shape">
+        <div class="h-[120px] flex items-center justify-center gap-6 md:gap-10 px-3">
 
           <!-- Logo -->
           <a href="<?php echo esc_url( home_url('/') ); ?>" class="flex items-center justify-center">
             <?php if ($logo_src): ?>
-              <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-8 md:h-10 w-auto">
+              <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-24 w-auto">
             <?php else: ?>
               <span class="font-bold text-gray-900"><?php bloginfo('name'); ?></span>
             <?php endif; ?>
@@ -116,25 +110,6 @@ $cta_target = get_theme_mod('highlightbtn_target', '_self');
             <?php echo esc_html($cta_text); ?>
           </a>
         </div>
-      </div>
-    </div>
-
-    <!-- DESKTOP Hauptmenü (sichtbar ab md), auf Mobile ausgeblendet -->
-    <div class="hidden md:block">
-      <div class="mx-auto max-w-[1140px] px-3">
-        <nav class="mt-2 rounded-xl bg-white border border-black/30">
-          <?php
-            wp_nav_menu(array(
-              'theme_location' => 'main-menu',
-              'container'      => false,
-              'fallback_cb'    => false,
-              'menu_class'     => 'flex flex-wrap items-center justify-center gap-2',
-              'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-              'link_before'    => '',
-              'link_after'     => '',
-            ));
-          ?>
-        </nav>
       </div>
     </div>
   </header>
