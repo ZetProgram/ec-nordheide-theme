@@ -36,7 +36,6 @@ add_action(
 	}
 );
 
-<?php
 add_action('wp_enqueue_scripts', function () {
     $base = get_stylesheet_directory_uri();
     $path = get_stylesheet_directory() . '/dist/tailwind.css';
