@@ -93,19 +93,8 @@ body {
 	bottom: 50% !important;
 }
 
-#header_wrapper {
-	position: absolute;
-	width: 100%;
-	position: fixed !important;
-	z-index: 20;
-}
-
 #header {
-	position: relative;
-	width: 100%;
 	transition: 0.3s background, 0.3s border-bottom, 0.3s transform, 0.3s -webkit-transform, 0.3s -o-transform;
-	background-color: #F7F5EC;
-	height: 170px;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
@@ -166,7 +155,6 @@ body {
 	}
 
 	#header {
-		height: 105px;
 		-webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 		clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 	}
@@ -180,7 +168,6 @@ body {
 	}
 
 	#header {
-		height: 105px;
 		-webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 	}
@@ -362,15 +349,6 @@ body {
 		top: 10px;
 	}
 }
-
-#header_logo_menu_wrapper {
-	max-width: 1140px;
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-}
-
-
 
 .logo_img {
 	opacity: 1 !important;
