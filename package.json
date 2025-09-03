@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./assets/tailwind.css -o ./dist/tailwind.css --watch",
-    "build": "npx @tailwindcss/cli -i ./assets/tailwind.css -o ./dist/tailwind.css --minify"
+    "dev": "npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./dist/tailwind.css --watch",
+    "build": "npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./dist/tailwind.css --minify"
   },
   "repository": {
     "type": "git",
