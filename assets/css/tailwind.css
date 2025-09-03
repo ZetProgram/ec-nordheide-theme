@@ -1,5 +1,9 @@
 @import "tailwindcss";
-/* Optional: falls du eine tailwind.config.js weiterverwenden willst: */
+
+/* Sage Tailwind, wo es Klassen finden soll (PHP, HTML, JS, TS im Theme) */
+@source "../../**/*.{php,html,js,ts}";
+
+/* Optional weiter nutzen: Theme-Erweiterungen aus deiner config */
 @config "../../tailwind.config.js";
 
 @layer utilities {

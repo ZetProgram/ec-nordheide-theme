@@ -45,15 +45,14 @@ add_action(
  * - bestehende style.css (nur was ihr noch braucht)
  */
 add_action('wp_enqueue_scripts', function () {
-	$base = get_stylesheet_directory_uri();
-	$path = get_stylesheet_directory() . '/dist/tailwind.css';
-	$ver  = file_exists($path) ? filemtime($path) : null;
+  $base = get_stylesheet_directory_uri();
+  $path = get_stylesheet_directory() . '/assets/css/tailwind_minify.css'; // <-- hier!
+  $ver  = file_exists($path) ? filemtime($path) : null;
 
-	// 1) Tailwind (Build)
-	wp_enqueue_style('theme-tailwind', $base . '/assets/css/tailwind_minify.css', [], $ver);
-
-	wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
+  wp_enqueue_style('theme-tailwind', $base . '/assets/css/tailwind_minify.css', [], $ver);
+  wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
 });
+
 
 /**
  * Gutenberg/Block-Editor: Tailwind auch dort laden
