@@ -36,6 +36,31 @@ add_action(
 	}
 );
 
+<?php
+add_action('wp_enqueue_scripts', function () {
+    $base = get_stylesheet_directory_uri();
+    $path = get_stylesheet_directory() . '/dist/tailwind.css';
+    $ver  = file_exists($path) ? filemtime($path) : null;
+
+    // 1) Tailwind
+    wp_enqueue_style('theme-tailwind', $base . '/dist/tailwind.css', [], $ver);
+
+    // 2) bestehende Styles (nur die, die ihr weiterhin braucht)
+    wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
+    // Beispiel: wp_enqueue_style('theme-v3', $base . '/style_V003.css', ['theme-tailwind'], null);
+    // …weitere Dateien schrittweise nur laden, wenn nötig
+});
+
+// Gutenberg/Block-Editor
+add_action('enqueue_block_editor_assets', function () {
+    $base = get_stylesheet_directory_uri();
+    $path = get_stylesheet_directory() . '/dist/tailwind.css';
+    $ver  = file_exists($path) ? filemtime($path) : null;
+
+    wp_enqueue_style('theme-tailwind-editor', $base . '/dist/tailwind.css', [], $ver);
+});
+
+
 require 'functions_lichtstrahlen.php';
 require 'functions_blocklabs.php';
 require 'functions_customizer.php';

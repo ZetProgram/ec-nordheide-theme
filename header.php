@@ -221,21 +221,22 @@ for ( $i = 1; $i <= $anzahl_hexagone; $i++ ) {
 						</a>
 						</div>
 					</div>
-
+					<!-- Suchfeld - No more need
 					<div class="col span_1_of_3" id="suchebutton_div">
 						<div class="pointer center" style="margin-top:5px;">
-						<i onclick="suchfeld_einblenden('sf_webseite');" class="fas fa-search fa-2x"></i>
+							<i onclick="suchfeld_einblenden('sf_webseite');" class="fas fa-search fa-2x"></i>
 						</div>
 					</div>
+						-->
 					</div>
 				</div>
 				</div>
 
-			</div><!-- .section group -->
-			</div><!-- #menu_header_unten -->
-		</div><!-- #header_logo_menu_wrapper -->
-		</div><!-- #header -->
-	</div><!-- #header_wrapper -->
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
 
 	<div id="div_main_menu" class="main_menu">
 		<div class="main_menu_inner_wrapper">

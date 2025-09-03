@@ -96,8 +96,6 @@ body {
 #header_wrapper {
 	position: absolute;
 	width: 100%;
-	-webkit-filter: drop-shadow(0px 2px 2px #000);
-	filter: drop-shadow(0px 2px 2px #000);
 	position: fixed !important;
 	z-index: 20;
 }
@@ -166,6 +164,12 @@ body {
 	.menu_button_wrapper {
 		width: auto;
 	}
+
+	#header {
+		height: 105px;
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+	}
 }
 
 @media (max-width:480px) {
@@ -177,8 +181,8 @@ body {
 
 	#header {
 		height: 105px;
-		-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 	}
 
 	.menu_col_header {
