@@ -1,14 +1,14 @@
 {
   "name": "ec-nordheide-theme",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Das ist ein Wordpress Theme für die EC Nordheide",
   "main": "javaScript.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./dist/tailwind.css --watch",
-    "build": "npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./dist/tailwind.css --minify"
+    "dev": "npx @tailwindcss/cli -i ./assets/tailwind.css -o ./dist/tailwind.css --watch",
+    "build": "npx @tailwindcss/cli -i ./assets/tailwind.css -o ./dist/tailwind.css --minify"
   },
   "repository": {
     "type": "git",

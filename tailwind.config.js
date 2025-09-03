@@ -12,8 +12,5 @@ module.exports = {
   ],
   theme: { extend: {} },
   plugins: [],
-  safelist: [
-    // hier Klassen whitelisten, die dynamisch aus der DB kommen (ACF, Menüs, o.ä.)
-    // z.B. /^grid-cols-/, /^md:grid-cols-/, "is-active"
-  ]
+  safelist: []
 }
