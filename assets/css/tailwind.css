@@ -1,3 +1,10 @@
 @import "tailwindcss";
 /* Optional: falls du eine tailwind.config.js weiterverwenden willst: */
 @config "../../tailwind.config.js";
+
+@layer utilities {
+  .clip-custom {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  }
+}

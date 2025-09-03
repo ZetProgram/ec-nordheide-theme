@@ -11,14 +11,11 @@ module.exports = {
     "./*.html"
   ],
   theme: {
-      extend: {
-        clipPath: {
-          'custom-shape': 'polygon(0 0, 100% 0, 100% 90%, 0 100%)',
-        },
-      },
+    extend: {
+
     },
-    plugins: [
-      require('tailwind-clip-path'),
-    ],
+  },
+  plugins: [
+  ],
   safelist: []
 }
