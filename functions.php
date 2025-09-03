@@ -1,16 +1,18 @@
-<?php require_once __DIR__ . '/compat.php'; ?>
 <?php
+require_once __DIR__ . '/compat.php';
 
 const YOUR_THEME_MIN_PHP = '7.4';
 
+/**
+ * Nach Theme-Aktivierung PHP-Version prüfen
+ */
 add_action(
 	'after_switch_theme',
 	function () {
 		if ( version_compare( PHP_VERSION, YOUR_THEME_MIN_PHP, '<' ) ) {
 			switch_theme( WP_DEFAULT_THEME ); // auf Standardtheme zurück
-			// Übersetzbar halten:
 			$message = sprintf(
-			/* translators: 1: current PHP version, 2: required PHP version */
+				/* translators: 1: current PHP version, 2: required PHP version */
 				__( 'Dieses Theme erfordert mindestens PHP %2$s. Deine Umgebung läuft mit PHP %1$s. Das Standard-Theme wurde wiederhergestellt.', 'your-theme' ),
 				PHP_VERSION,
 				YOUR_THEME_MIN_PHP
@@ -20,50 +22,63 @@ add_action(
 	}
 );
 
-// Optional: Hinweis im Backend, falls knapp unter Zielbereich (z. B. 7.4 OK, aber 7.4.x alt)
+/**
+ * Admin-Hinweis für PHP 8.x
+ */
 add_action(
 	'admin_notices',
 	function () {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-
 		if ( version_compare( PHP_VERSION, '8.0', '<' ) ) {
 			echo '<div class="notice notice-warning"><p>'
-			. esc_html__( 'Hinweis: Für beste Performance/Support bitte bald auf PHP 8.x aktualisieren.', 'your-theme' )
-			. '</p></div>';
+				. esc_html__( 'Hinweis: Für beste Performance/Support bitte bald auf PHP 8.x aktualisieren.', 'your-theme' )
+				. '</p></div>';
 		}
 	}
 );
 
+/**
+ * Frontend-Styles & -Scripts
+ * - Tailwind Build aus /dist/tailwind.css
+ * - bestehende style.css (nur was ihr noch braucht)
+ */
 add_action('wp_enqueue_scripts', function () {
-    $base = get_stylesheet_directory_uri();
-    $path = get_stylesheet_directory() . '/dist/tailwind.css';
-    $ver  = file_exists($path) ? filemtime($path) : null;
+	$base = get_stylesheet_directory_uri();
+	$path = get_stylesheet_directory() . '/dist/tailwind.css';
+	$ver  = file_exists($path) ? filemtime($path) : null;
 
-    // 1) Tailwind
-    wp_enqueue_style('theme-tailwind', $base . '/dist/tailwind.css', [], $ver);
+	// 1) Tailwind (Build)
+	wp_enqueue_style('theme-tailwind', $base . '/dist/tailwind.css', [], $ver);
 
-    // 2) bestehende Styles (nur die, die ihr weiterhin braucht)
-    wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
-    // Beispiel: wp_enqueue_style('theme-v3', $base . '/style_V003.css', ['theme-tailwind'], null);
-    // …weitere Dateien schrittweise nur laden, wenn nötig
+	// 2) bestehende Styles (nur das Nötigste beibehalten)
+	wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
+	// Beispiel, wenn es weitere alte Dateien gibt:
+	// wp_enqueue_style('theme-v3', $base . '/style_V003.css', ['theme-tailwind'], null);
 });
 
-// Gutenberg/Block-Editor
+/**
+ * Gutenberg/Block-Editor: Tailwind auch dort laden
+ */
 add_action('enqueue_block_editor_assets', function () {
-    $base = get_stylesheet_directory_uri();
-    $path = get_stylesheet_directory() . '/dist/tailwind.css';
-    $ver  = file_exists($path) ? filemtime($path) : null;
+	$base = get_stylesheet_directory_uri();
+	$path = get_stylesheet_directory() . '/dist/tailwind.css';
+	$ver  = file_exists($path) ? filemtime($path) : null;
 
-    wp_enqueue_style('theme-tailwind-editor', $base . '/dist/tailwind.css', [], $ver);
+	wp_enqueue_style('theme-tailwind-editor', $base . '/dist/tailwind.css', [], $ver);
 });
 
-
+/**
+ * Weitere Theme-Funktionsdateien
+ */
 require 'functions_lichtstrahlen.php';
 require 'functions_blocklabs.php';
 require 'functions_customizer.php';
 
+/**
+ * Superadmin-Session-Flag setzen/entfernen via GET
+ */
 add_action(
 	'init',
 	function () {
@@ -92,6 +107,9 @@ add_action(
 	1
 );
 
+/**
+ * Theme-Support: Logo
+ */
 add_theme_support(
 	'custom-logo',
 	array(
@@ -103,17 +121,26 @@ add_theme_support(
 	)
 );
 
+/**
+ * Menüs registrieren
+ * - main-menu: Hauptmenü
+ * - header-links: genau die zwei konfigurierbaren Header-Links
+ * - footer-menu: Footer-Menü
+ */
 function ae_register_menus() {
 	register_nav_menus(
 		array(
-			// 'top-menu' => __( 'Top Menu' ),
-			// 'main-menu' => __( 'Main Menu' ),
-			'footer-menu' => __( 'Footer Menu' ),
+			'main-menu'    => __( 'Hauptmenü', 'your-theme' ),
+			'header-links' => __( 'Header Links (max. 2 Punkte)', 'your-theme' ),
+			'footer-menu'  => __( 'Footer Menü', 'your-theme' ),
 		)
 	);
 }
 add_action( 'init', 'ae_register_menus' );
 
+/**
+ * Weitere Theme-Supports
+ */
 if ( ! function_exists( 'theme_slug_setup' ) ) :
 	function theme_slug_setup() {
 		add_theme_support( 'post-thumbnails' );
@@ -121,11 +148,17 @@ if ( ! function_exists( 'theme_slug_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'theme_slug_setup' );
 
+/**
+ * Editor-spezifische Styles (bestehend)
+ */
 function ks_gutenberg_styles() {
 	wp_enqueue_style( 'gutenberg-css', get_theme_file_uri( '/gutenberg.css' ), false );
 }
 add_action( 'enqueue_block_editor_assets', 'ks_gutenberg_styles' );
 
+/**
+ * Block-Wrapper für bestimmte Klassennamen
+ */
 function wporg_block_wrapper( $block_content, $block ) {
 	if ( isset( $block['attrs']['className'] ) && strpos( $block['attrs']['className'], 'hintergrund_gruen' ) !== false ) {
 		$content  = '<div class="hintergrund_gruen_intern"><div class="inhalt_begrenzte_breite_zentriert">';
@@ -184,6 +217,9 @@ function wporg_block_wrapper( $block_content, $block ) {
 }
 add_filter( 'render_block', 'wporg_block_wrapper', 10, 2 );
 
+/**
+ * Helpers
+ */
 function object_to_array( $data ) {
 	if ( is_array( $data ) || is_object( $data ) ) {
 		$result = array();
@@ -216,9 +252,11 @@ function session_get_safe( $key, $default = null ) {
 	return $val;
 }
 
-// 2) Debug-Ausgabe nur, wenn Flag per GET ODER Session gesetzt ist
+/**
+ * Debug-Ausgabe nur, wenn superadmin aktiv
+ */
 function pf( $a ) {
-	// GET hat Priorität (schnell & ohne Session)
+	// GET hat Priorität
 	$is_super_get = ( isset( $_GET['superadmin'] ) && (int) $_GET['superadmin'] === 1 );
 
 	// Falls nicht via GET, Session-Wert sicher lesen
@@ -231,9 +269,11 @@ function pf( $a ) {
 	}
 }
 
-/* MENÜ header.php */
+/**
+ * Menüausgabe für header.php (Seitenstruktur, 2./3. Ebene)
+ */
 function liste_menu( $post_parent ) {
-	$args                                  = array(
+	$args = array(
 		'sort_order'   => 'ASC',
 		'sort_column'  => 'menu_order',
 		'hierarchical' => 1,
@@ -260,7 +300,7 @@ function liste_menu( $post_parent ) {
 		$s_ebene_2 .= "<li class='ebene_2'><a {$target_ext} href='" . $a_seiten_zweite_ebene['guid'] . "'><span>" . $post_title . '</span></a>';
 
 		// dritte Ebene holen
-		$args2                                 = array(
+		$args2 = array(
 			'sort_order'   => 'ASC',
 			'sort_column'  => 'menu_order',
 			'hierarchical' => 1,
@@ -289,6 +329,9 @@ function liste_menu( $post_parent ) {
 	return $s_ebene_2;
 }
 
+/**
+ * Widgets
+ */
 function deinthemename_widgets_init() {
 	register_sidebar(
 		array(
@@ -304,22 +347,28 @@ function deinthemename_widgets_init() {
 }
 add_action( 'widgets_init', 'deinthemename_widgets_init' );
 
+/**
+ * Suche Shortcode
+ */
 function search_form_shortcode() {
 	get_search_form();
 }
 add_shortcode( 'search_form', 'search_form_shortcode' );
 
+/**
+ * Eigene Suchform
+ */
 function ec_search_form( $id ) {
-	$form = '<form method="get" id="' . $id . '" class="' . $id . ' searchform" name="searchform" action="' . home_url( '/' ) . '" style="padding: 5px;">
-<input type="text" value="" name="s" id="s_' . $id . '" class="suche_input">
-<i class="fas fa-search pointer" onclick="' . $id . '.submit();"></i>
-</form>';
+	$form = '<form method="get" id="' . esc_attr($id) . '" class="' . esc_attr($id) . ' searchform" name="searchform" action="' . esc_url( home_url( '/' ) ) . '" style="padding: 5px;">'
+		. '<input type="text" value="" name="s" id="s_' . esc_attr($id) . '" class="suche_input">'
+		. '<i class="fas fa-search pointer" onclick="' . esc_attr($id) . '.submit();"></i>'
+		. '</form>';
 	return $form;
 }
 
-/*
-Plugin Name: Ninja Forms Add Datepicker Options
-*/
+/**
+ * Ninja Forms Datepicker Defaults
+ */
 function nf_datepicker_modify_script( $args ) {
 	$args['minDate']     = '0';
 	$args['changeMonth'] = 1;
@@ -329,6 +378,9 @@ function nf_datepicker_modify_script( $args ) {
 }
 add_filter( 'ninja_forms_forms_display_datepicker_args', 'nf_datepicker_modify_script' );
 
+/**
+ * Backend-Erkennung (Block Lab)
+ */
 function block_lab_backend() {
 	if ( isset( $_SERVER['REDIRECT_URL'] ) && strpos( $_SERVER['REDIRECT_URL'], 'block-lab' ) !== false ) {
 		return true;
@@ -337,6 +389,9 @@ function block_lab_backend() {
 	}
 }
 
+/**
+ * strip_tags_content Helper
+ */
 function strip_tags_content( $text, $tags = '', $invert = false ) {
 	preg_match_all( '/<(.+?)[\s]*\/?[\s]*>/si', trim( $tags ), $tags );
 	$tags = array_unique( $tags[1] );
@@ -353,6 +408,9 @@ function strip_tags_content( $text, $tags = '', $invert = false ) {
 	return $text;
 }
 
+/**
+ * Datum konvertieren
+ */
 function konvertieren_YYYY_MM_DD_nach_DEdatum( $YYYY_MM_DDdatum ) {
 	if ( $YYYY_MM_DDdatum != '' ) {
 		$a_datum    = explode( '-', $YYYY_MM_DDdatum );
@@ -362,6 +420,60 @@ function konvertieren_YYYY_MM_DD_nach_DEdatum( $YYYY_MM_DDdatum ) {
 	return '';
 }
 
+/**
+ * Customizer: Spenden-Button konfigurieren
+ * - Text
+ * - URL
+ * - Target (_self/_blank)
+ */
+add_action('customize_register', function($wp_customize){
+
+	$wp_customize->add_section('cta_button_section', array(
+		'title'       => __('Header: Spenden-Button', 'your-theme'),
+		'priority'    => 30,
+	));
+
+	// Button-Text
+	$wp_customize->add_setting('highlightbtn_titel', array(
+		'default'           => __('UNTERSTÜTZE UNS', 'your-theme'),
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	));
+	$wp_customize->add_control('highlightbtn_titel', array(
+		'label'   => __('Button-Text', 'your-theme'),
+		'section' => 'cta_button_section',
+		'type'    => 'text',
+	));
+
+	// Button-URL
+	$wp_customize->add_setting('highlightbtn_url', array(
+		'default'           => home_url('/spenden/'),
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	));
+	$wp_customize->add_control('highlightbtn_url', array(
+		'label'   => __('Ziel-URL', 'your-theme'),
+		'section' => 'cta_button_section',
+		'type'    => 'url',
+	));
+
+	// target
+	$wp_customize->add_setting('highlightbtn_target', array(
+		'default'           => '_self',
+		'sanitize_callback' => function($v){ return in_array($v, array('_self','_blank'), true) ? $v : '_self'; },
+		'transport'         => 'refresh',
+	));
+	$wp_customize->add_control('highlightbtn_target', array(
+		'label'   => __('Link-Ziel', 'your-theme'),
+		'section' => 'cta_button_section',
+		'type'    => 'select',
+		'choices' => array('_self' => '_self', '_blank' => '_blank'),
+	));
+});
+
+/**
+ * Plugin Update Checker (GitHub)
+ */
 require get_template_directory() . '/lib/plugin-update-checker/plugin-update-checker.php';
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
@@ -374,5 +486,4 @@ $updateChecker = PucFactory::buildUpdateChecker(
 
 // GitHub API benutzen
 $updateChecker->setBranch( 'production' );
-
 $updateChecker->getVcsApi()->enableReleaseAssets();
