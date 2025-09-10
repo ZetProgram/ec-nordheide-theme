@@ -19,6 +19,12 @@ farben:
 	font-size: 0.5em;
 }
 
+@font-face {
+	font-family: 'Montserrat';
+	src: url('/wp-content/themes/ec-nordheide-theme/fonts/Montserrat-Regular.otf') format('opentype');
+	font-size: 0.5em;
+}
+
 html {
 	width: 100%;
 	overflow-x: hidden;
@@ -875,11 +881,6 @@ allgemeines
 .bild_im_text_links {
 	float: left;
 	margin: 0 20px 20px 0;
-}
-
-a {
-	text-decoration: none;
-	color: #000;
 }
 
 h1 {
@@ -1744,10 +1745,6 @@ h5 strong em {
 	.span_6_of_6 {
 		width: 100%;
 	}
-}
-
-a {
-	text-decoration: underline;
 }
 
 .wp-block-image {

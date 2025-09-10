@@ -83,7 +83,7 @@
           <?php if ($logo_src): ?>
             <img src="<?php echo esc_url($logo_src); ?>" 
                  alt="<?php echo esc_attr(get_bloginfo('name')); ?>" 
-                 class="h-full max-h-[100px] w-auto">
+                 class="h-full max-h-[60px] md:max-h-[75px] lg:max-h-[85px]  w-auto">
           <?php else: ?>
             <span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
           <?php endif; ?>
@@ -99,7 +99,7 @@
               'fallback_cb'    => false,
               'menu_class'     => 'flex items-center gap-6 font-medium',
               'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-[20px]">',
+              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] font-bold uppercase color-[#1A1A1A] text-[20px]">',
               'link_after'     => '</span>',
             ]);
           ?>
@@ -114,18 +114,12 @@
 
         <!-- Mobile Toggle -->
         <button type="button" 
-                class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
+                class="inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
                 x-on:click="open = !open" 
                 :aria-expanded="open.toString()" 
                 aria-controls="mobile-nav" 
                 aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
-          <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true">
-            <path d="M3 6h18M3 12h18M3 18h18" 
-                  stroke="currentColor" 
-                  stroke-width="2" 
-                  fill="none" 
-                  stroke-linecap="round"/>
-          </svg>
+           <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>">
         </button>
       </div>
     </div>
@@ -142,7 +136,7 @@
     <polyline
       points="0,8 300,4 600,7 900,3 1200,8"
       fill="none"
-      stroke="#6C9941"
+      stroke="#92C355"
       stroke-width="4"
       vector-effect="non-scaling-stroke"
       stroke-linejoin="round"
@@ -157,7 +151,7 @@
     <polyline
       points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8"
       fill="none"
-      stroke="#6C9941"
+      stroke="#92C355"
       stroke-width="5"
       vector-effect="non-scaling-stroke"
       stroke-linejoin="round"
