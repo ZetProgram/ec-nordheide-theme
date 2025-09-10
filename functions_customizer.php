@@ -125,6 +125,7 @@ add_action( 'customize_register', 'theme_slug_customize_register_MainMenuSpalten
 
 
 // Hervorgehobener Button
+/*
 function theme_slug_customize_register_HighlightButton( $wp_customize ) {
 
 	$wp_customize->add_section(
@@ -202,7 +203,7 @@ function theme_slug_customize_register_HighlightButton( $wp_customize ) {
 	);
 }
 add_action( 'customize_register', 'theme_slug_customize_register_HighlightButton' );
-
+*/
 
 // Instagram im Footer
 function theme_slug_customize_register_Instagram( $wp_customize ) {

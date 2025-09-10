@@ -39,6 +39,41 @@ add_action(
 	}
 );
 
+add_action('after_setup_theme', function () {
+  // Moderne Title-Ausgabe
+  add_theme_support('title-tag');
+  // Custom Logo
+  add_theme_support('custom-logo', [
+    'height'      => 80,
+    'width'       => 240,
+    'flex-height' => true,
+    'flex-width'  => true,
+  ]);
+  // Menü-Locations
+  register_nav_menus([
+    'primary'          => __('Hauptmenü', 'your-theme'),
+    'arbeitsbereiche'  => __('Arbeitsbereiche (optional)', 'your-theme'),
+  ]);
+});
+
+// ---- Assets enqueuen (kein jQuery aus CDN) ----------------------
+add_action('wp_enqueue_scripts', function () {
+  // Tailwind: Wenn du Tailwind im Build hast, hier dein gebautes CSS einbinden.
+  // Beispiel: wp_enqueue_style('theme', get_stylesheet_directory_uri().'/assets/css/theme.css', [], filemtime(get_stylesheet_directory().'/assets/css/theme.css'));
+
+  // Fallback: minimaler Reset/Utility (optional, falls du Tailwind noch nicht baust)
+  wp_enqueue_style('interim-utilities', 'https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css', [], null);
+
+  // Alpine.js (nur 12k gzip, modernes Toggle/State)
+  wp_enqueue_script('alpine', 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js', [], null, true);
+});
+
+// ---- Admin-Hilfe: Menü-Beschreibung spalten (für Bild-URLs) ----
+add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $args) {
+  // Keine Ausgabe-Manipulation – Hinweis: Beschreibung verwenden wir serverseitig im Mega.
+  return $item_output;
+}, 10, 4);
+
 /**
  * Frontend-Styles & -Scripts
  * - Tailwind Build aus /dist/tailwind.css
