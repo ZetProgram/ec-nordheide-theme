@@ -99,7 +99,7 @@
               'fallback_cb'    => false,
               'menu_class'     => 'flex items-center gap-6 font-medium',
               'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-2xl">',
+              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-[20px]">',
               'link_after'     => '</span>',
             ]);
           ?>
@@ -107,7 +107,7 @@
           <!-- Spenden CTA -->
           <a href="<?php echo esc_url($cta_url); ?>" 
              target="<?php echo esc_attr($cta_target); ?>"
-             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-2xl no-underline focus:outline-none transition uppercase font-bold">
+             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-[20px] no-underline focus:outline-none transition uppercase font-bold">
             <?php echo esc_html($cta_text); ?>
           </a>
         </nav>
@@ -158,7 +158,7 @@
       points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8"
       fill="none"
       stroke="#6C9941"
-      stroke-width="6"
+      stroke-width="5"
       vector-effect="non-scaling-stroke"
       stroke-linejoin="round"
       stroke-linecap="round" />
