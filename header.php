@@ -72,14 +72,14 @@
 <body <?php body_class('bg-white text-gray-900 antialiased'); ?> x-data="{ open:false, mega:false }" x-on:keydown.escape.window="open=false; mega=false">
 <?php wp_body_open(); ?>
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/75 border-b border-gray-200" role="banner">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur lg:h-[120px] h-28 max-h-[120px] supports-[backdrop-filter]:bg-white/75 border-b border-gray-200" role="banner">
   <div class="container mx-auto max-w-7xl px-3 md:px-6">
     <div class="flex items-center justify-between gap-3 h-20">
 
       <!-- Logo -->
       <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
         <?php if ($logo_src): ?>
-          <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-10 max-h-[100px] w-auto">
+          <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-full max-h-[100px] w-auto">
         <?php else: ?>
           <span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
         <?php endif; ?>
@@ -94,7 +94,7 @@
             'fallback_cb'    => false,
             'menu_class'     => 'flex items-center gap-6 font-medium',
             'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A]">',
+            'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-5xl">',
             'link_after'     => '</span>',
             // optional: 'walker' => new Your_Accessible_Walker_Nav_Menu(),
           ]);
@@ -102,7 +102,7 @@
 
         <!-- CTA -->
         <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
-           class="inline-flex items-center rounded-full px-4 py-2 text-sm text-white bg-[#F4A261] hover:bg-[#f08b33] focus:outline-none transition uppercase font-bold">
+           class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#5CA6D1] hover:bg-[#4c8aad] text-5xl no-underline focus:outline-none transition uppercase font-bold">
           <?php echo esc_html($cta_text); ?>
         </a>
       </nav>
