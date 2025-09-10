@@ -13,11 +13,11 @@ add_action(
 			switch_theme( WP_DEFAULT_THEME ); // auf Standardtheme zurück
 			$message = sprintf(
 				/* translators: 1: current PHP version, 2: required PHP version */
-				__( 'Dieses Theme erfordert mindestens PHP %2$s. Deine Umgebung läuft mit PHP %1$s. Das Standard-Theme wurde wiederhergestellt.', 'your-theme' ),
+				__( 'Dieses Theme erfordert mindestens PHP %2$s. Deine Umgebung läuft mit PHP %1$s. Das Standard-Theme wurde wiederhergestellt.', 'ec-nordheide-theme' ),
 				PHP_VERSION,
 				YOUR_THEME_MIN_PHP
 			);
-			wp_die( esc_html( $message ), esc_html__( 'Inkompatible PHP-Version', 'your-theme' ), array( 'back_link' => true ) );
+			wp_die( esc_html( $message ), esc_html__( 'Inkompatible PHP-Version', 'ec-nordheide-theme' ), array( 'back_link' => true ) );
 		}
 	}
 );
@@ -33,7 +33,7 @@ add_action(
 		}
 		if ( version_compare( PHP_VERSION, '8.0', '<' ) ) {
 			echo '<div class="notice notice-warning"><p>'
-				. esc_html__( 'Hinweis: Für beste Performance/Support bitte bald auf PHP 8.x aktualisieren.', 'your-theme' )
+				. esc_html__( 'Hinweis: Für beste Performance/Support bitte bald auf PHP 8.x aktualisieren.', 'ec-nordheide-theme' )
 				. '</p></div>';
 		}
 	}
@@ -51,8 +51,8 @@ add_action('after_setup_theme', function () {
   ]);
   // Menü-Locations
   register_nav_menus([
-    'primary'          => __('Hauptmenü', 'your-theme'),
-    'arbeitsbereiche'  => __('Arbeitsbereiche (optional)', 'your-theme'),
+    'primary'          => __('Hauptmenü', 'ec-nordheide-theme'),
+    'arbeitsbereiche'  => __('Arbeitsbereiche (optional)', 'ec-nordheide-theme'),
   ]);
 });
 
@@ -161,9 +161,9 @@ add_theme_support(
 function ae_register_menus() {
 	register_nav_menus(
 		array(
-			'main-menu'    => __( 'Hauptmenü', 'your-theme' ),
-			'header-links' => __( 'Header Links (max. 2 Punkte)', 'your-theme' ),
-			'footer-menu'  => __( 'Footer Menü', 'your-theme' ),
+			'main-menu'    => __( 'Hauptmenü', 'ec-nordheide-theme' ),
+			'header-links' => __( 'Header Links (max. 2 Punkte)', 'ec-nordheide-theme' ),
+			'footer-menu'  => __( 'Footer Menü', 'ec-nordheide-theme' ),
 		)
 	);
 }

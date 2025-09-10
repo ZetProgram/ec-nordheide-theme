@@ -23,7 +23,7 @@
 </head>
 <?php
   // Customizer: CTA
-  $cta_text   = get_theme_mod('highlightbtn_titel', __('Unterstütze uns!','your-theme'));
+  $cta_text   = get_theme_mod('highlightbtn_titel', __('Unterstütze uns!','ec-nordheide-theme'));
   $cta_url    = get_theme_mod('highlightbtn_page', home_url('/spenden'));
   $cta_target = get_theme_mod('highlightbtn_target', '_self');
 
@@ -40,7 +40,7 @@
     if ($primary_items) {
       // Finde den Top-Level Punkt "Arbeitsbereiche"
       foreach ($primary_items as $it) {
-        if ((int)$it->menu_item_parent === 0 && sanitize_title($it->title) === sanitize_title(__('Arbeitsbereiche','your-theme'))) {
+        if ((int)$it->menu_item_parent === 0 && sanitize_title($it->title) === sanitize_title(__('Arbeitsbereiche','ec-nordheide-theme'))) {
           $arbeits_parent_id = (int)$it->ID;
           break;
         }
@@ -77,7 +77,7 @@
     <div class="flex items-center justify-between gap-3 h-20">
 
       <!-- Logo -->
-      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center max-h-[100px]" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
         <?php if ($logo_src): ?>
           <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-10 w-auto">
         <?php else: ?>
@@ -86,16 +86,15 @@
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center gap-6" aria-label="<?php esc_attr_e('Hauptnavigation','your-theme'); ?>">
+      <nav class="hidden lg:flex items-center gap-6" aria-label="<?php esc_attr_e('Hauptnavigation','ec-nordheide-theme'); ?>">
         <?php
-          // Primary Menü rendern (ohne CTA und ohne Burger)
           wp_nav_menu([
             'theme_location' => 'primary',
             'container'      => false,
             'fallback_cb'    => false,
             'menu_class'     => 'flex items-center gap-6 font-medium',
             'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'link_before'    => '<span class="inline-block py-2 hover:underline underline-offset-4 decoration-2">',
+            'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A]">',
             'link_after'     => '</span>',
             // optional: 'walker' => new Your_Accessible_Walker_Nav_Menu(),
           ]);
@@ -103,14 +102,14 @@
 
         <!-- CTA -->
         <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
-           class="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-[#ff9a42] hover:bg-[#f08b33] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ff9a42] transition">
+           class="inline-flex items-center rounded-full px-4 py-2 text-sm text-white bg-[#F4A261] hover:bg-[#f08b33] focus:outline-none transition uppercase font-bold">
           <?php echo esc_html($cta_text); ?>
         </a>
       </nav>
 
       <!-- Mobile: Toggle -->
       <button type="button" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
-              x-on:click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav" aria-label="<?php esc_attr_e('Menü öffnen','your-theme'); ?>">
+              x-on:click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav" aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
         <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -124,7 +123,7 @@
       x-transition
       class="hidden lg:block border-t border-gray-200 bg-white shadow-sm"
       role="region"
-      aria-label="<?php esc_attr_e('Arbeitsbereiche','your-theme'); ?>"
+      aria-label="<?php esc_attr_e('Arbeitsbereiche','ec-nordheide-theme'); ?>"
     >
       <div class="container mx-auto max-w-7xl px-3 md:px-6">
         <div class="py-6">
@@ -162,10 +161,10 @@
   <div class="absolute right-0 top-0 h-full w-[88%] max-w-[380px] bg-white shadow-2xl p-4 flex flex-col">
     <div class="flex items-center justify-between">
       <span class="font-semibold text-lg"><?php bloginfo('name'); ?></span>
-      <button class="w-10 h-10 rounded-md border border-gray-300" aria-label="<?php esc_attr_e('Schließen','your-theme'); ?>" x-on:click="open=false">✕</button>
+      <button class="w-10 h-10 rounded-md border border-gray-300" aria-label="<?php esc_attr_e('Schließen','ec-nordheide-theme'); ?>" x-on:click="open=false">✕</button>
     </div>
 
-    <nav class="mt-4 overflow-auto" aria-label="<?php esc_attr_e('Mobile Navigation','your-theme'); ?>">
+    <nav class="mt-4 overflow-auto" aria-label="<?php esc_attr_e('Mobile Navigation','ec-nordheide-theme'); ?>">
       <?php
         wp_nav_menu([
           'theme_location' => 'primary',
@@ -194,7 +193,7 @@
     if (!nav) return;
     const links = nav.querySelectorAll('a');
     links.forEach(a => {
-      if (a.textContent.trim().toLowerCase() === '<?php echo esc_js( mb_strtolower(__('Arbeitsbereiche','your-theme')) ); ?>'.toLowerCase()) {
+      if (a.textContent.trim().toLowerCase() === '<?php echo esc_js( mb_strtolower(__('Arbeitsbereiche','ec-nordheide-theme')) ); ?>'.toLowerCase()) {
         a.parentElement.addEventListener('mouseenter', () => document.body.__x.$data.mega = true);
         a.parentElement.addEventListener('mouseleave', () => document.body.__x.$data.mega = false);
         a.addEventListener('focus', () => document.body.__x.$data.mega = true);

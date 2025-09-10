@@ -14,18 +14,18 @@
  */
 function theme_slug_customize_register_spendenButton($wp_customize) {
 $wp_customize->add_section('cta_button_section', array(
-		'title'       => __('Header: Spenden-Button', 'your-theme'),
+		'title'       => __('Header: Spenden-Button', 'ec-nordheide-theme'),
 		'priority'    => 30,
 	));
 
 	// Button-Text
 	$wp_customize->add_setting('highlightbtn_titel', array(
-		'default'           => __('UNTERSTÜTZE UNS', 'your-theme'),
+		'default'           => __('UNTERSTÜTZE UNS', 'ec-nordheide-theme'),
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'refresh',
 	));
 	$wp_customize->add_control('highlightbtn_titel', array(
-		'label'   => __('Button-Text', 'your-theme'),
+		'label'   => __('Button-Text', 'ec-nordheide-theme'),
 		'section' => 'cta_button_section',
 		'type'    => 'text',
 	));
@@ -38,7 +38,7 @@ $wp_customize->add_section('cta_button_section', array(
 	));
 
 	$wp_customize->add_control('highlightbtn_page', array(
-		'label'   => __('Ziel-Seite', 'your-theme'),
+		'label'   => __('Ziel-Seite', 'ec-nordheide-theme'),
 		'section' => 'cta_button_section',
 		'type'    => 'dropdown-pages',
 	));
@@ -50,13 +50,15 @@ $wp_customize->add_section('cta_button_section', array(
 		'transport'         => 'refresh',
 	));
 	$wp_customize->add_control('highlightbtn_target', array(
-		'label'   => __('Link-Ziel', 'your-theme'),
+		'label'   => __('Link-Ziel', 'ec-nordheide-theme'),
 		'section' => 'cta_button_section',
 		'type'    => 'select',
 		'choices' => array('_self' => '_self', '_blank' => '_blank'),
 	));
 }
 add_action('customize_register', "theme_slug_customize_register_spendenButton");
+
+
 
 
 function theme_slug_customize_register_MainMenuSpalten( $wp_customize ) {
