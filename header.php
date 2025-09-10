@@ -132,21 +132,37 @@
   </div>
   <div>
     <!-- Divider: Polygonfüllung + grüne Linie -->
-    <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
-        class="pointer-events-none absolute inset-x-0 -bottom-[1px] h-[14px] w-full z-10">
-      <!-- Füllfläche: explizit in #F7F5EC -->
-      <path d="M0,0 L1200,0 L1200,8 L1090,3 L980,7 L860,4 L760,6 L655,3 L560,7 L455,2 L370,6 L280,3 L180,7 L90,4 L0,8 Z"
-            fill="#F7F5EC"/>
-      <!-- Linie -->
-      <polyline
-        points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8"
-        fill="none"
-        stroke="#6C9941"
-        stroke-width="3"
-        vector-effect="non-scaling-stroke"
-        stroke-linejoin="round"
-        stroke-linecap="round" />
-    </svg>
+  <!-- MOBILE: wenige Zacken, dezent -->
+  <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
+       class="pointer-events-none absolute inset-x-0 h-[10px] w-full z-10 md:hidden">
+    <!-- Füllfläche oberhalb der Linie -->
+    <path d="M0,0 L1200,0 L1200,8 L900,3 L600,7 L300,4 L0,8 Z"
+          fill="#F7F5EC"/>
+    <!-- Linie (dünner) -->
+    <polyline
+      points="0,8 300,4 600,7 900,3 1200,8"
+      fill="none"
+      stroke="#6C9941"
+      stroke-width="4"
+      vector-effect="non-scaling-stroke"
+      stroke-linejoin="round"
+      stroke-linecap="round" />
+  </svg>
+
+  <!-- DESKTOP: mehr Zacken, etwas höher/kräftiger -->
+  <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
+       class="pointer-events-none absolute inset-x-0 h-[14px] w-full z-10 hidden md:block">
+    <path d="M0,0 L1200,0 L1200,8 L1090,3 L980,7 L860,4 L760,6 L655,3 L560,7 L455,2 L370,6 L280,3 L180,7 L90,4 L0,8 Z"
+          fill="#F7F5EC"/>
+    <polyline
+      points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8"
+      fill="none"
+      stroke="#6C9941"
+      stroke-width="6"
+      vector-effect="non-scaling-stroke"
+      stroke-linejoin="round"
+      stroke-linecap="round" />
+  </svg>
   </div>
   <!-- Mega-Menü: Arbeitsbereiche (Desktop) -->
   <?php if (!empty($arbeits_children)): ?>
