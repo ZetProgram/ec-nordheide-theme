@@ -104,6 +104,15 @@
             ]);
           ?>
 
+          <button type="button" 
+                  class="inline-flex items-center justify-center w-12 h-12"
+                  x-on:click="open = !open" 
+                  :aria-expanded="open.toString()" 
+                  aria-controls="mobile-nav" 
+                  aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
+            <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>">
+          </button>
+
           <!-- Spenden CTA -->
           <a href="<?php echo esc_url($cta_url); ?>" 
              target="<?php echo esc_attr($cta_target); ?>"
@@ -113,14 +122,7 @@
         </nav>
 
         <!-- Mobile Toggle -->
-        <button type="button" 
-                class="inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
-                x-on:click="open = !open" 
-                :aria-expanded="open.toString()" 
-                aria-controls="mobile-nav" 
-                aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
-           <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>">
-        </button>
+
       </div>
     </div>
   </div>
