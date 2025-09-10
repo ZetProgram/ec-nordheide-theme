@@ -73,20 +73,26 @@
 <?php wp_body_open(); ?>
 
 <header class="sticky top-0 z-50" role="banner">
-  <div class="bg-[#F7F5EC] supports-[backdrop-filter]:bg-[#f7f5ecc9] backdrop-blur">
+  <!-- Topbar mit Hintergrund -->
+  <div class="bg-[#F7F5EC] relative">
     <div class="container mx-auto max-w-7xl px-3 md:px-6">
       <div class="flex items-center justify-between gap-3 h-full">
         <!-- Logo -->
-        <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center my-2" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+        <a href="<?php echo esc_url( home_url('/') ); ?>" 
+           class="shrink-0 inline-flex items-center my-2" 
+           aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
           <?php if ($logo_src): ?>
-            <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-full max-h-[100px] w-auto">
+            <img src="<?php echo esc_url($logo_src); ?>" 
+                 alt="<?php echo esc_attr(get_bloginfo('name')); ?>" 
+                 class="h-full max-h-[100px] w-auto">
           <?php else: ?>
             <span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
           <?php endif; ?>
         </a>
 
         <!-- Desktop Nav -->
-        <nav class="hidden lg:flex items-center gap-6" aria-label="<?php esc_attr_e('Hauptnavigation','ec-nordheide-theme'); ?>">
+        <nav class="hidden lg:flex items-center gap-6" 
+             aria-label="<?php esc_attr_e('Hauptnavigation','ec-nordheide-theme'); ?>">
           <?php
             wp_nav_menu([
               'theme_location' => 'primary',
@@ -100,20 +106,49 @@
           ?>
 
           <!-- Spenden CTA -->
-          <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
-            class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-3xl no-underline focus:outline-none transition uppercase font-bold">
+          <a href="<?php echo esc_url($cta_url); ?>" 
+             target="<?php echo esc_attr($cta_target); ?>"
+             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-3xl no-underline focus:outline-none transition uppercase font-bold">
             <?php echo esc_html($cta_text); ?>
           </a>
         </nav>
 
-        <!-- Mobile: Toggle -->
-        <button type="button" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
-                x-on:click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav" aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
-          <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <!-- Mobile Toggle -->
+        <button type="button" 
+                class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
+                x-on:click="open = !open" 
+                :aria-expanded="open.toString()" 
+                aria-controls="mobile-nav" 
+                aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  fill="none" 
+                  stroke-linecap="round"/>
+          </svg>
         </button>
       </div>
     </div>
+
+    <!-- Divider: Polygonfüllung + grüne Linie -->
+    <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
+         class="pointer-events-none absolute inset-x-0 -bottom-[1px] h-[14px] w-full text-[#F7F5EC] z-10">
+      <!-- Füllfläche: gleiche BG-Farbe -->
+      <path d="M0,0 L1200,0 L1200,8 L1090,3 L980,7 L860,4 L760,6 L655,3 L560,7 L455,2 L370,6 L280,3 L180,7 L90,4 L0,8 Z"
+            fill="currentColor"/>
+      <!-- Linie -->
+      <polyline
+        points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8"
+        fill="none"
+        stroke="#6C9941"
+        stroke-width="3"
+        vector-effect="non-scaling-stroke"
+        stroke-linejoin="round"
+        stroke-linecap="round" />
+    </svg>
   </div>
+
   <!-- Mega-Menü: Arbeitsbereiche (Desktop) -->
   <?php if (!empty($arbeits_children)): ?>
     <div
@@ -122,17 +157,14 @@
       x-transition
       class="hidden lg:block border-t border-gray-200 bg-white shadow-sm"
       role="region"
-      aria-label="<?php esc_attr_e('Arbeitsbereiche','ec-nordheide-theme'); ?>"
-    >
+      aria-label="<?php esc_attr_e('Arbeitsbereiche','ec-nordheide-theme'); ?>">
       <div class="container mx-auto max-w-7xl px-3 md:px-6">
         <div class="py-6">
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <?php foreach ($arbeits_children as $child): ?>
-              <?php
-                // Bild-URL aus Menü-Beschreibung (Screen Options: Description aktivieren)
-                $img_url = trim((string)$child->description);
-              ?>
-              <a href="<?php echo esc_url($child->url); ?>" class="group relative block overflow-hidden rounded-xl ring-1 ring-gray-200 hover:ring-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-900"
+              <?php $img_url = trim((string)$child->description); ?>
+              <a href="<?php echo esc_url($child->url); ?>" 
+                 class="group relative block overflow-hidden rounded-xl ring-1 ring-gray-200 hover:ring-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-900"
                  style="height: 160px;">
                 <?php if ($img_url): ?>
                   <img src="<?php echo esc_url($img_url); ?>" alt="" loading="lazy"
@@ -149,26 +181,8 @@
       </div>
     </div>
   <?php endif; ?>
-  <!-- Subtiler Zacken-Divider: nur Linie, transparenter Hintergrund -->
-  <div aria-hidden="true" class="relative select-none leading-none">
-    <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
-        class="block w-full -mt-px"
-        style="height:14px">
-      <polyline
-        points="
-          0,8   90,4  180,7  280,3  370,6
-          455,2 560,7 655,3  760,6  860,4
-          980,7 1090,3 1200,8
-        "
-        fill="none"
-        stroke="#6C9941"
-        stroke-width="4"
-        vector-effect="non-scaling-stroke"
-        stroke-linejoin="round"
-        stroke-linecap="round" />
-    </svg>
-  </div>
 </header>
+
 
 <!-- Abstand nach sticky header (optional) -->
 <div class="h-16 lg:h-0"></div>
