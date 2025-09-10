@@ -150,66 +150,25 @@
       </div>
     </div>
   <?php endif; ?>
+  <!-- Subtiler Zacken-Divider: nur Linie, transparenter Hintergrund -->
   <div aria-hidden="true" class="relative select-none leading-none">
-  <svg viewBox="0 0 1200 160" preserveAspectRatio="none" class="block w-full" style="height: 110px">
-    <defs>
-      <!-- Farben zentral ändern -->
-      <style>
-        :root {
-          --c1: #6C9941; /* dunkel */
-          --c2: #85C345; /* mittel */
-          --c3: #A8E460; /* hell  */
-          --stroke: rgba(255,255,255,.65);
-        }
-      </style>
+    <svg viewBox="0 0 1200 24" preserveAspectRatio="none"
+        class="block w-full"
+        style="height: 22px">
+      <!-- nur Stroke, kein Fill: bleibt transparent -->
+      <polyline
+        points="
+          0,18 100,15 200,18 300,14 400,18 500,13
+          600,18 700,14 800,18 900,15 1000,18 1100,14 1200,18
+        "
+        fill="none"
+        stroke="#6C9941"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+        stroke-linecap="round" />
+    </svg>
+  </div>
 
-      <!-- Zacken-Clip (oben gerade, unten polygonal) -->
-      <clipPath id="bandClip">
-        <polygon points="
-          0,0 1200,0
-          1140,40 1040,20 950,55 860,30 770,85 660,48
-          560,95 460,38 360,70 260,32 160,62 80,28 0,45
-        "/>
-      </clipPath>
-    </defs>
-
-    <!-- Basis-Hintergrund im Clip -->
-    <g clip-path="url(#bandClip)">
-      <rect x="0" y="0" width="1200" height="160" fill="var(--c2)"/>
-
-      <!-- Facetten (füllungen) -->
-      <polygon fill="var(--c3)" points="0,0 240,0 160,62 0,45"/>
-      <polygon fill="var(--c1)" points="240,0 380,0 360,70 160,62"/>
-      <polygon fill="var(--c3)" points="380,0 520,0 460,38 360,70"/>
-      <polygon fill="var(--c1)" points="520,0 660,0 660,48 460,38"/>
-      <polygon fill="var(--c3)" points="660,0 820,0 770,85 660,48"/>
-      <polygon fill="var(--c1)" points="820,0 980,0 950,55 860,30"/>
-      <polygon fill="var(--c3)" points="980,0 1200,0 1140,40 1040,20"/>
-      <polygon fill="var(--c1)" points="820,0 860,30 770,85"/>
-      <polygon fill="var(--c3)" points="520,0 560,95 460,38"/>
-      <polygon fill="var(--c1)" points="240,0 160,62 80,28"/>
-      <polygon fill="var(--c3)" points="1040,20 950,55 1140,40"/>
-
-      <!-- Kantenlinien (weiß) -->
-      <g fill="none" stroke="var(--stroke)" stroke-width="2">
-        <!-- äußere Unterkante -->
-        <polyline points="1200,0 1140,40 1040,20 950,55 860,30 770,85 660,48 560,95 460,38 360,70 260,32 160,62 80,28 0,45" />
-        <!-- interne Facettenkanten (ein paar markante) -->
-        <line x1="240" y1="0" x2="160" y2="62"/>
-        <line x1="380" y1="0" x2="360" y2="70"/>
-        <line x1="520" y1="0" x2="460" y2="38"/>
-        <line x1="660" y1="0" x2="660" y2="48"/>
-        <line x1="820" y1="0" x2="770" y2="85"/>
-        <line x1="980" y1="0" x2="950" y2="55"/>
-        <line x1="1040" y1="20" x2="1140" y2="40"/>
-        <line x1="360" y1="70" x2="460" y2="38"/>
-        <line x1="460" y1="38" x2="660" y2="48"/>
-        <line x1="660" y1="48" x2="770" y2="85"/>
-        <line x1="770" y1="85" x2="950" y2="55"/>
-      </g>
-    </g>
-  </svg>
-</div>
 </header>
 
 <!-- Abstand nach sticky header (optional) -->
@@ -238,7 +197,7 @@
 
     <div class="mt-auto pt-4">
       <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
-         class="w-full inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold text-white bg-[#ff9a42] hover:bg-[#f08b33] transition">
+         class="w-full inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold no-underline text-white bg-[#ff9a42] hover:bg-[#f08b33] transition">
         <?php echo esc_html($cta_text); ?>
       </a>
     </div>
