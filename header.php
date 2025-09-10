@@ -72,12 +72,12 @@
 <body <?php body_class('bg-white text-gray-900 antialiased'); ?> x-data="{ open:false, mega:false }" x-on:keydown.escape.window="open=false; mega=false">
 <?php wp_body_open(); ?>
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur lg:h-[120px] h-28 max-h-[120px] supports-[backdrop-filter]:bg-white/75 border-b border-gray-200" role="banner">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur lg:h-[140px] h-full max-h-[140px] supports-[backdrop-filter]:bg-white/75 border-b border-gray-200" role="banner">
   <div class="container mx-auto max-w-7xl px-3 md:px-6">
-    <div class="flex items-center justify-between gap-3 h-20">
+    <div class="flex items-center justify-between gap-3 h-full">
 
       <!-- Logo -->
-      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center my-2" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
         <?php if ($logo_src): ?>
           <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-full max-h-[100px] w-auto">
         <?php else: ?>
