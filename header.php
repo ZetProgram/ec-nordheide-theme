@@ -72,49 +72,49 @@
 <body <?php body_class('bg-white text-gray-900 antialiased'); ?> x-data="{ open:false, mega:false }" x-on:keydown.escape.window="open=false; mega=false">
 <?php wp_body_open(); ?>
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur lg:h-[140px] h-full max-h-[140px] supports-[backdrop-filter]:bg-white/75 border-b border-gray-200" role="banner">
-  <div class="container mx-auto max-w-7xl px-3 md:px-6">
-    <div class="flex items-center justify-between gap-3 h-full">
-
-      <!-- Logo -->
-      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center my-2" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
-        <?php if ($logo_src): ?>
-          <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-full max-h-[100px] w-auto">
-        <?php else: ?>
-          <span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
-        <?php endif; ?>
-      </a>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center gap-6" aria-label="<?php esc_attr_e('Hauptnavigation','ec-nordheide-theme'); ?>">
-        <?php
-          wp_nav_menu([
-            'theme_location' => 'primary',
-            'container'      => false,
-            'fallback_cb'    => false,
-            'menu_class'     => 'flex items-center gap-6 font-medium',
-            'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-3xl">',
-            'link_after'     => '</span>',
-            // optional: 'walker' => new Your_Accessible_Walker_Nav_Menu(),
-          ]);
-        ?>
-
-        <!-- CTA -->
-        <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
-           class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#5CA6D1] hover:bg-[#4c8aad] text-3xl no-underline focus:outline-none transition uppercase font-bold">
-          <?php echo esc_html($cta_text); ?>
+<header class="sticky top-0 z-50 /* kein bg hier! */" role="banner">
+  <div class="bg-white/95 supports-[backdrop-filter]:bg-white/75 backdrop-blur border-b border-gray-200">
+    <div class="container mx-auto max-w-7xl px-3 md:px-6">
+      <div class="flex items-center justify-between gap-3 h-full">
+        <!-- Logo -->
+        <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center my-2" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+          <?php if ($logo_src): ?>
+            <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-full max-h-[100px] w-auto">
+          <?php else: ?>
+            <span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
+          <?php endif; ?>
         </a>
-      </nav>
 
-      <!-- Mobile: Toggle -->
-      <button type="button" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
-              x-on:click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav" aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
-        <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-6" aria-label="<?php esc_attr_e('Hauptnavigation','ec-nordheide-theme'); ?>">
+          <?php
+            wp_nav_menu([
+              'theme_location' => 'primary',
+              'container'      => false,
+              'fallback_cb'    => false,
+              'menu_class'     => 'flex items-center gap-6 font-medium',
+              'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-4xl">',
+              'link_after'     => '</span>',
+              // optional: 'walker' => new Your_Accessible_Walker_Nav_Menu(),
+            ]);
+          ?>
+
+          <!-- CTA -->
+          <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
+            class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-4xl no-underline focus:outline-none transition uppercase font-bold">
+            <?php echo esc_html($cta_text); ?>
+          </a>
+        </nav>
+
+        <!-- Mobile: Toggle -->
+        <button type="button" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gray-300 bg-white hover:bg-gray-50"
+                x-on:click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-nav" aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
     </div>
   </div>
-
   <!-- Mega-Menü: Arbeitsbereiche (Desktop) -->
   <?php if (!empty($arbeits_children)): ?>
     <div
@@ -154,16 +154,16 @@
   <div aria-hidden="true" class="relative select-none leading-none">
     <svg viewBox="0 0 1200 24" preserveAspectRatio="none"
         class="block w-full"
-        style="height: 22px">
-      <!-- nur Stroke, kein Fill: bleibt transparent -->
+        style="height:22px">
       <polyline
         points="
-          0,18 100,15 200,18 300,14 400,18 500,13
-          600,18 700,14 800,18 900,15 1000,18 1100,14 1200,18
+          0,18   80,12  160,17  250,13  330,19
+          420,11 510,18 600,14  690,16  780,13
+          860,19 950,15 1040,17 1120,12 1200,18
         "
         fill="none"
         stroke="#6C9941"
-        stroke-width="2.5"
+        stroke-width="3"
         stroke-linejoin="round"
         stroke-linecap="round" />
     </svg>
