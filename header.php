@@ -129,7 +129,8 @@
         </button>
       </div>
     </div>
-
+  </div>
+  <div>
     <!-- Divider: Polygonfüllung + grüne Linie -->
     <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
         class="pointer-events-none absolute inset-x-0 -bottom-[1px] h-[14px] w-full z-10">
@@ -147,7 +148,6 @@
         stroke-linecap="round" />
     </svg>
   </div>
-
   <!-- Mega-Menü: Arbeitsbereiche (Desktop) -->
   <?php if (!empty($arbeits_children)): ?>
     <div
