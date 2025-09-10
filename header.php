@@ -72,9 +72,8 @@
 <body <?php body_class('bg-white text-gray-900 antialiased'); ?> x-data="{ open:false, mega:false }" x-on:keydown.escape.window="open=false; mega=false">
 <?php wp_body_open(); ?>
 
-<header class="sticky top-0 z-50" role="banner">
-  <!-- Topbar mit Hintergrund -->
-  <div class="bg-[#F7F5EC] relative">
+<header class="sticky top-0 z-50 bg-[#F7F5EC] isolate" role="banner">
+  <div class="relative">
     <div class="container mx-auto max-w-7xl px-3 md:px-6">
       <div class="flex items-center justify-between gap-3 h-full">
         <!-- Logo -->
@@ -133,10 +132,10 @@
 
     <!-- Divider: Polygonfüllung + grüne Linie -->
     <svg viewBox="0 0 1200 10" preserveAspectRatio="none"
-         class="pointer-events-none absolute inset-x-0 -bottom-[1px] h-[14px] w-full text-[#F7F5EC] z-10">
-      <!-- Füllfläche: gleiche BG-Farbe -->
+        class="pointer-events-none absolute inset-x-0 -bottom-[1px] h-[14px] w-full z-10">
+      <!-- Füllfläche: explizit in #F7F5EC -->
       <path d="M0,0 L1200,0 L1200,8 L1090,3 L980,7 L860,4 L760,6 L655,3 L560,7 L455,2 L370,6 L280,3 L180,7 L90,4 L0,8 Z"
-            fill="currentColor"/>
+            fill="#F7F5EC"/>
       <!-- Linie -->
       <polyline
         points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8"
