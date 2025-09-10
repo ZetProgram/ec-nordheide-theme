@@ -77,9 +77,9 @@
     <div class="flex items-center justify-between gap-3 h-20">
 
       <!-- Logo -->
-      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center max-h-[100px]" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+      <a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
         <?php if ($logo_src): ?>
-          <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-10 w-auto">
+          <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-10 max-h-[100px] w-auto">
         <?php else: ?>
           <span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
         <?php endif; ?>
