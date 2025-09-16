@@ -99,7 +99,7 @@
               'fallback_cb'    => false,
               'menu_class'     => 'flex items-center gap-6 font-medium',
               'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] font-bold uppercase color-[#1A1A1A] text-[20px]">',
+              'link_before'    => '<span class="inline-block py-2 hover:color-[#6C9941] uppercase color-[#1A1A1A] text-[20px]">',
               'link_after'     => '</span>',
             ]);
           ?>
@@ -116,7 +116,7 @@
           <!-- Spenden CTA -->
           <a href="<?php echo esc_url($cta_url); ?>" 
              target="<?php echo esc_attr($cta_target); ?>"
-             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-[20px] no-underline focus:outline-none transition uppercase font-bold" style="text-decoration: none !important;">
+             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-[20px] no-underline focus:outline-none transition uppercase" style="text-decoration: none !important;">
             <?php echo esc_html($cta_text); ?>
           </a>
         </nav>
