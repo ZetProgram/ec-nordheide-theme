@@ -10,33 +10,56 @@
 farben:
 #9ec850 helles grün
 #388134 dunkles grün
-
 */
 
-@font-face {
-	font-family: 'Goldney';
-	src: url('/wp-content/themes/ec-nordheide-theme/fonts/Goldney-Regular.otf') format('opentype');
-	font-size: 0.5em;
+@font-face{
+  font-family:"Goldney";
+  src:url("fonts/Goldney-Regular.otf") format("opentype");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
 }
 
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/wp-content/themes/ec-nordheide-theme/fonts/Montserrat-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+/* Montserrat 400 Regular */
+@font-face{
+  font-family:"Montserrat";
+  src:url("fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
 }
 
+/* Montserrat 700 Bold */
+@font-face{
+  font-family:"Montserrat";
+  src:url("fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* Montserrat 400 Italic */
+@font-face{
+  font-family:"Montserrat";
+  src:url("fonts/Montserrat-Italic.ttf") format("truetype");
+  font-weight:400;
+  font-style:italic;
+  font-display:swap;
+}
+
+html, body{
+  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
 html {
-  width: 100%;
-  overflow-x: hidden;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 100%;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-size: 100%;
 }
 
 .beta_container {
@@ -316,7 +339,7 @@ body {
 	height: 50vw;
 	width: 100%;
 	overflow: hidden;
-	background-image: url(/wp-content/themes/ecjugend20192/img/bg_hexagone_1920x1582.png);
+	background-image: url(/wp-content/themes/ec-nordheide-theme/img/bg_hexagone_1920x1582.png);
 	background-position: center center;
 	background-size: 100% auto;
 	opacity: 1;
@@ -391,7 +414,7 @@ body {
 
 .menu_triangle_spitze {
 
-	background-image: url('/wp-content/themes/ecjugend20192/img/dreieck_spitze_unten_schatten.png');
+	background-image: url('/wp-content/themes/ec-nordheide-theme/img/dreieck_spitze_unten_schatten.png');
 	background-size: 100% 100%;
 	background-position: 100% 100%;
 	background-repeat: no-repeat;
@@ -928,7 +951,7 @@ input {
 	padding: 10px;
 	width: 150px;
 
-	background-image: url('/wp-content/themes/ecjugend20192/img/halbes_hexagon_rechts_grau.png');
+	background-image: url('/wp-content/themes/ec-nordheide-theme/img/halbes_hexagon_rechts_grau.png');
 	background-size: 11.3%;
 	background-position: 98% 50%;
 	background-repeat: no-repeat;
@@ -942,7 +965,7 @@ input {
 .xbutton_div:hover {
 	background-color: #a7c02a;
 	color: #fff;
-	background-image: url('/wp-content/themes/ecjugend20192/img/halbes_hexagon_rechts_weiss.png');
+	background-image: url('/wp-content/themes/ec-nordheide-theme/img/halbes_hexagon_rechts_weiss.png');
 	background-size: 11.3%;
 	background-position: 98% 50%;
 	background-repeat: no-repeat;
@@ -963,7 +986,7 @@ input {
 	transition: 0.4s;
 	text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
 	background-color: transparent !important;
-	background-image: url('/wp-content/themes/ecjugend20192/img/halbes_hexagon_rechts_weiss.png');
+	background-image: url('/wp-content/themes/ec-nordheide-theme/img/halbes_hexagon_rechts_weiss.png');
 	background-size: 11.3%;
 	background-position: 98% 50%;
 	background-repeat: no-repeat;
@@ -1049,7 +1072,7 @@ button:hover {
 
 .button_zeichen {
 	background-color: #4d5258;
-	background-image: url(/wp-content/themes/ecjugend20192/img/afz_btn.png);
+	background-image: url(/wp-content/themes/ec-nordheide-theme/img/afz_btn.png);
 	background-position: center;
 	background-size: cover;
 	width: 50px;
@@ -1343,7 +1366,7 @@ h5 strong em {
 	top: -50%;
 	left: -50%;
 	z-index: -1;
-	background: url(/wp-content/themes/ecjugend20192/img/insta_overlay_50Pro.png);
+	background: url(/wp-content/themes/ec-nordheide-theme/img/insta_overlay_50Pro.png);
 	background-size: cover;
 
 }
@@ -1454,7 +1477,7 @@ h5 strong em {
 	padding-top: 120px;
 	padding-bottom: 50px;
 	opacity: 1;
-	background-image: url(/wp-content/themes/ecjugend20192/img/footer_bg_hexagone_verlauf_35Pro.png);
+	background-image: url(/wp-content/themes/ec-nordheide-theme/img/footer_bg_hexagone_verlauf_35Pro.png);
 	background-size: 100%;
 	background-color: #8fb217;
 }

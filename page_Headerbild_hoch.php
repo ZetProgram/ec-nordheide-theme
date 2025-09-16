@@ -16,11 +16,10 @@
 </div>
 	<div class="inhalts_container_100" style="">
 	
-				<!-- nur für die Terminliste -->
+	<!-- nur für die Terminliste -->
 	<?php
 	if ( have_posts() ) :
-		while ( have_posts() ) :
-			the_post();
+		while ( have_posts() ) : the_post();
 			?>
 		<!--<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>-->
 		<div class="entry">
@@ -28,14 +27,12 @@
 		</div>
 				<?php
 		endwhile;
-endif;
+	endif;
 	?>
 	  
-				<div class="abstand_150"></div>
+	<div class="abstand_150"></div>
 	</div><!-- inhalts_container_mittig_max_width -->
 	
-	
 	</div><!-- main -->
- 
  
 <?php get_footer(); ?>

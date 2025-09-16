@@ -110,7 +110,7 @@
                     :aria-expanded="open.toString()" 
                     aria-controls="mobile-nav" 
                     aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
-              <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>" class="max-h-[60px] w-12 h-12">
+              <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>" class="max-h-[60px] w-12 h-12"> 
           </button>
 
           <!-- Spenden CTA -->
