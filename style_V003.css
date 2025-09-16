@@ -20,22 +20,23 @@ farben:
 }
 
 @font-face {
-	font-family: 'Montserrat';
-	src: url('/wp-content/themes/ec-nordheide-theme/fonts/Montserrat-Regular.otf') format('opentype');
-	font-size: 0.5em;
+  font-family: 'Montserrat';
+  src: url('/wp-content/themes/ec-nordheide-theme/fonts/Montserrat-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html {
-	width: 100%;
-	overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	color: #333;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 100%;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 100%;
 }
 
 .beta_container {

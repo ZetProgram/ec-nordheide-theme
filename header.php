@@ -105,24 +105,21 @@
           ?>
 
           <button type="button" 
-                  class="inline-flex items-center justify-center w-12 h-12"
-                  x-on:click="open = !open" 
-                  :aria-expanded="open.toString()" 
-                  aria-controls="mobile-nav" 
-                  aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>">
+                    class="inline-flex items-center justify-center w-12 h-12"
+                    x-on:click="open = !open" 
+                    :aria-expanded="open.toString()" 
+                    aria-controls="mobile-nav" 
+                    aria-label="<?php esc_attr_e('Menü öffnen','ec-nordheide-theme'); ?>">
+              <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü Icon','ec-nordheide-theme'); ?>" class="max-h-[60px] w-12 h-12">
           </button>
 
           <!-- Spenden CTA -->
           <a href="<?php echo esc_url($cta_url); ?>" 
              target="<?php echo esc_attr($cta_target); ?>"
-             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-[20px] no-underline focus:outline-none transition uppercase font-bold">
+             class="inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-[20px] no-underline focus:outline-none transition uppercase font-bold" style="text-decoration: none !important;">
             <?php echo esc_html($cta_text); ?>
           </a>
         </nav>
-
-        <!-- Mobile Toggle -->
-
       </div>
     </div>
   </div>
