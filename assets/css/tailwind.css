@@ -1,9 +1,12 @@
 @import "tailwindcss";
+@import "./style_blocks.css";
+@import "./style_grid_system.css";
+@import "./style_effekte.css";
+@import "./style_V003.css";
+@import "./style_mobil.css";
+@import "./style_tabs.css";
 
-/* Sage Tailwind, wo es Klassen finden soll (PHP, HTML, JS, TS im Theme) */
 @source "../../**/*.{php,html,js,ts}";
-
-/* Optional weiter nutzen: Theme-Erweiterungen aus deiner config */
 @config "../../tailwind.config.js";
 
 @layer utilities {
@@ -11,4 +14,64 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
   }
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-size: 100%;
+}
+
+html, body{
+  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 400; /* oder 300 für Light, 100 für Thin */
+}
+
+@font-face{
+  font-family:"Goldney";
+  src:url("fonts/Goldney-Regular.otf") format("opentype");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
