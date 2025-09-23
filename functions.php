@@ -57,8 +57,7 @@ add_action('after_setup_theme', function () {
 
 // ---- Admin-Hilfe: Menü-Beschreibung spalten (für Bild-URLs) ----
 add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $args) {
-  // Keine Ausgabe-Manipulation – Hinweis: Beschreibung verwenden wir serverseitig im Mega.
-  return $item_output;
+	return $item_output;
 }, 10, 4);
 
 /**
@@ -67,14 +66,14 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
  * - bestehende style.css (nur was ihr noch braucht)
  */
 add_action('wp_enqueue_scripts', function () {
-  $base = get_stylesheet_directory_uri();
-  $path = get_stylesheet_directory() . '/assets/css/tailwind_minify.css'; // <-- hier!
-  $ver  = file_exists($path) ? filemtime($path) : null;
+	$base = get_stylesheet_directory_uri();
+	$path = get_stylesheet_directory() . '/assets/css/tailwind_minify.css'; // <-- hier!
+	$ver  = file_exists($path) ? filemtime($path) : null;
 
-  wp_enqueue_style('theme-tailwind', $base . '/assets/css/tailwind_minify.css', [], $ver);
-  wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
-  wp_enqueue_script('alpine', 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js', [], null, true);
-
+	wp_enqueue_style('theme-tailwind', $base . '/assets/css/tailwind_minify.css', [], $ver);
+	wp_enqueue_style('theme-style', $base . '/style.css', ['theme-tailwind'], null);
+	wp_enqueue_script('alpine', 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js', [], null, true);
+	wp_script_add_data('alpine', 'defer', true);
 });
 
 
@@ -125,20 +124,6 @@ add_action(
 		@session_write_close();
 	},
 	1
-);
-
-/**
- * Theme-Support: Logo
- */
-add_theme_support(
-	'custom-logo',
-	array(
-		'height'      => 150,
-		'width'       => 150,
-		'flex-height' => true,
-		'flex-width'  => true,
-		'header-text' => array( 'site-title', 'site-description' ),
-	)
 );
 
 /**
@@ -290,88 +275,10 @@ function pf( $a ) {
 }
 
 /**
- * Menüausgabe für header.php (Seitenstruktur, 2./3. Ebene)
- */
-function liste_menu( $post_parent ) {
-	$args = array(
-		'sort_order'   => 'ASC',
-		'sort_column'  => 'menu_order',
-		'hierarchical' => 1,
-		'parent'       => $post_parent,
-		'post_type'    => 'page',
-		'post_status'  => 'publish',
-	);
-	$o_alle_seiten_zweite_ebene_unsortiert = get_pages( $args );
-	$a_alle_seiten_zweite_ebene_unsortiert = object_to_array( $o_alle_seiten_zweite_ebene_unsortiert );
-
-	$s_ebene_2 = '';
-	if ( count( $a_alle_seiten_zweite_ebene_unsortiert ) > 0 ) {
-		$s_ebene_2 .= '<ul>';
-	}
-
-	foreach ( $a_alle_seiten_zweite_ebene_unsortiert as $z => $a_seiten_zweite_ebene ) {
-		$post_title = $a_seiten_zweite_ebene['post_title'];
-		$target_ext = '';
-
-		if ( strpos( $post_title, '[ext]' ) !== false ) {
-			$target_ext = 'target="_blank"';
-		}
-
-		$s_ebene_2 .= "<li class='ebene_2'><a {$target_ext} href='" . $a_seiten_zweite_ebene['guid'] . "'><span>" . $post_title . '</span></a>';
-
-		// dritte Ebene holen
-		$args2 = array(
-			'sort_order'   => 'ASC',
-			'sort_column'  => 'menu_order',
-			'hierarchical' => 1,
-			'parent'       => $a_seiten_zweite_ebene['ID'],
-			'post_type'    => 'page',
-			'post_status'  => 'publish',
-		);
-		$o_alle_seiten_dritte_ebene_unsortiert = get_pages( $args2 );
-		$a_alle_seiten_dritte_ebene_unsortiert = object_to_array( $o_alle_seiten_dritte_ebene_unsortiert );
-
-		if ( count( $a_alle_seiten_dritte_ebene_unsortiert ) > 0 ) {
-			$s_ebene_2 .= '<ul>';
-			foreach ( $a_alle_seiten_dritte_ebene_unsortiert as $z => $a_seiten_dritte_ebene ) {
-				$s_ebene_2      .= "<li class='ebene_3'><a href='" . $a_seiten_dritte_ebene['guid'] . "'><span>" . $a_seiten_dritte_ebene['post_title'] . '</span></a></li>';
-				$a_content_menu .= "'<a href='" . $a_seiten_dritte_ebene['guid'] . "'><span>" . $a_seiten_dritte_ebene['post_title'] . "</span></a>'";
-			}
-			$s_ebene_2 .= '</ul>';
-		}
-		$s_ebene_2 .= '</li>';
-	}
-
-	if ( count( $a_alle_seiten_zweite_ebene_unsortiert ) > 0 ) {
-		$s_ebene_2 .= '</ul>';
-	}
-
-	return $s_ebene_2;
-}
-
-/**
- * Widgets
- */
-function deinthemename_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => 'Erstes Widget',
-			'id'            => 'erstes_widget',
-			'description'   => 'Mein erstes selbst angelegtes Widget Area',
-			'before_widget' => '<div class="juhu_ein_widget">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2>',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'deinthemename_widgets_init' );
-
-/**
  * Suche Shortcode
  */
 function search_form_shortcode() {
-	get_search_form();
+  return get_search_form(false); // gibt String zurück
 }
 add_shortcode( 'search_form', 'search_form_shortcode' );
 
@@ -393,7 +300,7 @@ function nf_datepicker_modify_script( $args ) {
 	$args['minDate']     = '0';
 	$args['changeMonth'] = 1;
 	$args['changeYear']  = 1;
-	$args['yearRange']   = '2002:2012';
+	$args['yearRange']   = '1980:2100';
 	return $args;
 }
 add_filter( 'ninja_forms_forms_display_datepicker_args', 'nf_datepicker_modify_script' );

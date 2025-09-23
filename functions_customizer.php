@@ -1,17 +1,5 @@
 <?php
-/**
- * Customizer: Einstellungen für Menü-Spalten, Highlight-Button, Instagram, Footer-Adresse, Hexagone
- * - Fix: Undefined variable $aktuelle_seite entfernt (Optionen-Funktion braucht das nicht)
- * - Fix: object_to_array entfernt – wir arbeiten direkt mit den Page-Objekten
- * - Fix: Falsche Array-Einträge entfernt (z. B. 'theme-slug' ohne Key)
- * - Fix: Control-Typen konsistent (text/number/url/select)
- */
 
-/**
- * Adds Layout Options section and sidebar position setting.
- *
- * @param WP_Customize_Manager $wp_customize The Customizer object.
- */
 function theme_slug_customize_register_spendenButton($wp_customize) {
 $wp_customize->add_section('cta_button_section', array(
 		'title'       => __('Spenden-Button', 'ec-nordheide-theme'),
@@ -46,7 +34,9 @@ $wp_customize->add_section('cta_button_section', array(
 	// target
 	$wp_customize->add_setting('highlightbtn_target', array(
 		'default'           => '_self',
-		'sanitize_callback' => function($v){ return in_array($v, array('_self','_blank'), true) ? $v : '_self'; },
+		'sanitize_callback' => function($v){
+			return in_array($v, array('_self','_blank'), true) ? $v : '_self';
+		},
 		'transport'         => 'refresh',
 	));
 	$wp_customize->add_control('highlightbtn_target', array(
@@ -152,25 +142,17 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 	);
 
 	// Insta Link
-	$wp_customize->add_setting(
-		'instagram_link',
-		array(
-			'default'           => 'https://www.instagram.com/ecnordheide/',
-			'sanitize_callback' => 'theme_slug_sanitize_textarea_html',
-			'transport'         => 'refresh',
-		)
-	);
-
-	$wp_customize->add_control(
-		'instagram_link',
-		array(
-			'type'        => 'text',
-			'label'       => esc_html__( 'Instagram Link', 'theme-slug' ),
-			'description' => esc_html__( 'Der Link zu deiner Instagram-Seite.', 'theme-slug' ),
-			'section'     => 'theme_slug_instagram',
-			'priority'    => 1,
-		)
-	);
+	$wp_customize->add_setting('instagram_link', array(
+		'default' => 'https://www.instagram.com/ecnordheide/',
+		'sanitize_callback' => 'theme_slug_sanitize_url',
+		'transport' => 'refresh',
+	));
+	$wp_customize->add_control('instagram_link', array(
+		'type' => 'url',
+		'label' => esc_html__('Instagram Link', 'theme-slug'),
+		'section' => 'theme_slug_instagram',
+		'priority' => 1,
+	));
 
 	// Button-Beschriftung
 	$wp_customize->add_setting(
@@ -190,16 +172,6 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 			'description' => esc_html__( 'Beschriftung des Buttons unter den Hexagonen.', 'theme-slug' ),
 			'section'     => 'theme_slug_instagram',
 			'priority'    => 1,
-		)
-	);
-
-	// Instagram An/Aus
-	$wp_customize->add_setting(
-		'instagram_an_aus',
-		array(
-			'default'           => 'an',
-			'sanitize_callback' => 'theme_slug_sanitize_select',
-			'transport'         => 'refresh',
 		)
 	);
 
@@ -226,10 +198,6 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 }
 add_action( 'customize_register', 'theme_slug_customize_register_Instagram' );
 
-
-add_action( 'customize_register', 'theme_slug_customize_register_Footeradresse' );
-
-
 // Hexagone
 function theme_slug_customize_register_Hexagone( $wp_customize ) {
 
@@ -242,14 +210,11 @@ function theme_slug_customize_register_Hexagone( $wp_customize ) {
 	);
 
 	// Anzahl
-	$wp_customize->add_setting(
-		'anzahl_hexagone',
-		array(
-			'default'           => '10',
-			'transport'         => 'refresh',
-			'sanitize_callback' => 'theme_slug_sanitize_input',
-		)
-	);
+	$wp_customize->add_setting('anzahl_hexagone', array(
+		'default' => '10',
+		'transport' => 'refresh',
+		'sanitize_callback' => 'theme_slug_sanitize_int',
+	));
 
 	$wp_customize->add_control(
 		'anzahl_hexagone',
@@ -589,6 +554,8 @@ function theme_slug_sanitize_textarea_html( $input ) {
 	);
 	return wp_kses( $input, $allowed );
 }
+function theme_slug_sanitize_int( $v ) { return absint( $v ); }
+function theme_slug_sanitize_float( $v ) { return is_numeric($v) ? floatval($v) : 0; }
 
 
 /**
@@ -634,3 +601,4 @@ function cm_has_children( $post_id ): bool {
 	);
 	return ! empty( $children );
 }
+
