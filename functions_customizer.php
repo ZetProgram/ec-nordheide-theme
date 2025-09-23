@@ -14,7 +14,7 @@
  */
 function theme_slug_customize_register_spendenButton($wp_customize) {
 $wp_customize->add_section('cta_button_section', array(
-		'title'       => __('Header: Spenden-Button', 'ec-nordheide-theme'),
+		'title'       => __('Spenden-Button', 'ec-nordheide-theme'),
 		'priority'    => 30,
 	));
 
@@ -58,73 +58,11 @@ $wp_customize->add_section('cta_button_section', array(
 }
 add_action('customize_register', "theme_slug_customize_register_spendenButton");
 
-
-
-
-function theme_slug_customize_register_MainMenuSpalten( $wp_customize ) {
-
-	$wp_customize->add_section(
-		'theme_slug_mainmenu_spalten',
-		array(
-			'title'       => esc_html__( 'Menü Spalten', 'theme-slug' ),
-			'priority'    => 120,
-			/* Hinweis: Im Customizer sollten Links besser relativ vermieden werden, hier aber beibehalten */
-			'description' => wp_kses_post(
-				'Hier kannst du bis zu vier Spalten für die Darstellung der Navigation im Hauptmenü definieren. 
-             Definiere jeweils die Überschrift und die Elternseite, dessen Unterelemente gelistet werden sollen.<br />
-             Es werden nur Elternseiten gelistet, die auch in der <a href="/wp-admin/edit.php?post_type=page">Seitenstruktur</a> Unterelemente aufweisen.'
-			),
-		)
-	);
-
-	$a_options = cm_hole_options_alle_seiten();
-
-	for ( $i = 1; $i <= 4; $i++ ) {
-
-		// Überschrift Spalte
-		$wp_customize->add_setting(
-			'main_meu_spalte_bezeichnung_' . $i,
-			array(
-				'default'           => 'Überschrift ' . $i,
-				'sanitize_callback' => 'theme_slug_sanitize_input',
-				'transport'         => 'refresh',
-			)
-		);
-
-		$wp_customize->add_control(
-			'main_meu_spalte_bezeichnung_' . $i,
-			array(
-				/* Für Freitext passt 'text' besser als 'input' */
-				'type'     => 'text',
-				'label'    => sprintf( esc_html__( 'Spalte %d: Überschrift / Elternseite', 'theme-slug' ), $i ),
-				'section'  => 'theme_slug_mainmenu_spalten',
-				'priority' => 1,
-			)
-		);
-
-		// Parent-ID Spalte
-		$wp_customize->add_setting(
-			'main_meu_spalte_' . $i,
-			array(
-				'default'           => '123',
-				'sanitize_callback' => 'theme_slug_sanitize_select',
-				'transport'         => 'refresh',
-			)
-		);
-
-		$wp_customize->add_control(
-			'main_meu_spalte_' . $i,
-			array(
-				'type'     => 'select',
-				'section'  => 'theme_slug_mainmenu_spalten',
-				'priority' => 1,
-				'choices'  => $a_options,
-			)
-		);
-	}
-}
-add_action( 'customize_register', 'theme_slug_customize_register_MainMenuSpalten' );
-
+add_action('after_setup_theme', function () {
+  register_nav_menus([
+    'primary' => __('Hauptnavigation', 'ec-nordheide-theme'),
+  ]);
+});
 
 // Hervorgehobener Button
 /*
@@ -213,9 +151,9 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 	$wp_customize->add_section(
 		'theme_slug_instagram',
 		array(
-			'title'       => esc_html__( 'Instagram im Footer', 'theme-slug' ),
+			'title'       => esc_html__( 'Instagram ', 'theme-slug' ),
 			'priority'    => 120,
-			'description' => esc_html__( 'Um Instagram im Footer einzublenden, definiere hier die nötigen Daten.', 'theme-slug' ),
+			'description' => esc_html__( 'Damit Instagram verbunden ist, definiere hier die nötigen Daten.', 'theme-slug' ),
 		)
 	);
 
@@ -223,7 +161,7 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 	$wp_customize->add_setting(
 		'instagram_link',
 		array(
-			'default'           => 'https://www.instagram.com/ecjugend/',
+			'default'           => 'https://www.instagram.com/ecnordheide/',
 			'sanitize_callback' => 'theme_slug_sanitize_textarea_html',
 			'transport'         => 'refresh',
 		)
@@ -271,21 +209,6 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_control(
-		'instagram_an_aus',
-		array(
-			'type'        => 'select',
-			'label'       => esc_html__( 'Instagram An/Aus', 'theme-slug' ),
-			'description' => esc_html__( 'Hiermit kannst du das Instagram-Element ausblenden.', 'theme-slug' ),
-			'section'     => 'theme_slug_instagram',
-			'choices'     => array(
-				'an'  => esc_html__( 'An', 'theme-slug' ),
-				'aus' => esc_html__( 'Aus', 'theme-slug' ),
-			),
-			'priority'    => 1,
-		)
-	);
-
 	// Access Token
 	$wp_customize->add_setting(
 		'instagram_access_token',
@@ -310,40 +233,6 @@ function theme_slug_customize_register_Instagram( $wp_customize ) {
 add_action( 'customize_register', 'theme_slug_customize_register_Instagram' );
 
 
-// Adresse im Footer
-function theme_slug_customize_register_Footeradresse( $wp_customize ) {
-
-	$wp_customize->add_section(
-		'theme_slug_footeradresse',
-		array(
-			'title'       => esc_html__( 'Adresse im Footer', 'theme-slug' ),
-			'priority'    => 120,
-			'description' => wp_kses_post(
-				'Hier kannst du die Adresse definieren, die im Footer erscheinen soll. 
-             Erlaubte HTML-Tags: <ul><li>a<ul><li>href</li><li>title</li><li>target</li></ul></li><li>br</li><li>strong</li></ul>'
-			),
-		)
-	);
-
-	$wp_customize->add_setting(
-		'footeradresse',
-		array(
-			'default'           => 'Deutscher Jugendverband<br /><strong>"Entschieden für Christus"</strong> e.V.<br />Leuschnerstr. 74<br />34134 Kassel<br /><a href="tel:0561 4095 0" target="_blank" title="" style="color: #fff;">Tel: 0561 4095 0</a>',
-			'transport'         => 'refresh',
-			'sanitize_callback' => 'theme_slug_sanitize_textarea_html',
-		)
-	);
-
-	$wp_customize->add_control(
-		'footeradresse',
-		array(
-			'type'     => 'textarea',
-			'label'    => esc_html__( 'Adresse im Footer', 'theme-slug' ),
-			'section'  => 'theme_slug_footeradresse',
-			'priority' => 1,
-		)
-	);
-}
 add_action( 'customize_register', 'theme_slug_customize_register_Footeradresse' );
 
 
