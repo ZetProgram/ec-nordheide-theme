@@ -51,8 +51,7 @@ add_action('after_setup_theme', function () {
   ]);
   // Menü-Locations
   register_nav_menus([
-    'primary'          => __('Hauptmenü', 'ec-nordheide-theme'),
-    'arbeitsbereiche'  => __('Arbeitsbereiche (optional)', 'ec-nordheide-theme'),
+    'primary' => __('Hauptnavigation', 'ec-nordheide-theme'),
   ]);
 });
 

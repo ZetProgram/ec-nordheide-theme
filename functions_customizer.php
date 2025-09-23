@@ -58,13 +58,7 @@ $wp_customize->add_section('cta_button_section', array(
 }
 add_action('customize_register', "theme_slug_customize_register_spendenButton");
 
-add_action('after_setup_theme', function () {
-  register_nav_menus([
-    'primary' => __('Hauptnavigation', 'ec-nordheide-theme'),
-  ]);
-});
-
-// Hervorgehobener Button
+// Search Button
 /*
 function theme_slug_customize_register_HighlightButton( $wp_customize ) {
 
