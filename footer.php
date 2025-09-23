@@ -1,8 +1,11 @@
 <?php
   // Schließe ggf. vorherige Container/Divs, falls nötig.
 ?>
-
-<footer id="site-footer" class="bg-[#D9D9D9] text-white mt-16">
+<?php
+$logo_id  = get_theme_mod('custom_logo'); 
+$logo_src = $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
+?>
+<footer id="site-footer" class="bg-[#D9D9D9] text-[#1A1A1A] mt-16">
   <!-- Upper footer: 3 columns -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -17,7 +20,7 @@
           $phone = get_theme_mod('footer_contact_phone', '');
           $email = get_theme_mod('footer_contact_email', '');
         ?>
-          <h3 class="font-semibold text-white text-lg mb-3"><?php esc_html_e('Kontakt','ec-nordheide-theme'); ?></h3>
+          <h3 class="font-semibold text-[#1A1A1A] text-lg mb-3"><?php esc_html_e('Kontakt','ec-nordheide-theme'); ?></h3>
           <div class="space-y-1 text-sm leading-6">
             <?php if ($org)   echo '<div>'.esc_html($org).'</div>'; ?>
             <?php if ($addr)  echo '<div>'.$addr.'</div>'; ?>
@@ -28,16 +31,16 @@
           <!-- Social-Icons Platzhalter -->
           <div class="flex gap-3 mt-4">
             <!-- Beispiel: Ersetze # durch echte Links -->
-            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-white/40 rounded" aria-label="Instagram">
+            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-[#1A1A1A] rounded" aria-label="Instagram">
               <span class="sr-only">Instagram</span>⌁
             </a>
-            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-white/40 rounded" aria-label="YouTube">
+            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-[#1A1A1A] rounded" aria-label="YouTube">
               <span class="sr-only">YouTube</span>▶
             </a>
-            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-white/40 rounded" aria-label="Facebook">
+            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-[#1A1A1A] rounded" aria-label="Facebook">
               <span class="sr-only">Facebook</span>f
             </a>
-            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-white/40 rounded" aria-label="WhatsApp">
+            <a href="#" class="inline-flex items-center justify-center w-10 h-10 border border-[#1A1A1A] rounded" aria-label="WhatsApp">
               <span class="sr-only">WhatsApp</span>◷
             </a>
           </div>
@@ -49,8 +52,8 @@
         <?php if ( is_active_sidebar('footer_col_2') ) : ?>
           <?php dynamic_sidebar('footer_col_2'); ?>
         <?php else : ?>
-          <h3 class="font-semibold text-white text-lg mb-3"><?php esc_html_e('Newsletter','ec-nordheide-theme'); ?></h3>
-          <p class="text-sm text-white/90 mb-2">
+          <h3 class="font-semibold text-[#1A1A1A] text-lg mb-3"><?php esc_html_e('Newsletter','ec-nordheide-theme'); ?></h3>
+          <p class="text-sm text-[#1A1A1A] mb-2">
             <?php esc_html_e('Bleibe über Neuigkeiten informiert.','ec-nordheide-theme'); ?>
           </p>
           <a href="#" class="inline-flex items-center gap-2 underline">
@@ -64,7 +67,7 @@
         <?php if ( is_active_sidebar('footer_col_3') ) : ?>
           <?php dynamic_sidebar('footer_col_3'); ?>
         <?php else : ?>
-          <h3 class="font-semibold text-white text-lg mb-3"><?php esc_html_e('Klingt interessant','ec-nordheide-theme'); ?></h3>
+          <h3 class="font-semibold text-[#1A1A1A] text-lg mb-3"><?php esc_html_e('Klingt interessant','ec-nordheide-theme'); ?></h3>
           <ul class="space-y-2 text-sm">
             <li><a class="hover:underline" href="#"><?php esc_html_e('Wer steckt hinter EC Nordheide?','ec-nordheide-theme'); ?></a></li>
             <li><a class="hover:underline" href="#"><?php esc_html_e('Welche Arbeitsbereiche gibt es?','ec-nordheide-theme'); ?></a></li>
@@ -81,7 +84,7 @@
 
   <!-- Divider -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <hr class="border-white/15">
+    <hr class="border-[#1A1A1A]">
   </div>
 
   <!-- Bottom bar: Logo + Bottom menu -->
@@ -89,7 +92,18 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <?php if ( function_exists('the_custom_logo') && has_custom_logo() ) : ?>
-          <div class="shrink-0"><?php the_custom_logo(); ?></div>
+			
+          <div class="shrink-0">
+			<a href="<?php echo esc_url( home_url('/') ); ?>" class="shrink-0 inline-flex items-center my-2" aria-label="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+				<?php if ($logo_src): ?>
+					<img src="<?php echo esc_url($logo_src); ?>" 
+						alt="<?php echo esc_attr(get_bloginfo('name')); ?>" 
+						class="h-full max-h-[60px] md:max-h-[75px] lg:max-h-[85px] w-auto">
+				<?php else: ?>
+					<span class="font-black text-xl tracking-tight"><?php bloginfo('name'); ?></span>
+				<?php endif; ?>
+			</a>
+		  </div>
         <?php else: ?>
           <span class="font-semibold"><?php bloginfo('name'); ?></span>
         <?php endif; ?>
@@ -102,7 +116,7 @@
           'container'      => false,
           'fallback_cb'    => false,
           'depth'          => 1,
-          'items_wrap'     => '<ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">%3$s</ul>',
+          'items_wrap'     => '<ul class="flex flex-wrap items-center gap-x-5 gap-y-2 text-md">%3$s</ul>',
           'link_before'    => '',
           'link_after'     => '',
         ]);
