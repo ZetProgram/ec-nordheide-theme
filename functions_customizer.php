@@ -48,6 +48,19 @@ $wp_customize->add_section('cta_button_section', array(
 }
 add_action('customize_register', "theme_slug_customize_register_spendenButton");
 
+add_action('customize_register', function($c){
+  $c->add_section('footer_contact', ['title'=>__('Footer: Kontakt','ec-nordheide-theme'), 'priority'=>130]);
+  foreach ([
+    'org'   => __('Organisation/Name','ec-nordheide-theme'),
+    'addr'  => __('Adresse (mehrzeilig)','ec-nordheide-theme'),
+    'phone' => __('Telefon','ec-nordheide-theme'),
+    'email' => __('E-Mail','ec-nordheide-theme'),
+  ] as $key=>$label) {
+    $c->add_setting("footer_contact_$key", ['sanitize_callback'=>'sanitize_textarea_field', 'default'=>'']);
+    $c->add_control("footer_contact_$key", ['label'=>$label, 'type'=> $key==='addr' ? 'textarea' : 'text', 'section'=>'footer_contact']);
+  }
+});
+
 // Search Button
 /*
 function theme_slug_customize_register_HighlightButton( $wp_customize ) {

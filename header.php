@@ -121,7 +121,7 @@
 </header>
 
 <!-- Mobile Off-Canvas -->
- <div id="mobile-nav" x-cloak x-show="open" x-transition.opacity class="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true">
+ <div id="mobile-nav" x-cloak x-show="open" x-transition.opacity class="fixed inset-0 z-50 " role="dialog" aria-modal="true">
     <div class="absolute inset-0 bg-black/40" x-on:click="open=false"></div>
 
     <div class="absolute right-0 top-0 h-full w-[88%] max-w-[380px] bg-white shadow-2xl p-4 flex flex-col"

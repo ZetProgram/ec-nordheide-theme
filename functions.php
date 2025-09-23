@@ -126,12 +126,6 @@ add_action(
 	1
 );
 
-/**
- * Menüs registrieren
- * - main-menu: Hauptmenü
- * - header-links: genau die zwei konfigurierbaren Header-Links
- * - footer-menu: Footer-Menü
- */
 function ae_register_menus() {
 	register_nav_menus(
 		array(
@@ -142,6 +136,32 @@ function ae_register_menus() {
 	);
 }
 add_action( 'init', 'ae_register_menus' );
+
+function ec_register_footer_sidebars() {
+  $wrappers = [
+    'before_widget' => '<div id="%1$s" class="wp-widget %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3 class="font-semibold text-white text-lg mb-3">',
+    'after_title'   => '</h3>',
+  ];
+
+  register_sidebar(array_merge([
+    'name' => __('Footer Spalte 1 (Kontakt)', 'ec-nordheide-theme'),
+    'id'   => 'footer_col_1',
+    'description' => __('Standardmäßig Kontakt – kann mit Widgets überschrieben werden.', 'ec-nordheide-theme'),
+  ], $wrappers));
+
+  register_sidebar(array_merge([
+    'name' => __('Footer Spalte 2', 'ec-nordheide-theme'),
+    'id'   => 'footer_col_2',
+  ], $wrappers));
+
+  register_sidebar(array_merge([
+    'name' => __('Footer Spalte 3', 'ec-nordheide-theme'),
+    'id'   => 'footer_col_3',
+  ], $wrappers));
+}
+add_action('widgets_init', 'ec_register_footer_sidebars');
 
 /**
  * Weitere Theme-Supports
