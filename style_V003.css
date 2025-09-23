@@ -71,102 +71,8 @@ body {
 	font-size: 100%;
 }
 
-.beta_container {
-	position: fixed;
-	top: -5px;
-	left: 0;
-	z-index: 3;
-	text-align: center;
-	width: 100%;
-
-}
-
-.beta_wort {
-	text-align: center;
-	width: 100px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #ddd;
-	padding: 5px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	box-shadow: 2px 2px 2px #666;
-}
-
-.beta_beschreibung {
-	position: absolute;
-	top: 25px;
-	padding: 5px;
-	width: 200px;
-	opacity: 0;
-	transition: all 1.5s ease-in-out;
-	margin-left: calc(50% - 100px);
-	margin-right: calc(50% - 100px);
-	background-color: #ddd;
-	border-radius: 5px;
-	box-shadow: 2px 2px 2px #666;
-}
-
-.beta_container:hover .beta_beschreibung {
-	opacity: 1;
-}
-
-#body_wrapper {
-	width: 100%;
-	border: 0px solid red;
-	margin: auto;
-	text-align: left;
-}
-
-.fuellender_hintergrund_layer {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	z-index: 1100;
-	top: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.8);
-}
-
-.cn-position-bottom {
-	bottom: 50% !important;
-}
-
-#header {
-	transition: 0.3s background, 0.3s border-bottom, 0.3s transform, 0.3s -webkit-transform, 0.3s -o-transform;
-	-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-}
-
-#menubutton_div {
-	border-right: 2px solid black;
-	width: 70px;
-}
-
-.col_header_logo {
-	width: 49.2%;
-}
-
-.menu_col_header {
-	padding-top: 30px;
-	width: 49.2%;
-}
-
-#mobile_top_menu {
-	text-align: center;
-}
-
-#suchebutton_div {
-	border-left: 2px solid black;
-	width: 70px;
-}
-
-#spendenbutton_div {
-	width: 140px;
-}
-
-.menu_button_wrapper {
-	width: 350px;
+a {
+	text-decoration: none;
 }
 
 @media (max-width:690px) {
@@ -781,20 +687,6 @@ body {
 	margin-top: 200px;
 	background-position: center;
 	/*height: 250px;*/
-}
-
-#footer a {
-	color: #fff;
-}
-
-.socialmediabuttons_div {
-	display: block;
-	padding-left: 20px;
-}
-
-.footer_eclogo {
-	position: relative;
-	top: -25px;
 }
 
 /*Arbeitsbereiche SA Slider*/
@@ -1539,20 +1431,6 @@ h5 strong em {
 		/*polygon(loX loY,roX roY,ruX ruY, luX luY)*/
 		-webkit-clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
 		clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
-	}
-
-	#footer {
-		padding-top: 50px;
-	}
-
-	.footer_eclogo {
-		position: relative;
-		top: 10px;
-	}
-
-	.socialmediabuttons_div {
-		padding-left: 0;
-		margin-top: 10px;
 	}
 
 	.footer_menu_span {

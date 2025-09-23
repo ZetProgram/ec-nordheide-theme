@@ -90,42 +90,6 @@ function beziehungskompass_notiz_einblenden(id) {
 }
 
 
-function menu_items_oeffnen() {
-	suchfeld_ausblenden();
-
-	$('#div_main_menu').animate(
-		{
-			top: '0px'
-		},
-		{
-			complete: function () {
-
-				$("#body_wrapper").click(
-					function () {
-						menu_items_schliessen();
-					}
-				);
-			}
-		}
-	);
-}
-
-function menu_items_schliessen() {
-
-	$('#div_main_menu').animate(
-		{
-			top: '-2500px'
-		},
-		{
-			complete: function () {
-				$("#body_wrapper").prop("onclick", null).off("click");
-
-			}
-		}
-	);
-
-}
-
 function terminbeschreibung_fadeIn(id) {
 
 	document.getElementById('terminbeschreibung_inhalt').innerHTML = document.getElementById(id).innerHTML;
