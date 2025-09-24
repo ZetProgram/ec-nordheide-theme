@@ -181,32 +181,22 @@ add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
 add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
   if (($args->theme_location ?? '') === 'primary') {
     $panel = implode(' ', [
-      // Positionierung unter dem Parent-<li>
-      'primary-submenu', 'absolute', 'left-0', 'top-full',
-      'mt-0',
+      'primary-submenu',
+      'absolute', 'top-full', 'left-1/2', '-translate-x-1/2', 'mt-[2rem]',
       'z-40',
-
-      // Größe/Look: nicht so breit wie Mega-Panel
-      'min-w-[240px]', 'max-w-[360px]',
+      // Größe/Look (wie Mega-Panel, nur schmal)
+      'min-w-[240px]', 'max-w-[360px]', 'max-w-screen',
       'rounded-b-2xl', 'rounded-t-none',
-      'border-2', 'border-[#92C355]',
+      'border-4', 'border-[#92C355]', 'rounded-tr-none', 'rounded-tl-none',
       'bg-[#f7f5ec]/95', 'backdrop-blur', 'supports-[backdrop-filter]:bg-[#f7f5ec]/80',
       'shadow-md', 'overflow-hidden', 'p-2',
-
-      // Startzustand (unsichtbar + leicht nach oben versetzt)
-      'hidden', 'opacity-0', '-translate-y-1',
-
-      // Nur ab lg sichtbar/steuerbar (dein primary ist ja erst ab lg sichtbar)
+      // Startzustand + Animation (Slide-Down + Fade)
+      'hidden', 'opacity-0', '-translate-y-1', 'transform',
       'lg:block',
-
-      // Hover/Focus öffnen (Slide-Down + Fade-In)
       'group-hover:block', 'group-hover:opacity-100', 'group-hover:translate-y-0',
       'group-focus-within:block', 'group-focus-within:opacity-100', 'group-focus-within:translate-y-0',
-
-      // Animation
-      'transition', 'ease-out', 'duration-200', 'transform',
+      'transition', 'ease-out', 'duration-200',
     ]);
-
     $classes[] = $panel;
   }
   return $classes;
