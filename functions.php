@@ -51,9 +51,8 @@ add_action('after_setup_theme', function () {
   ]);
   // Menü-Locations
   register_nav_menus([
-	'primary'   => __('Header – kleines Menü', 'ec-nordheide-theme'), // wenige Punkte im Header
+	'primary'   => __('Kopfzeile', 'ec-nordheide-theme'), // wenige Punkte im Header
     'mega'      => __('Großes Menü (Mega Panel)', 'ec-nordheide-theme'), // großes Panel auf Desktop/Tablet
-    'secondary' => __('Unterer Header (optionale Leiste)', 'ec-nordheide-theme'), // Leiste direkt unter dem Header
   ]);
 });
 
@@ -164,6 +163,60 @@ function ec_register_footer_sidebars() {
   ], $wrappers));
 }
 add_action('widgets_init', 'ec_register_footer_sidebars');
+
+// 2.1: <li> Klassen erweitern (nur im 'primary')
+add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
+  if (($args->theme_location ?? '') === 'primary') {
+    // Für alle <li> im Primary
+    $classes[] = 'relative'; // Positionierungs-Kontext
+    // Für Eltern mit Kindern: als Gruppe für :hover / :focus-within
+    if (in_array('menu-item-has-children', $classes, true)) {
+      $classes[] = 'group';
+      $classes[] = 'has-children';
+    }
+  }
+  return $classes;
+}, 10, 4);
+
+// 2.2: <ul class="sub-menu"> stylen (Panel)
+add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
+  if (($args->theme_location ?? '') === 'primary') {
+    // Basisklassen für das Dropdown-Panel
+    $panel = 'primary-submenu absolute left-0 top-full mt-2 z-50 ' .
+             'min-w-[220px] rounded-xl bg-white shadow-2xl border border-gray-200 p-2 ' .
+             // Startzustand (unsichtbar)
+             'hidden opacity-0 translate-y-2 ' .
+             // Nur auf Desktop sichtbar/steuerbar
+             'lg:block ' .
+             // Hover & Tastaturbedienung (öffnet Panel)
+             'group-hover:block group-hover:opacity-100 group-hover:translate-y-0 ' .
+             'group-focus-within:block group-focus-within:opacity-100 group-focus-within:translate-y-0 ' .
+             // Animationen
+             'transition ease-out duration-200';
+    $classes[] = $panel;
+  }
+  return $classes;
+}, 10, 3);
+
+// 2.3: Link-Attribute in Submenüs schöner machen
+add_filter('nav_menu_link_attributes', function ($atts, $item, $args, $depth) {
+  if (($args->theme_location ?? '') === 'primary' && $depth >= 1) {
+    // Nur Submenu-Links (depth >= 1)
+    $extra = 'block px-4 py-2 rounded-md text-[15px] text-gray-800 hover:bg-gray-100 hover:text-[#6C9941]';
+    $atts['class'] = isset($atts['class']) ? $atts['class'] . ' ' . $extra : $extra;
+  }
+  return $atts;
+}, 10, 4);
+
+// 2.4: Kleiner Caret-Pfeil an Top-Level-Items mit Kindern
+add_filter('nav_menu_item_title', function ($title, $item, $args, $depth) {
+  if (($args->theme_location ?? '') === 'primary' && $depth === 0 && in_array('menu-item-has-children', $item->classes ?? [], true)) {
+    // Kleines SVG als Pfeil (übernimmt currentColor)
+    $caret = '<svg aria-hidden="true" class="ml-1 inline-block w-3.5 h-3.5 align-middle text-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/></svg>';
+    $title .= $caret;
+  }
+  return $title;
+}, 10, 4);
 
 /**
  * Weitere Theme-Supports

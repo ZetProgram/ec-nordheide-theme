@@ -49,23 +49,40 @@
         <!-- Hauptbereich rechts -->
         <nav class="flex items-center gap-3 md:gap-6" aria-label="<?php esc_attr_e('Hauptnavigation','ec-nordheide-theme'); ?>">
           <?php
-            // KLEINES HEADER-MENÜ: nur auf lg+ sichtbar
-            wp_nav_menu([
-              'theme_location' => 'primary',
-              'container'      => false,
-              'fallback_cb'    => false,
-              'menu_class'     => 'hidden lg:flex items-center gap-6 font-medium',
-              'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-              // CHANGED: Tailwind nutzt 'text-*' statt 'color-*'
-              'link_before'    => '<span class="inline-block py-2 uppercase text-[#1A1A1A] hover:text-[#6C9941] lg:text-[16px] text-[18px]">',
-              'link_after'     => '</span>',
-            ]);
+          wp_nav_menu([
+            'theme_location' => 'primary',
+            'container'      => false,
+            'fallback_cb'    => false,
+            'menu_class'     => 'primary-nav hidden lg:flex items-center gap-6 font-medium',
+            'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'link_before'    => '<span class="inline-block py-2 uppercase text-[#1A1A1A] hover:text-[#6C9941] lg:text-[16px] text-[18px]">',
+            'link_after'     => '</span>',
+          ]);
           ?>
 
           <!-- Instagram -->
-          <a href="https://www.instagram.com/ecnordheide" class="hidden lg:inline-flex items-center justify-center w-10 h-10" aria-label="Instagram" title="Instagram">
+          <a href="https://www.instagram.com/ecnordheide" class="inline-flex items-center justify-center w-10 h-10 cursor-pointer" aria-label="Instagram" title="Instagram">
             <svg class="w-[80%] h-[80%]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
           </a>
+
+          <button type="button"
+                  class="hidden lg:inline-flex items-center justify-center w-14 h-14"
+                  x-on:click="openMega = !openMega"
+                  :aria-expanded="openMega.toString()"
+                  aria-controls="mega-panel"
+                  aria-label="<?php esc_attr_e('Menü öffnen (Desktop)','ec-nordheide-theme'); ?>">
+            <svg class="w-12 h-12 text-black hover:text-[#6C9941]" role="img" aria-label="Menü" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+              <title>Menü</title>
+              <!-- Hex-Umriss -->
+              <polygon points="64,4 116,32 116,96 64,124 12,96 12,32" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"></polygon>
+              <!-- Hamburger -->
+              <g transform="translate(64,66)" fill="currentColor">
+                <rect x="-20" y="-18" width="40" height="6" rx="3"></rect>
+                <rect x="-20" y="-6" width="40" height="6" rx="3"></rect>
+                <rect x="-20" y="6" width="40" height="6" rx="3"></rect>
+              </g>
+            </svg>
+          </button>
 
           <!-- CTA: nur auf xl+ sichtbar -->
           <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>" class="hidden xl:inline-flex items-center rounded-sm px-4 py-2 text-white bg-[#92C355] hover:bg-[#64863a] text-[20px] no-underline focus:outline-none transition uppercase">
@@ -84,14 +101,7 @@
           </button>
 
           <!-- Desktop/Tablet Button (öffnet Mega-Panel) -->
-          <button type="button"
-                  class="hidden lg:inline-flex items-center justify-center w-14 h-14"
-                  x-on:click="openMega = !openMega"
-                  :aria-expanded="openMega.toString()"
-                  aria-controls="mega-panel"
-                  aria-label="<?php esc_attr_e('Menü öffnen (Desktop)','ec-nordheide-theme'); ?>">
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü','ec-nordheide-theme'); ?>" class="max-h-[60px] w-14 h-14">
-          </button>
+
         </nav>
       </div>
     </div>
@@ -110,25 +120,6 @@
       <polyline points="0,8 90,4 180,7 280,3 370,6 455,2 560,7 655,3 760,6 860,4 980,7 1090,3 1200,8" fill="none" stroke="#92C355" stroke-width="5" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />
     </svg>
   </div>
-
-  <!-- OPTIONAL: Untere Header-Leiste (secondary) – nur auf lg+ -->
-  <?php if (has_nav_menu('secondary')): ?>
-    <div class="hidden lg:block bg-[#F7F5EC] border-t border-[#92C355]/40">
-      <div class="container mx-auto max-w-7xl px-3 md:px-6">
-        <?php
-          wp_nav_menu([
-            'theme_location' => 'secondary',
-            'container'      => false,
-            'fallback_cb'    => false,
-            'menu_class'     => 'flex items-center gap-6 py-2 text-sm',
-            'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'link_before'    => '<span class="inline-block py-1 hover:text-[#6C9941]">',
-            'link_after'     => '</span>',
-          ]);
-        ?>
-      </div>
-    </div>
-  <?php endif; ?>
 
   <!-- MEGA PANEL (Desktop/Tablet) -->
   <div id="mega-panel"
