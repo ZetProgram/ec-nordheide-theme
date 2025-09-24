@@ -130,8 +130,6 @@ add_action(
 function ae_register_menus() {
 	register_nav_menus(
 		array(
-			'main-menu'    => __( 'Hauptmenü', 'ec-nordheide-theme' ),
-			'header-links' => __( 'Header Links (max. 2 Punkte)', 'ec-nordheide-theme' ),
 			'footer-menu'  => __( 'Footer Menü', 'ec-nordheide-theme' ),
 		)
 	);
@@ -182,18 +180,33 @@ add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
 // 2.2: <ul class="sub-menu"> stylen (Panel)
 add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
   if (($args->theme_location ?? '') === 'primary') {
-    // Basisklassen für das Dropdown-Panel
-    $panel = 'primary-submenu absolute left-0 top-full mt-2 z-49' .
-             'min-w-[220px] rounded-xl bg-white shadow-2xl border border-gray-200 p-2 ' .
-             // Startzustand (unsichtbar)
-             'hidden opacity-0 translate-y-2 ' .
-             // Nur auf Desktop sichtbar/steuerbar
-             'lg:block ' .
-             // Hover & Tastaturbedienung (öffnet Panel)
-             'group-hover:block group-hover:opacity-100 group-hover:translate-y-0 ' .
-             'group-focus-within:block group-focus-within:opacity-100 group-focus-within:translate-y-0 ' .
-             // Animationen
-             'transition ease-out duration-200';
+    $panel = implode(' ', [
+      // Positionierung unter dem Parent-<li>
+      'primary-submenu', 'absolute', 'left-0', 'top-full',
+      'mt-0',
+      'z-40',
+
+      // Größe/Look: nicht so breit wie Mega-Panel
+      'min-w-[240px]', 'max-w-[360px]',
+      'rounded-b-2xl', 'rounded-t-none',
+      'border-2', 'border-[#92C355]',
+      'bg-[#f7f5ec]/95', 'backdrop-blur', 'supports-[backdrop-filter]:bg-[#f7f5ec]/80',
+      'shadow-md', 'overflow-hidden', 'p-2',
+
+      // Startzustand (unsichtbar + leicht nach oben versetzt)
+      'hidden', 'opacity-0', '-translate-y-1',
+
+      // Nur ab lg sichtbar/steuerbar (dein primary ist ja erst ab lg sichtbar)
+      'lg:block',
+
+      // Hover/Focus öffnen (Slide-Down + Fade-In)
+      'group-hover:block', 'group-hover:opacity-100', 'group-hover:translate-y-0',
+      'group-focus-within:block', 'group-focus-within:opacity-100', 'group-focus-within:translate-y-0',
+
+      // Animation
+      'transition', 'ease-out', 'duration-200', 'transform',
+    ]);
+
     $classes[] = $panel;
   }
   return $classes;
