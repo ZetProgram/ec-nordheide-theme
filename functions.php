@@ -164,6 +164,7 @@ function ec_register_footer_sidebars() {
 }
 add_action('widgets_init', 'ec_register_footer_sidebars');
 
+
 // 2.1: <li> Klassen erweitern (nur im 'primary')
 add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
   if (($args->theme_location ?? '') === 'primary') {
@@ -182,7 +183,7 @@ add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
 add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
   if (($args->theme_location ?? '') === 'primary') {
     // Basisklassen für das Dropdown-Panel
-    $panel = 'primary-submenu absolute left-0 top-full mt-2 z-50 ' .
+    $panel = 'primary-submenu absolute left-0 top-full mt-2 z-49' .
              'min-w-[220px] rounded-xl bg-white shadow-2xl border border-gray-200 p-2 ' .
              // Startzustand (unsichtbar)
              'hidden opacity-0 translate-y-2 ' .

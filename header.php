@@ -55,23 +55,23 @@
             'fallback_cb'    => false,
             'menu_class'     => 'primary-nav hidden lg:flex items-center gap-6 font-medium',
             'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'link_before'    => '<span class="inline-block py-2 uppercase text-[#1A1A1A] hover:text-[#6C9941] lg:text-[16px] text-[18px]">',
+            'link_before'    => '<span class="inline-flex flex-row flex-nowrap items-center py-2 uppercase text-[#333] hover:shadow-md hover:text-[#6C9941] lg:text-[16px] text-[18px]">',
             'link_after'     => '</span>',
           ]);
           ?>
 
           <!-- Instagram -->
-          <a href="https://www.instagram.com/ecnordheide" class="inline-flex items-center justify-center w-10 h-10 cursor-pointer" aria-label="Instagram" title="Instagram">
-            <svg class="w-[80%] h-[80%]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          <a href="https://www.instagram.com/ecnordheide" class="inline-flex items-center justify-center w-10 h-10 cursor-pointer hover:text-[#6C9941] hover:shadow-md" aria-label="Instagram" title="Instagram">
+            <svg class="w-[80%] h-[80%] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
           </a>
 
           <button type="button"
-                  class="hidden lg:inline-flex items-center justify-center w-14 h-14"
+                  class="hidden lg:inline-flex items-center justify-center w-12 h-12 hover:shadow-md"
                   x-on:click="openMega = !openMega"
                   :aria-expanded="openMega.toString()"
                   aria-controls="mega-panel"
                   aria-label="<?php esc_attr_e('Menü öffnen (Desktop)','ec-nordheide-theme'); ?>">
-            <svg class="w-12 h-12 text-black hover:text-[#6C9941]" role="img" aria-label="Menü" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-10 h-10 text-[#333] hover:text-[#6C9941]" role="img" aria-label="Menü" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
               <title>Menü</title>
               <!-- Hex-Umriss -->
               <polygon points="64,4 116,32 116,96 64,124 12,96 12,32" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"></polygon>
@@ -92,13 +92,22 @@
           <!-- MENU BUTTONS -->
           <!-- Mobile Button (öffnet Off-Canvas) -->
           <button type="button"
-                  class="inline-flex items-center justify-center w-14 h-14 lg:hidden"
+                  class="inline-flex items-center justify-center w-12 h-12 lg:hidden"
                   x-on:click="openMobile = !openMobile"
                   :aria-expanded="openMobile.toString()"
                   aria-controls="mobile-nav"
                   aria-label="<?php esc_attr_e('Menü öffnen (mobil)','ec-nordheide-theme'); ?>">
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/img/menu_symbol.svg' ); ?>" alt="<?php esc_attr_e('Menü','ec-nordheide-theme'); ?>" class="max-h-[60px] w-14 h-14">
-          </button>
+            <svg class="w-10 h-10 text-[#333] hover:text-[#6C9941]" role="img" aria-label="Menü" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+              <title>Menü</title>
+              <!-- Hex-Umriss -->
+              <polygon points="64,4 116,32 116,96 64,124 12,96 12,32" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"></polygon>
+              <!-- Hamburger -->
+              <g transform="translate(64,66)" fill="currentColor">
+                <rect x="-20" y="-18" width="40" height="6" rx="3"></rect>
+                <rect x="-20" y="-6" width="40" height="6" rx="3"></rect>
+                <rect x="-20" y="6" width="40" height="6" rx="3"></rect>
+              </g>
+            </svg>
 
           <!-- Desktop/Tablet Button (öffnet Mega-Panel) -->
 
@@ -122,32 +131,30 @@
   </div>
 
   <!-- MEGA PANEL (Desktop/Tablet) -->
-  <div id="mega-panel"
-       class="hidden lg:block relative">
+<div id="mega-panel" class="hidden lg:block relative">
+  <div
+    x-cloak
+    x-show="openMega"
+    x-transition.opacity
+    class="absolute inset-x-0 top-0"
+    aria-label="<?php esc_attr_e('Großes Menü','ec-nordheide-theme'); ?>"
+    @click.away="openMega=false"
+  >
     <div
-      x-cloak
-      x-show="openMega"
-      x-transition.opacity
-      class="absolute inset-x-0 top-0"
-      aria-label="<?php esc_attr_e('Großes Menü','ec-nordheide-theme'); ?>"
-      @click.away="openMega=false"
+      class="mx-auto max-w-7xl px-3 md:px-6 flex justify-items-center"
     >
-      <!-- Der eigentliche Container hängt „unter“ dem Header/Divider -->
       <div
+        class="origin-top transform-gpu w-full"
         x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="-translate-y-3 opacity-0"
-        x-transition:enter-end="translate-y-0 opacity-100"
+        x-transition:enter-start="opacity-0 scale-y-0 -translate-y-1"
+        x-transition:enter-end="opacity-100 scale-y-100 translate-y-0"
         x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="translate-y-0 opacity-100"
-        x-transition:leave-end="-translate-y-2 opacity-0"
-        class="mx-auto max-w-7xl px-3 md:px-6"
-        style="padding-top: 14px;"  <!-- Höhe des Desktop-Dividers -->
+        x-transition:leave-start="opacity-100 scale-y-100 translate-y-0"
+        x-transition:leave-end="opacity-0 scale-y-0 -translate-y-1"
       >
-        <div class="rounded-2xl shadow-2xl border border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+        <div class="overflow-hidden rounded-2xl shadow-2xl border-4 w-full border-[#92C355] bg-[#f7f5ec]/95 backdrop-blur supports-[backdrop-filter]:bg-[#f7f5ec]/80">
           <div class="p-6 md:p-8">
             <?php
-              // Du kannst hier frei template-teilen, Spalten, Icons etc. gestalten.
-              // Als Basis: einfaches UL aus dem 'mega' Menü.
               wp_nav_menu([
                 'theme_location' => 'mega',
                 'container'      => false,
@@ -162,6 +169,7 @@
       </div>
     </div>
   </div>
+</div>
 </header>
 
 <!-- MOBILE Off-Canvas -->
