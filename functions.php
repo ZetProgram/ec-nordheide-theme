@@ -51,7 +51,9 @@ add_action('after_setup_theme', function () {
   ]);
   // Menü-Locations
   register_nav_menus([
-    'primary' => __('Hauptnavigation', 'ec-nordheide-theme'),
+	'primary'   => __('Header – kleines Menü', 'ec-nordheide-theme'), // wenige Punkte im Header
+    'mega'      => __('Großes Menü (Mega Panel)', 'ec-nordheide-theme'), // großes Panel auf Desktop/Tablet
+    'secondary' => __('Unterer Header (optionale Leiste)', 'ec-nordheide-theme'), // Leiste direkt unter dem Header
   ]);
 });
 
