@@ -29,8 +29,8 @@
       x-on:keydown.escape.window="openMobile=false; openMega=false">
 <?php wp_body_open(); ?>
 
-<header class="sticky top-0 isolate" role="banner">
-  <div class="relative bg-[#F7F5EC] z-50">
+<header class="sticky top-0 isolate z-50" role="banner">
+  <div class="relative bg-[#F7F5EC]">
     <div class="container mx-auto max-w-7xl px-3 md:px-6">
       <div class="flex items-center justify-between gap-3 h-full">
         <!-- Logo -->
@@ -117,7 +117,7 @@
   </div>
 
   <!-- Divider bleibt wie gehabt -->
-  <div class="z-50">
+  <div class="">
     <!-- MOBILE Divider -->
     <svg viewBox="0 0 1200 10" preserveAspectRatio="none" class="pointer-events-none absolute inset-x-0 h-[10px] w-full z-10 md:hidden">
       <path d="M0,0 L1200,0 L1200,8 L900,3 L600,7 L300,4 L0,8 Z" fill="#F7F5EC"/>
